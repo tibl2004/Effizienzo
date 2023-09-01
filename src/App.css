@@ -41,15 +41,15 @@ button:hover {
 }
 
 .navbar {
-  max-height: 50px;
+  height: 100px;
   background-color: gray;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
-  height: 50px; /* Die gleiche Höhe wie die Navbar */
-  background-color: #0394fc;
+  height: 102px; /* Die gleiche Höhe wie die Navbar */
+  background-color: #0c66b4;
   margin-top: 0;
 }
 

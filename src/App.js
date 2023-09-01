@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaCopy, FaCheck } from 'react-icons/fa';
 import './App.css';
-import logo from '../src/Logo.png'; 
+import logo from '../src/Logo.jpeg'; 
 
 function App() {
   const [data, setData] = useState({
@@ -12,7 +12,6 @@ function App() {
     Farbe: '',
     Schäden: '',
     Hinweise: '',
-    Lieferant: ''
   });
 
   const [copiedLabel, setCopiedLabel] = useState(null);
