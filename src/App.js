@@ -58,10 +58,28 @@ function App() {
   return (
     <div className="App">
       <div className='navbar'>
-        <div className='logo-container'>
-          <img src={logo} alt="Restwert" />
-        </div>
-      </div>
+  <div className='logo-container'>
+    <div className='center-button'>
+      <button
+        onClick={handleClearAll}
+        style={{
+          backgroundColor: 'red',
+          color: 'white',
+        }}
+      >
+        <span className="trash-icon">
+          <FontAwesomeIcon icon={faTrash} />
+        </span>
+      </button>
+    </div>
+    <div className='version-label'>V.1.2</div>
+    <img src={logo} alt="Restwert" />
+  </div>
+</div>
+
+
+
+
       <div className="input-container">
         {Object.entries(data).map(([label, value]) => (
           <div key={label} className="input-field">
@@ -81,19 +99,6 @@ function App() {
             </button>
           </div>
         ))}
-      </div>
-      <div className="center-button">
-        <button
-          onClick={handleClearAll}
-          style={{
-            backgroundColor: 'red',
-            color: 'white',
-          }}
-        >
-          <span className="trash-icon">
-            <FontAwesomeIcon icon={faTrash} />
-          </span>
-        </button>
       </div>
     </div>
   );

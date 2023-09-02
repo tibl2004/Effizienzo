@@ -58,3 +58,13 @@ button:hover {
 .logo-container img {
   max-height: 100%;
 }
+
+.version-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: white;
+  font-size: 18px; /* Passe die Größe nach Bedarf an */
+  padding: 10px; /* Füge Abstand um den Text hinzu */
+  background-color: rgba(0, 0, 0, 0.5); /* Hintergrundfarbe mit Transparenz */
+}
