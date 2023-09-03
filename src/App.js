@@ -14,14 +14,16 @@ function App() {
     Farbe: '',
     Schäden: '',
     Hinweise: '',
+    'Bei Nichtverkauf': '',
   });
 
+  const [selectedOption, setSelectedOption] = useState('');
   const [copiedLabel, setCopiedLabel] = useState(null);
 
   const handleInputChange = (label, value) => {
-    setData(prevData => ({
+    setData((prevData) => ({
       ...prevData,
-      [label]: value
+      [label]: value,
     }));
   };
 
@@ -43,6 +45,24 @@ function App() {
     }
   };
 
+  const handleCopyBeiNichtverkauf = () => {
+    const text = `${selectedOption}`;
+
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+
+      setCopiedLabel('Bei Nichtverkauf');
+      setTimeout(() => setCopiedLabel(null), 1000);
+    } catch (error) {
+      console.error('Kopieren fehlgeschlagen:', error);
+    }
+  };
+
   const handleClearAll = () => {
     setData({
       Marke: '',
@@ -52,51 +72,84 @@ function App() {
       Farbe: '',
       Schäden: '',
       Hinweise: '',
+      'Bei Nichtverkauf': '',
     });
   };
 
   return (
     <div className="App">
       <div className='navbar'>
-  <div className='logo-container'>
-    <div className='center-button'>
-      <button
-        onClick={handleClearAll}
-        style={{
-          backgroundColor: 'red',
-          color: 'white',
-        }}
-      >
-        <span className="trash-icon">
-          <FontAwesomeIcon icon={faTrash} />
-        </span>
-      </button>
-    </div>
-    <div className='version-label'>V.1.2</div>
-    <img src={logo} alt="Restwert" />
-  </div>
-</div>
-
-
-
+        <div className='logo-container'>
+          <div className='center-button'>
+            <button
+              onClick={handleClearAll}
+              style={{
+                backgroundColor: 'red',
+                color: 'white',
+              }}
+            >
+              <span className="trash-icon">
+                <FontAwesomeIcon icon={faTrash} />
+              </span>
+            </button>
+          </div>
+          <div className='version-label'>V.1.2</div>
+          <img src={logo} alt="Restwert" />
+        </div>
+      </div>
 
       <div className="input-container">
         {Object.entries(data).map(([label, value]) => (
           <div key={label} className="input-field">
             <label style={{ fontSize: '18px', marginRight: '10px' }}>{label}:</label>
-            <input
-              type="text"
-              value={value}
-              onChange={e => handleInputChange(label, e.target.value)}
-            />
-            <button
-              onClick={() => handleCopy(label)}
-              style={{
-                backgroundColor: copiedLabel === label ? 'limegreen' : '',
-              }}
-            >
-              {copiedLabel === label ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faCopy} />}
-            </button>
+            {label === 'Bei Nichtverkauf' ? (
+              <div>
+                <select
+                  value={selectedOption}
+                  onChange={(e) => setSelectedOption(e.target.value)}
+                  style={{
+                    width: '400px',
+                    fontSize: '20px',
+                    padding: '8px',
+                    border: '1px solid #ccc',
+                    borderRadius: '5px',
+                    outline: 'none',
+                  }}
+                >
+                  <option value="">Auswählen</option>
+                  <option value="Spenden">Spenden</option>
+                  <option value="Rücknahme">Rücknahme</option>
+                </select>
+                <button
+                  onClick={handleCopyBeiNichtverkauf}
+                  style={{
+                    backgroundColor: copiedLabel === 'Bei Nichtverkauf' ? 'limegreen' : '',
+                  }}
+                >
+                  {copiedLabel === 'Bei Nichtverkauf' ? (
+                    <FontAwesomeIcon icon={faCheck} />
+                  ) : (
+                    <FontAwesomeIcon icon={faCopy} />
+                  )}
+                </button>
+              </div>
+            ) : (
+              <>
+                <input
+                  type="text"
+                  value={value}
+                  onChange={(e) => handleInputChange(label, e.target.value)}
+                />
+                <button
+                  onClick={() => handleCopy(label)}
+                  style={{
+                    backgroundColor: copiedLabel === label ? 'limegreen' : '',
+                  }}
+                >
+                  {copiedLabel === label ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faCopy} />}
+                </button>
+              </>
+            )}
           </div>
         ))}
       </div>
