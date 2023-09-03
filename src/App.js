@@ -15,20 +15,29 @@ function App() {
     Schäden: '',
     Hinweise: '',
     'Bei Nichtverkauf': '',
+    'Startpreis': '', // Startpreis als leeres Feld
   });
 
   const [selectedOption, setSelectedOption] = useState('');
   const [copiedLabel, setCopiedLabel] = useState(null);
 
   const handleInputChange = (label, value) => {
-    setData((prevData) => ({
-      ...prevData,
-      [label]: value,
-    }));
+    // Überprüfe, ob der eingegebene Wert nur Zahlen und "." enthält, und aktualisiere das Datenobjekt entsprechend.
+    if (/^[0-9.]*$/.test(value)) {
+      setData((prevData) => ({
+        ...prevData,
+        [label]: value,
+      }));
+    }
   };
 
   const handleCopy = (label) => {
-    const text = `${label}: ${data[label]}`;
+    let text = data[label];
+
+    // Wenn der Kopieren-Button für 'Startpreis' geklickt wird, füge 'CHF ' vor der Zahl hinzu
+    if (label === 'Startpreis') {
+      text = `CHF ${text}`;
+    }
 
     try {
       const textArea = document.createElement('textarea');
@@ -73,6 +82,7 @@ function App() {
       Schäden: '',
       Hinweise: '',
       'Bei Nichtverkauf': '',
+      'Startpreis': '', // Setze 'Startpreis' zurück
     });
   };
 
@@ -136,7 +146,7 @@ function App() {
             ) : (
               <>
                 <input
-                  type="text"
+                  type={label === 'Startpreis' ? 'text' : 'text'}
                   value={value}
                   onChange={(e) => handleInputChange(label, e.target.value)}
                 />
