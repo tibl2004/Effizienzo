@@ -14,6 +14,7 @@ function App() {
     Farbe: '',
     Schäden: '',
     Hinweise: '',
+    Zustand: '',
     'Bei Nichtverkauf': '',
     'Startpreis': '', // Startpreis als leeres Feld
   });
@@ -32,11 +33,11 @@ function App() {
   };
 
   const handleCopy = (label) => {
-    let text = data[label];
+    let text = `${label}: ${data[label]}`;
 
     // Wenn der Kopieren-Button für 'Startpreis' geklickt wird, füge 'CHF ' vor der Zahl hinzu
     if (label === 'Startpreis') {
-      text = `CHF ${text}`;
+      text = `CHF ${data[label]}`;
     }
 
     try {
@@ -81,6 +82,7 @@ function App() {
       Farbe: '',
       Schäden: '',
       Hinweise: '',
+      Zustand: '',
       'Bei Nichtverkauf': '',
       'Startpreis': '', // Setze 'Startpreis' zurück
     });
@@ -103,7 +105,7 @@ function App() {
               </span>
             </button>
           </div>
-          <div className='version-label'>V.1.2</div>
+          <div className='version-label'>V.1.3</div>
           <img src={logo} alt="Restwert" />
         </div>
       </div>
