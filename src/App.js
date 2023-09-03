@@ -23,7 +23,7 @@ function App() {
 
   const handleInputChange = (label, value) => {
     // Überprüfe, ob der eingegebene Wert nur Zahlen und "." enthält, und aktualisiere das Datenobjekt entsprechend.
-    if (/^[0-9.]*$/.test(value)) {
+    if (/^[0-9.]*$/.test(value) || label !== 'Startpreis') {
       setData((prevData) => ({
         ...prevData,
         [label]: value,
