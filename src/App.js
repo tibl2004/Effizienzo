@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faCheck, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faCheck, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import './App.css';
 import logo from '../src/Logo.jpeg';
@@ -29,6 +29,10 @@ function App() {
 
   const toggleOverlay = () => {
     setIsOverlayVisible(!isOverlayVisible);
+  };
+
+  const closeOverlay = () => {
+    setIsOverlayVisible(false);
   };
 
   const handleInputChange = (label, value) => {
@@ -162,6 +166,9 @@ function App() {
             </button>
             {isOverlayVisible && (
               <div className="overlay">
+                <button className="close-button" onClick={closeOverlay}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </button>
                 {/* Hier kannst du den Inhalt des Overlays platzieren */}
                 Hier kommt das Tutorial hin. Es folgt beim nächsten Update. ...
               </div>
