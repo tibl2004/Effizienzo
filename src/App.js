@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faCheck, faTrash } from '@fortawesome/free-solid-svg-icons'; // Importiere die Icons
+import { faCopy, faCheck, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import './App.css';
 import logo from '../src/Logo.jpeg';
@@ -16,7 +16,8 @@ function App() {
     Hinweise: '',
     Zustand: '',
     'Bei Nichtverkauf': '',
-    'Startpreis': '', // Startpreis als leeres Feld
+    'Startpreis': '',
+    '1. Reaktivierung': '', // 1. Reaktivierung als leeres Feld
   });
 
   const [selectedOption, setSelectedOption] = useState('');
@@ -32,11 +33,21 @@ function App() {
     }
   };
 
+  const handleReaktivierungChange = (label, value) => {
+    // Überprüfe, ob der eingegebene Wert nur Zahlen und "." enthält, und aktualisiere das Datenobjekt entsprechend.
+    if (/^[0-9.]*$/.test(value) || label !== '1. Reaktivierung') {
+      setData((prevData) => ({
+        ...prevData,
+        [label]: value,
+      }));
+    }
+  };
+
   const handleCopy = (label) => {
     let text = `${label}: ${data[label]}`;
 
-    // Wenn der Kopieren-Button für 'Startpreis' geklickt wird, füge 'CHF ' vor der Zahl hinzu
-    if (label === 'Startpreis') {
+    // Wenn der Kopieren-Button für 'Startpreis' oder '1. Reaktivierung' geklickt wird, füge 'CHF ' vor der Zahl hinzu
+    if (label === 'Startpreis' || label === '1. Reaktivierung') {
       text = `CHF ${data[label]}`;
     }
 
@@ -84,7 +95,8 @@ function App() {
       Hinweise: '',
       Zustand: '',
       'Bei Nichtverkauf': '',
-      'Startpreis': '', // Setze 'Startpreis' zurück
+      'Startpreis': '',
+      '1. Reaktivierung': '',
     });
   };
 
@@ -148,9 +160,9 @@ function App() {
             ) : (
               <>
                 <input
-                  type={label === 'Startpreis' ? 'text' : 'text'}
+                  type={(label === 'Startpreis' || label === '1. Reaktivierung') ? 'text' : 'text'}
                   value={value}
-                  onChange={(e) => handleInputChange(label, e.target.value)}
+                  onChange={(e) => (label === 'Startpreis' ? handleInputChange(label, e.target.value) : handleReaktivierungChange(label, e.target.value))}
                 />
                 <button
                   onClick={() => handleCopy(label)}
