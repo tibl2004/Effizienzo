@@ -19,6 +19,7 @@ function App() {
     'Startpreis': '',
     '1. Reaktivierung': '', // 1. Reaktivierung als leeres Feld
     '2. Reaktivierung': '',
+    '3. Reaktivierung': '',
   });
 
   const [selectedOption, setSelectedOption] = useState('');
@@ -54,11 +55,21 @@ function App() {
     }
   };
 
+  const handleReaktivierung3Change = (label, value) => {
+    // Überprüfe, ob der eingegebene Wert nur Zahlen und "." enthält, und aktualisiere das Datenobjekt entsprechend.
+    if (/^[0-9.]*$/.test(value) || label !== '3. Reaktivierung') {
+      setData((prevData) => ({
+        ...prevData,
+        [label]: value,
+      }));
+    }
+  };
+
   const handleCopy = (label) => {
     let text = `${label}: ${data[label]}`;
 
     // Wenn der Kopieren-Button für 'Startpreis' oder '1. Reaktivierung' geklickt wird, füge 'CHF ' vor der Zahl hinzu
-    if (label === 'Startpreis' || label === '1. Reaktivierung' || label === '2. Reaktivierung') {
+    if (label === 'Startpreis' || label === '1. Reaktivierung' || label === '2. Reaktivierung' || label === '3. Reaktivierung') {
       text = `CHF ${data[label]}`;
     }
 
@@ -109,6 +120,7 @@ function App() {
       'Startpreis': '',
       '1. Reaktivierung': '',
       '2. Reaktivierung': '',
+      '3. Reaktivierung': '',
     });
   };
 
@@ -172,7 +184,7 @@ function App() {
             ) : (
               <>
                 <input
-                  type={(label === 'Startpreis' || label === '1. Reaktivierung' || label === '2. Reaktivierung') ? 'text' : 'text'}
+                  type={(label === 'Startpreis' || label === '1. Reaktivierung' || label === '2. Reaktivierung' || '3. Reaktivierung') ? 'text' : 'text'}
                   value={value}
                   onChange={(e) => {
                     if (label === 'Startpreis') {
@@ -181,6 +193,8 @@ function App() {
                       handleReaktivierungChange(label, e.target.value);
                     } else if (label === '2. Reaktivierung') {
                       handleReaktivierung2Change(label, e.target.value);
+                    } else if (label === '3. Reaktivierung') {
+                      handleReaktivierung3Change(label, e.target.value);
                     } else {
                       handleInputChange(label, e.target.value);
                     }
