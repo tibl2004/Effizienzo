@@ -168,7 +168,7 @@ function App() {
                   value={selectedOption}
                   onChange={(e) => setSelectedOption(e.target.value)}
                   style={{
-                    width: '400px',
+                    width: '800px',
                     fontSize: '20px',
                     padding: '8px',
                     border: '1px solid #ccc',
