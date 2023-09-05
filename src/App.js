@@ -18,13 +18,18 @@ function App() {
     'Bei Nichtverkauf': '',
     'Minimumpreis': '',
     'Startpreis': '',
-    '1. Reaktivierung': '', // 1. Reaktivierung als leeres Feld
+    '1. Reaktivierung': '',
     '2. Reaktivierung': '',
     '3. Reaktivierung': '',
   });
 
   const [selectedOption, setSelectedOption] = useState('');
   const [copiedLabel, setCopiedLabel] = useState(null);
+  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+
+  const toggleOverlay = () => {
+    setIsOverlayVisible(!isOverlayVisible);
+  };
 
   const handleInputChange = (label, value) => {
     // Überprüfe, ob der eingegebene Wert nur Zahlen und "." enthält, und aktualisiere das Datenobjekt entsprechend.
@@ -152,6 +157,15 @@ function App() {
                 <FontAwesomeIcon icon={faTrash} />
               </span>
             </button>
+            <button onClick={toggleOverlay} className="question-button">
+              ?
+            </button>
+            {isOverlayVisible && (
+              <div className="overlay">
+                {/* Hier kannst du den Inhalt des Overlays platzieren */}
+                Hier kommt das Tutorial hin. Es folgt beim nächsten Update. ...
+              </div>
+            )}
           </div>
           <div className='version-label'>V.1.4</div>
           <img src={logo} alt="Restwert" />
@@ -196,7 +210,7 @@ function App() {
             ) : (
               <>
                 <input
-                  type={(label === 'Minimumpreis' || label === 'Startpreis' || label === '1. Reaktivierung' || label === '2. Reaktivierung' || '3. Reaktivierung') ? 'text' : 'text'}
+                  type={(label === 'Minimumpreis' || label === 'Startpreis' || label === '1. Reaktivierung' || label === '2. Reaktivierung' || label === '3. Reaktivierung') ? 'text' : 'text'}
                   value={value}
                   onChange={(e) => {
                     if (label === 'Minimumpreis') {
