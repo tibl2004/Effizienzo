@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faCheck, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faCheck, faTrash, faTimes, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 import './App.css';
 import logo from '../src/Logo.jpeg';
@@ -158,23 +158,23 @@ function App() {
               }}
             >
               <span className="trash-icon">
-                <FontAwesomeIcon icon={faTrash} />
+                <FontAwesomeIcon icon={faTrash} /> Alle Eingaben Löschen
               </span>
             </button>
             <button onClick={toggleOverlay} className="question-button">
-              ?
+              <FontAwesomeIcon icon={faQuestionCircle} /> Tutorial
             </button>
             {isOverlayVisible && (
               <div className="overlay">
                 <button className="close-button" onClick={closeOverlay}>
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-                {/* Hier kannst du den Inhalt des Overlays platzieren */}
+                {/* Hier den Inhalt des Overlays platzieren */}
                 Hier kommt das Tutorial hin. Es folgt beim nächsten Update. ...
               </div>
             )}
           </div>
-          <div className='version-label'>V.1.5</div>
+          <div className='version-label'>V.1.6</div>
           <img src={logo} alt="Restwert" />
         </div>
       </div>
