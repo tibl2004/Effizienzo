@@ -129,7 +129,7 @@ function App() {
               </span>
             </button>
           </div>
-          <div className='version-label'>V.1.3</div>
+          <div className='version-label'>V.1.4</div>
           <img src={logo} alt="Restwert" />
         </div>
       </div>
