@@ -174,7 +174,7 @@ function App() {
               </div>
             )}
           </div>
-          <div className='version-label'>V.1.4</div>
+          <div className='version-label'>V.1.5</div>
           <img src={logo} alt="Restwert" />
         </div>
       </div>
