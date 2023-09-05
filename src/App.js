@@ -16,6 +16,7 @@ function App() {
     Hinweise: '',
     Zustand: '',
     'Bei Nichtverkauf': '',
+    'Minimumpreis': '',
     'Startpreis': '',
     '1. Reaktivierung': '', // 1. Reaktivierung als leeres Feld
     '2. Reaktivierung': '',
@@ -28,6 +29,16 @@ function App() {
   const handleInputChange = (label, value) => {
     // Überprüfe, ob der eingegebene Wert nur Zahlen und "." enthält, und aktualisiere das Datenobjekt entsprechend.
     if (/^[0-9.]*$/.test(value) || label !== 'Startpreis') {
+      setData((prevData) => ({
+        ...prevData,
+        [label]: value,
+      }));
+    }
+  };
+
+  const handleMinimumpreisChange = (label, value) => {
+    // Überprüfe, ob der eingegebene Wert nur Zahlen und "." enthält, und aktualisiere das Datenobjekt entsprechend.
+    if (/^[0-9.]*$/.test(value) || label !== 'Minimumpreis') {
       setData((prevData) => ({
         ...prevData,
         [label]: value,
@@ -69,7 +80,7 @@ function App() {
     let text = `${label}: ${data[label]}`;
 
     // Wenn der Kopieren-Button für 'Startpreis' oder '1. Reaktivierung' geklickt wird, füge 'CHF ' vor der Zahl hinzu
-    if (label === 'Startpreis' || label === '1. Reaktivierung' || label === '2. Reaktivierung' || label === '3. Reaktivierung') {
+    if (label === 'Minimumpreis' || label === 'Startpreis' || label === '1. Reaktivierung' || label === '2. Reaktivierung' || label === '3. Reaktivierung') {
       text = `CHF ${data[label]}`;
     }
 
@@ -117,6 +128,7 @@ function App() {
       Hinweise: '',
       Zustand: '',
       'Bei Nichtverkauf': '',
+      'Minimumpreis': '',
       'Startpreis': '',
       '1. Reaktivierung': '',
       '2. Reaktivierung': '',
@@ -184,10 +196,12 @@ function App() {
             ) : (
               <>
                 <input
-                  type={(label === 'Startpreis' || label === '1. Reaktivierung' || label === '2. Reaktivierung' || '3. Reaktivierung') ? 'text' : 'text'}
+                  type={(label === 'Minimumpreis' || label === 'Startpreis' || label === '1. Reaktivierung' || label === '2. Reaktivierung' || '3. Reaktivierung') ? 'text' : 'text'}
                   value={value}
                   onChange={(e) => {
-                    if (label === 'Startpreis') {
+                    if (label === 'Minimumpreis') {
+                      handleMinimumpreisChange(label, e.target.value);
+                    } else if (label === 'Startpreis') {
                       handleInputChange(label, e.target.value);
                     } else if (label === '1. Reaktivierung') {
                       handleReaktivierungChange(label, e.target.value);
