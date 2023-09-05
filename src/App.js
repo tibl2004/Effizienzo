@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faCheck, faTrash, faTimes, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faTrash, faTimes, faQuestionCircle, faFilePdf, faCheck } from '@fortawesome/free-solid-svg-icons';
+
+import jsPDF from 'jspdf';
 
 import './App.css';
 import logo from '../src/Logo.jpeg';
@@ -26,6 +28,8 @@ function App() {
   const [selectedOption, setSelectedOption] = useState('');
   const [copiedLabel, setCopiedLabel] = useState(null);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+
+  const pdfRef = useRef(); // Ref für das PDF-Element
 
   const toggleOverlay = () => {
     setIsOverlayVisible(!isOverlayVisible);
@@ -145,6 +149,24 @@ function App() {
     });
   };
 
+  const handleExportToPDF = () => {
+    // Erstelle ein neues PDF-Dokument
+    const doc = new jsPDF();
+    let yPos = 20;
+
+    Object.entries(data).forEach(([label, value]) => {
+      doc.text(20, yPos, `${label}: ${value}`);
+      yPos += 10;
+    });
+
+    // Füge den ausgewählten Wert im Dropdown hinzu
+    doc.text(20, yPos, `Bei Nichtverkauf: ${selectedOption}`);
+    yPos += 10;
+
+    // PDF herunterladen
+    doc.save('exported-data.pdf');
+  };
+
   return (
     <div className="App">
       <div className='navbar'>
@@ -163,6 +185,9 @@ function App() {
             </button>
             <button onClick={toggleOverlay} className="question-button">
               <FontAwesomeIcon icon={faQuestionCircle} /> Tutorial
+            </button>
+            <button onClick={handleExportToPDF} className="export-button">
+              <FontAwesomeIcon icon={faFilePdf} /> PDF Exportieren
             </button>
             {isOverlayVisible && (
               <div className="overlay">
