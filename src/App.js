@@ -6,6 +6,7 @@ import Erfassen from './Erfassen/Erfassen';
 import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
+import Kleidung from './InserierenVorlagen/Kleidung';
 
 function Navigation() {
   return <Navbar />;
@@ -42,6 +43,15 @@ function App() {
               <>
                 <Navigation />
                 <Auswahlkategorie />
+              </>
+            }
+          />
+          <Route
+            path="/kleidung"
+            element={
+              <>
+                <Navigation />
+                <Kleidung />
               </>
             }
           />
