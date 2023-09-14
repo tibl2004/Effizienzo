@@ -11,7 +11,7 @@ function Navbar() {
         <img src={logo} alt="Restwert" />
         <div className='links'>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/Effizienzo">Home</Link>
           </li>
           <li>
             <Link to="/erfassen">Erfassen</Link>
