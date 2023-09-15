@@ -48,11 +48,254 @@ function App() {
             }
           />
           <Route
+            path="/bastelartikel"
+            element={
+              <>
+                <Navigation />
+                <Bastelartikel />
+              </>
+            }
+          />
+          <Route
+            path="/bilder"
+            element={
+              <>
+                <Navigation />
+                <Bilder />
+              </>
+            }
+          />
+          <Route
+            path="/brautkleid"
+            element={
+              <>
+                <Navigation />
+                <Brautkleid />
+              </>
+            }
+          />
+          <Route
+            path="/briefmarken"
+            element={
+              <>
+                <Navigation />
+                <Briefmarken />
+              </>
+            }
+          />
+          <Route
+            path="/bücher"
+            element={
+              <>
+                <Navigation />
+                <Bücher />
+              </>
+            }
+          />
+          <Route
+            path="/drucker"
+            element={
+              <>
+                <Navigation />
+                <Drucker />
+              </>
+            }
+          />
+          <Route
+            path="/druckerzubehoer"
+            element={
+              <>
+                <Navigation />
+                <Druckerzubehoer />
+              </>
+            }
+          />
+          <Route
+            path="/dvd"
+            element={
+              <>
+                <Navigation />
+                <DVD />
+              </>
+            }
+          />
+          <Route
+            path="/fahrrad-shorts"
+            element={
+              <>
+                <Navigation />
+                <FahrradShorts />
+              </>
+            }
+          />
+          <Route
+            path="/games"
+            element={
+              <>
+                <Navigation />
+                <Games />
+              </>
+            }
+          />
+          <Route
+            path="/geschirr"
+            element={
+              <>
+                <Navigation />
+                <Geschirr />
+              </>
+            }
+          />
+          <Route
+            path="/druckerpatronen"
+            element={
+              <>
+                <Navigation />
+                <Kleidung />
+              </>
+            }
+          />
+          <Route
+            path="/kaffeemaschine"
+            element={
+              <>
+                <Navigation />
+                <Kaffeemaschine />
+              </>
+            }
+          />
+          <Route
+            path="/kerzenstaender"
+            element={
+              <>
+                <Navigation />
+                <Kerzenstaender />
+              </>
+            }
+          />
+          <Route
             path="/kleidung"
             element={
               <>
                 <Navigation />
                 <Kleidung />
+              </>
+            }
+          />
+          <Route
+            path="/kopfbedeckungen"
+            element={
+              <>
+                <Navigation />
+                <Kopfbedeckungen />
+              </>
+            }
+          />
+          <Route
+            path="/kopfhoerer"
+            element={
+              <>
+                <Navigation />
+                <Kopfhoerer />
+              </>
+            }
+          />
+          <Route
+            path="/kopfkissen"
+            element={
+              <>
+                <Navigation />
+                <Kopfkissen />
+              </>
+            }
+          />
+          <Route
+            path="/migros-sprayer"
+            element={
+              <>
+                <Navigation />
+                <MigrosSprayer />
+              </>
+            }
+          />
+          <Route
+            path="/moebel"
+            element={
+              <>
+                <Navigation />
+                <Moebel />
+              </>
+            }
+          />
+           <Route
+            path="/modelleisenbahnen"
+            element={
+              <>
+                <Navigation />
+                <Modelleisenbahnen />
+              </>
+            }
+          />
+           <Route
+            path="/monitore"
+            element={
+              <>
+                <Navigation />
+                <Monitore />
+              </>
+            }
+          />
+           <Route
+            path="/musikinstrumente"
+            element={
+              <>
+                <Navigation />
+                <Musikinstrumente />
+              </>
+            }
+          />
+           <Route
+            path="/lcd-projektor"
+            element={
+              <>
+                <Navigation />
+                <LCDProjektor />
+              </>
+            }
+          />
+           <Route
+            path="/plueschtiere"
+            element={
+              <>
+                <Navigation />
+                <Plueschtiere />
+              </>
+            }
+          />
+           <Route
+            path="/portemonnaie"
+            element={
+              <>
+                <Navigation />
+                <Portemonnaie />
+              </>
+            }
+          />
+           <Route
+            path="/schallplatten"
+            element={
+              <>
+                <Navigation />
+                <Schallplatten />
+              </>
+            }
+          />
+           <Route
+            path="/schmuck"
+            element={
+              <>
+                <Navigation />
+                <Schmuck />
               </>
             }
           />
@@ -65,7 +308,88 @@ function App() {
               </>
             }
           />
-
+           <Route
+            path="/schutzhuellen-smartphone"
+            element={
+              <>
+                <Navigation />
+                <Schutzhuellen />
+              </>
+            }
+          />
+           
+           <Route
+            path="/skulpturen-figuren"
+            element={
+              <>
+                <Navigation />
+                <Figuren />
+              </>
+            }
+          />
+           <Route
+            path="/spiele"
+            element={
+              <>
+                <Navigation />
+                <Spiele />
+              </>
+            }
+          />
+           <Route
+            path="/steinschmuck-marus"
+            element={
+              <>
+                <Navigation />
+                <SteinschmuckMarus />
+              </>
+            }
+          />
+           <Route
+            path="/tasche-rucksack"
+            element={
+              <>
+                <Navigation />
+                <Tasche />
+              </>
+            }
+          />
+           <Route
+            path="/tastatur"
+            element={
+              <>
+                <Navigation />
+                <Tastatur />
+              </>
+            }
+          />
+           <Route
+            path="/vasen"
+            element={
+              <>
+                <Navigation />
+                <Vasen />
+              </>
+            }
+          />
+           <Route
+            path="/wanduhren-standuhren"
+            element={
+              <>
+                <Navigation />
+                <Wanduhren />
+              </>
+            }
+          />
+           <Route
+            path="/werkzeug"
+            element={
+              <>
+                <Navigation />
+                <Werkzeug />
+              </>
+            }
+          />
         </Routes>
       </Router>
     </div>
