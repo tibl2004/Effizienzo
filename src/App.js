@@ -7,6 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 import Kleidung from './InserierenVorlagen/Kleidung';
+import Schuhe from './InserierenVorlagen/Schuhe';
 
 function Navigation() {
   return <Navbar />;
@@ -52,6 +53,15 @@ function App() {
               <>
                 <Navigation />
                 <Kleidung />
+              </>
+            }
+          />
+          <Route
+            path="/schuhe"
+            element={
+              <>
+                <Navigation />
+                <Schuhe />
               </>
             }
           />
