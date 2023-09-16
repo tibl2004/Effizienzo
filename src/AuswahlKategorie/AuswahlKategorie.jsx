@@ -49,10 +49,10 @@ function Auswahlkategorie() {
   return (
     <div className="category-buttons">
       <Link to="/bastelartikel">
-      <Box
-        icon={faPaintBrush}
-        title="Bastelartikel"
-      />
+        <Box
+          icon={faPaintBrush}
+          title="Bastelartikel"
+        />
       </Link>
       <Box
         icon={faImage}
@@ -65,38 +65,44 @@ function Auswahlkategorie() {
 
       />
       <Link to="/briefmarken">
-      <Box
-        icon={faStamp}
-        title="Briefmarken"
-      />
+        <Box
+          icon={faStamp}
+          title="Briefmarken"
+        />
       </Link>
       <Link to="/buecher">
-      <Box
-        icon={faBook}
-        title="Bücher & Comics"
+        <Box
+          icon={faBook}
+          title="Bücher & Comics"
 
-      />
+        />
       </Link>
       <Box
         icon={faPrint}
         title="Drucker"
       />
       <Link to="/druckerzubehoer">
-      <Box
-        icon={faMicrochip}
-        title="Druckerzubehör"
-      />
+        <Box
+          icon={faMicrochip}
+          title="Druckerzubehör"
+        />
       </Link>
       <Link to="/dvd">
-      <Box
-        icon={faCompactDisc}
-        title="DVD - Blue Ray Player"
-      />
+        <Box
+          icon={faCompactDisc}
+          title="DVD - Blue Ray Player"
+        />
       </Link>
       <Box
         icon={faBicycle}
         title="Fahrrad Shorts"
       />
+      <Link to="/geschirr">
+        <Box
+          title="Geschirr"
+        />
+      </Link>
+
       <Link to="/kleidung">
         <Box
           icon={faTshirt}
