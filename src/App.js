@@ -13,6 +13,7 @@ import Schuhe from './InserierenVorlagen/Schuhe';
 import Bastelartikel from './InserierenVorlagen/Bastelartikel';
 import Briefmarken from './InserierenVorlagen/Briefmarken';
 import DVDBluRayPlayer from './InserierenVorlagen/DVDBlueRayPlayer';
+import Buecher from './InserierenVorlagen/Buecher';
 
 function Navigation() {
   return <Navbar />;
@@ -61,7 +62,7 @@ function App() {
               </>
             }
           />
-          { /*
+            { /*
           <Route
             path="/bilder"
             element={
@@ -71,6 +72,7 @@ function App() {
               </>
             }
           />
+        
           <Route
             path="/brautkleid"
             element={
@@ -89,16 +91,17 @@ function App() {
               </>
             }
           />
-          {/* 
+         
           <Route
-            path="/bücher"
+            path="/buecher"
             element={
               <>
                 <Navigation />
-                <Bücher />
+                <Buecher />
               </>
             }
           />
+           {/* 
           <Route
             path="/drucker"
             element={

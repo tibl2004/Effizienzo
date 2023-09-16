@@ -70,11 +70,13 @@ function Auswahlkategorie() {
         title="Briefmarken"
       />
       </Link>
+      <Link to="/buecher">
       <Box
         icon={faBook}
         title="Bücher & Comics"
 
       />
+      </Link>
       <Box
         icon={faPrint}
         title="Drucker"
