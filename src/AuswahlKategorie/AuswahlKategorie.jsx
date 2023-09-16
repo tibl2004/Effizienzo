@@ -48,10 +48,12 @@ function Box(props) {
 function Auswahlkategorie() {
   return (
     <div className="category-buttons">
+      <Link to="/bastelartikel">
       <Box
         icon={faPaintBrush}
         title="Bastelartikel"
       />
+      </Link>
       <Box
         icon={faImage}
         title="Bilderrahmen-Bilder"
@@ -62,11 +64,12 @@ function Auswahlkategorie() {
         title="Brautkleid"
 
       />
+      <Link to="/briefmarken">
       <Box
         icon={faStamp}
         title="Briefmarken"
-
       />
+      </Link>
       <Box
         icon={faBook}
         title="Bücher & Comics"
@@ -80,10 +83,12 @@ function Auswahlkategorie() {
         icon={faMicrochip}
         title="Druckerzubehör"
       />
+      <Link to="/dvd">
       <Box
         icon={faCompactDisc}
         title="DVD - Blue Ray Player"
       />
+      </Link>
       <Box
         icon={faBicycle}
         title="Fahrrad Shorts"

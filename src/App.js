@@ -6,8 +6,13 @@ import Erfassen from './Erfassen/Erfassen';
 import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
+
+
 import Kleidung from './InserierenVorlagen/Kleidung';
 import Schuhe from './InserierenVorlagen/Schuhe';
+import Bastelartikel from './InserierenVorlagen/Bastelartikel';
+import Briefmarken from './InserierenVorlagen/Briefmarken';
+import DVDBluRayPlayer from './InserierenVorlagen/DVDBlueRayPlayer';
 
 function Navigation() {
   return <Navbar />;
@@ -56,6 +61,7 @@ function App() {
               </>
             }
           />
+          { /*
           <Route
             path="/bilder"
             element={
@@ -73,7 +79,7 @@ function App() {
                 <Brautkleid />
               </>
             }
-          />
+          /> */}
           <Route
             path="/briefmarken"
             element={
@@ -83,6 +89,7 @@ function App() {
               </>
             }
           />
+          {/* 
           <Route
             path="/bücher"
             element={
@@ -109,16 +116,17 @@ function App() {
                 <Druckerzubehoer />
               </>
             }
-          />
+          /> */}
           <Route
             path="/dvd"
             element={
               <>
                 <Navigation />
-                <DVD />
+                <DVDBluRayPlayer />
               </>
             }
-          />
+          /> 
+          {/*
           <Route
             path="/fahrrad-shorts"
             element={
@@ -227,7 +235,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/modelleisenbahnen"
             element={
               <>
@@ -236,7 +244,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/monitore"
             element={
               <>
@@ -245,7 +253,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/musikinstrumente"
             element={
               <>
@@ -254,7 +262,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/lcd-projektor"
             element={
               <>
@@ -263,7 +271,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/plueschtiere"
             element={
               <>
@@ -272,7 +280,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/portemonnaie"
             element={
               <>
@@ -281,7 +289,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/schallplatten"
             element={
               <>
@@ -290,7 +298,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/schmuck"
             element={
               <>
@@ -308,7 +316,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/schutzhuellen-smartphone"
             element={
               <>
@@ -317,8 +325,8 @@ function App() {
               </>
             }
           />
-           
-           <Route
+
+          <Route
             path="/skulpturen-figuren"
             element={
               <>
@@ -327,7 +335,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/spiele"
             element={
               <>
@@ -336,7 +344,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/steinschmuck-marus"
             element={
               <>
@@ -345,7 +353,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/tasche-rucksack"
             element={
               <>
@@ -354,7 +362,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/tastatur"
             element={
               <>
@@ -363,7 +371,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/vasen"
             element={
               <>
@@ -372,7 +380,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/wanduhren-standuhren"
             element={
               <>
@@ -381,7 +389,7 @@ function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/werkzeug"
             element={
               <>
@@ -390,6 +398,7 @@ function App() {
               </>
             }
           />
+          */}
         </Routes>
       </Router>
     </div>
