@@ -16,6 +16,7 @@ import DVDBluRayPlayer from './InserierenVorlagen/DVDBlueRayPlayer';
 import Buecher from './InserierenVorlagen/Buecher';
 import Druckerzubehoer from './InserierenVorlagen/Druckerzubehoer';
 import Geschirr from './InserierenVorlagen/Geschirr';
+import Kopfhoerer from './InserierenVorlagen/Kopfhoerer';
 
 function Navigation() {
   return <Navbar />;
@@ -203,7 +204,8 @@ function App() {
                 <Kopfbedeckungen />
               </>
             }
-          />
+          /> */}
+         
           <Route
             path="/kopfhoerer"
             element={
@@ -213,6 +215,7 @@ function App() {
               </>
             }
           />
+           {/*
           <Route
             path="/kopfkissen"
             element={

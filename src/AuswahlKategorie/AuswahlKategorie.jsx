@@ -54,16 +54,7 @@ function Auswahlkategorie() {
           title="Bastelartikel"
         />
       </Link>
-      <Box
-        icon={faImage}
-        title="Bilderrahmen-Bilder"
-
-      />
-      <Box
-        icon={faRing}
-        title="Brautkleid"
-
-      />
+      
       <Link to="/briefmarken">
         <Box
           icon={faStamp}
@@ -77,10 +68,7 @@ function Auswahlkategorie() {
 
         />
       </Link>
-      <Box
-        icon={faPrint}
-        title="Drucker"
-      />
+      
       <Link to="/druckerzubehoer">
         <Box
           icon={faMicrochip}
@@ -93,10 +81,7 @@ function Auswahlkategorie() {
           title="DVD - Blue Ray Player"
         />
       </Link>
-      <Box
-        icon={faBicycle}
-        title="Fahrrad Shorts"
-      />
+      
       <Link to="/geschirr">
         <Box
           title="Geschirr"
@@ -109,100 +94,20 @@ function Auswahlkategorie() {
           title="Kleidung"
         />
       </Link>
+      <Link to="/kopfhoerer">
       <Box
         icon={faHeadphones}
         title="Kopfhörer"
       />
-      <Box
-        icon={faBed}
-        title="Kopfkissen - Decken"
-      />
-      <Box
-        icon={faSprayCan}
-        title="Migros Sprayer 0.5L"
-      />
-      <Box
-        icon={faCouch}
-        title="Möbel"
-      />
-      <Box
-        icon={faTrain}
-        title="Modelleisenbahnen - Zubehör"
-      />
-      <Box
-        icon={faTv}
-        title="Monitore - TV"
-      />
-      <Box
-        icon={faGuitar}
-        title="Musikinstrumente"
-      />
-      <Box
-        icon={faProjectDiagram}
-        title="NES LCD-Projektor"
-      />
-      <Box
-        icon={faChess}
-        title="Plüschtiere"
-      />
-      <Box
-        icon={faWallet}
-        title="Portemonnaie"
-
-      />
-      <Box
-        icon={faRecordVinyl}
-        title="Schallplatten"
-
-      />
-      <Box
-        icon={faGem}
-        title="Schmuck - Uhren"
-
-      />
+      </Link>
+      
       <Link to="/schuhe">
         <Box
           icon={faShoePrints}
           title="Schuhe"
         />
       </Link>
-      <Box
-        icon={faMobileAlt}
-        title="Schutzhüllen Smartphone"
-
-      />
-      <Box
-        icon={faClock}
-        title="Wanduhren - Standuhren"
-
-      />
-      <Box
-        icon={faTools}
-        title="Werkzeug"
-
-      />
-      <Box
-        icon={faCoffee}
-        title="Kaffeemaschine"
-
-      />
-      <Box
-        title="Tasche - Rucksack"
-
-      />
-      <Box
-        icon={faGamepad}
-        title="Games - Konsolen"
-
-      />
-      <Box
-        icon={faKeyboard}
-        title="Tastatur"
-
-      />
-      <Box
-        title="Vasen - Gefässe"
-      />
+      
     </div>
   );
 }
