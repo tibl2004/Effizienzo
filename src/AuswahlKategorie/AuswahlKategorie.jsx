@@ -81,10 +81,12 @@ function Auswahlkategorie() {
         icon={faPrint}
         title="Drucker"
       />
+      <Link to="/druckerzubehoer">
       <Box
         icon={faMicrochip}
         title="Druckerzubehör"
       />
+      </Link>
       <Link to="/dvd">
       <Box
         icon={faCompactDisc}

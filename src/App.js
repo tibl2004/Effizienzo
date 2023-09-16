@@ -14,6 +14,7 @@ import Bastelartikel from './InserierenVorlagen/Bastelartikel';
 import Briefmarken from './InserierenVorlagen/Briefmarken';
 import DVDBluRayPlayer from './InserierenVorlagen/DVDBlueRayPlayer';
 import Buecher from './InserierenVorlagen/Buecher';
+import Druckerzubehoer from './InserierenVorlagen/Druckerzubehoer';
 
 function Navigation() {
   return <Navbar />;
@@ -110,7 +111,7 @@ function App() {
                 <Drucker />
               </>
             }
-          />
+          />*/}
           <Route
             path="/druckerzubehoer"
             element={
@@ -119,7 +120,7 @@ function App() {
                 <Druckerzubehoer />
               </>
             }
-          /> */}
+          /> 
           <Route
             path="/dvd"
             element={
