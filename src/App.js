@@ -17,6 +17,7 @@ import Buecher from './InserierenVorlagen/Buecher';
 import Druckerzubehoer from './InserierenVorlagen/Druckerzubehoer';
 import Geschirr from './InserierenVorlagen/Geschirr';
 import Kopfhoerer from './InserierenVorlagen/Kopfhoerer';
+import Reaktivierung from './Reaktivierung/Reaktivierung';
 
 function Navigation() {
   return <Navbar />;
@@ -44,6 +45,15 @@ function App() {
               <>
                 <Navigation />
                 <Erfassen />
+              </>
+            }
+          />
+          <Route
+            path="/reaktivierung"
+            element={
+              <>
+                <Navigation />
+                <Reaktivierung />
               </>
             }
           />

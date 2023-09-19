@@ -19,6 +19,9 @@ function Navbar() {
           <li>
             <Link to="/inserieren">Inserieren</Link>
           </li>
+          <li>
+            <Link to="/reaktivierung">Reaktivierung</Link>
+          </li>
         </div>
       </div>
     </div>
