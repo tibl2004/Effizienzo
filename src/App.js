@@ -186,7 +186,7 @@ function App() {
                 <Kerzenstaender />
               </>
             }
-          />
+          /> */}
           <Route
             path="/kleidung"
             element={
@@ -196,6 +196,7 @@ function App() {
               </>
             }
           />
+          {/*
           <Route
             path="/kopfbedeckungen"
             element={
