@@ -52,7 +52,8 @@ function Auswahlkategorie() {
     { icon: faCouch, title: "Möbel", to: "/moebel"},
     {title: "Kerzenständer", to: "/kerzenstaender" }, // Using FaCandle here
     { icon: faRing, title: "Brautkleid", to: "/brautkleid"},
-    { icon: faPrint, title: "Drucker", to: "/drucker"}
+    { icon: faPrint, title: "Drucker", to: "/drucker"},
+    { icon: faTshirt, title: "Fahrrad Shorts", to: "/fahrradshorts"}
   ];
 
   const handleSearchChange = (e) => {

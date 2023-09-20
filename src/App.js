@@ -24,6 +24,7 @@ import Kopfbedeckungen from './InserierenVorlagen/Kopfbedeckung';
 import Moebel from './InserierenVorlagen/Moebel';
 import Kerzenstaender from './InserierenVorlagen/Kerzenstaender';
 import Brautkleid from './InserierenVorlagen/Brautkleid';
+import FahrradShorts from './InserierenVorlagen/FahrradShorts';
 
 import Reaktivierung from './Reaktivierung/Reaktivierung';
 
@@ -100,6 +101,15 @@ function App() {
               <>
                 <Navigation />
                 <Brautkleid />
+              </>
+            }
+          /> 
+          <Route
+            path="/fahrradshorts"
+            element={
+              <>
+                <Navigation />
+                <FahrradShorts />
               </>
             }
           /> 
