@@ -17,6 +17,7 @@ import Buecher from './InserierenVorlagen/Buecher';
 import Druckerzubehoer from './InserierenVorlagen/Druckerzubehoer';
 import Geschirr from './InserierenVorlagen/Geschirr';
 import Kopfhoerer from './InserierenVorlagen/Kopfhoerer';
+import Spiele from './InserierenVorlagen/Spiele';
 import Reaktivierung from './Reaktivierung/Reaktivierung';
 
 function Navigation() {
@@ -355,6 +356,7 @@ function App() {
               </>
             }
           />
+          */}
           <Route
             path="/spiele"
             element={
@@ -364,6 +366,7 @@ function App() {
               </>
             }
           />
+          {/*
           <Route
             path="/steinschmuck-marus"
             element={

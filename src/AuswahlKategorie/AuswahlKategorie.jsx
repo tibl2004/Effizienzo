@@ -107,7 +107,12 @@ function Auswahlkategorie() {
           title="Schuhe"
         />
       </Link>
-      
+      <Link to="/spiele">
+        <Box
+          icon={faChess}
+          title="Spiele"
+        />
+      </Link>
     </div>
   );
 }
