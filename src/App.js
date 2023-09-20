@@ -7,6 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 
+import Kopfkissen from './InserierenVorlagen/Kopfkissen';
 import Kaffeemaschine from './InserierenVorlagen/Kaffeemaschine';
 import Games from './InserierenVorlagen/Games';
 import Drucker from './InserierenVorlagen/Drucker';
@@ -247,7 +248,7 @@ function App() {
               </>
             }
           />
-           {/*
+          
           <Route
             path="/kopfkissen"
             element={
@@ -257,6 +258,7 @@ function App() {
               </>
             }
           />
+           {/*
           <Route
             path="/migros-sprayer"
             element={
