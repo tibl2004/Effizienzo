@@ -4,15 +4,12 @@ import { faTrash, faTimes, faQuestionCircle, faFilePdf, faCopy } from '@fortawes
 import jsPDF from 'jspdf';
 import '../Erfassen/Erfassen.scss';
 
-function Kopfkissen() {
+function MigrosSprayer() {
   const [data, setData] = useState({
-    "Marke": '',
-    "Bezug": '',
-    "Material": '',
-    "Grösse": '',
-    "Originalverpackt": 'Ja/Nein',
-    "Neupreis": '',
-    "Zustand": '',
+    "Marke": 'MIGROS',
+    "Material": 'Plastik',
+    "Farbe": '',
+    "Umfang": '0.5 L',
   });
 
   const [copiedData, setCopiedData] = useState('');
@@ -30,13 +27,10 @@ function Kopfkissen() {
 
   const handleClearAll = () => {
     setData({
-      "Marke": '',
-      "Bezug": '',
-      "Material": '',
-      "Grösse": '',
-      "Originalverpackt": '',
-      "Neupreis": '',
-      "Zustand": '',
+      "Marke": 'MIGROS',
+      "Material": 'Plastik',
+      "Farbe": '',
+      "Umfang": '0.5 L',
     });
     setCopiedData('');
   };
@@ -53,7 +47,7 @@ function Kopfkissen() {
     doc.text(
       20,
       yPos + 20,
-      "\n\nWerbetext und Beschreibung\n\nProjekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr"
+      "\n\nDer Sprayer ist super geeignet für das Bewässern der geliebten Heimpflanzen. Für Kinder oder auf dem Festival sorgt die kleine Flasche für eine sommerliche Abkühlung\n\nProjekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr"
     );
 
     doc.save('exported-data.pdf');
@@ -72,7 +66,7 @@ function Kopfkissen() {
       text += `${label}: ${value}\n`;
     });
 
-    text += "\n\nWerbetext und Beschreibung\n\n Projekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr";
+    text += "\n\nDer Sprayer ist super geeignet für das Bewässern der geliebten Heimpflanzen. Für Kinder oder auf dem Festival sorgt die kleine Flasche für eine sommerliche Abkühlung\n\n Projekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr";
 
     try {
       const textArea = document.createElement('textarea');
@@ -146,4 +140,4 @@ function Kopfkissen() {
   );
 }
 
-export default Kopfkissen;
+export default MigrosSprayer;

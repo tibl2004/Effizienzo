@@ -16,6 +16,7 @@ import {
   faChess,
   faGamepad,
   faPhone,
+  faSprayCan,
   faImage,
   faShirt,
   faPrint,
@@ -59,7 +60,8 @@ function Auswahlkategorie() {
     { icon: faTshirt, title: "Fahrrad Shorts", to: "/fahrradshorts"}, 
     { icon: faGamepad, title: "Games - Konsolen", to: "/games"},
     { icon: faCoffee, title: "Kaffeemaschine", to: "/kaffeemaschine"},
-    { icon: faBed, title: "Kopfkissen - Decken", to: "/kopfkissen"}
+    { icon: faBed, title: "Kopfkissen - Decken", to: "/kopfkissen"},
+    { icon: faSprayCan, title: "MIGROS Sprayer 0.5L", to: "/migrossprayer"}
   ];
 
   const handleSearchChange = (e) => {

@@ -7,6 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 
+import MigrosSprayer from './InserierenVorlagen/MigrosSprayer';
 import Kopfkissen from './InserierenVorlagen/Kopfkissen';
 import Kaffeemaschine from './InserierenVorlagen/Kaffeemaschine';
 import Games from './InserierenVorlagen/Games';
@@ -258,9 +259,9 @@ function App() {
               </>
             }
           />
-           {/*
+        
           <Route
-            path="/migros-sprayer"
+            path="/migrossprayer"
             element={
               <>
                 <Navigation />
@@ -268,7 +269,7 @@ function App() {
               </>
             }
           /> 
-          */}
+         
           <Route
             path="/moebel"
             element={
