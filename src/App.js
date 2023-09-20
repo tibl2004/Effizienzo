@@ -7,6 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 
+import Kaffeemaschine from './InserierenVorlagen/Kaffeemaschine';
 import Games from './InserierenVorlagen/Games';
 import Drucker from './InserierenVorlagen/Drucker';
 import Kleidung from './InserierenVorlagen/Kleidung';
@@ -198,7 +199,7 @@ function App() {
                 <Kleidung />
               </>
             }
-          />
+          />*/} 
           <Route
             path="/kaffeemaschine"
             element={
@@ -207,7 +208,7 @@ function App() {
                 <Kaffeemaschine />
               </>
             }
-          /> */}
+          /> 
           <Route
             path="/kerzenstaender"
             element={

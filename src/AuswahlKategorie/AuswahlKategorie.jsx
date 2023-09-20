@@ -20,7 +20,8 @@ import {
   faShirt,
   faPrint,
   faCouch,
-  faRing
+  faRing,
+  faCoffee
 } from '@fortawesome/free-solid-svg-icons';
 
 function Box(props) {
@@ -55,7 +56,8 @@ function Auswahlkategorie() {
     { icon: faRing, title: "Brautkleid", to: "/brautkleid"},
     { icon: faPrint, title: "Drucker", to: "/drucker"},
     { icon: faTshirt, title: "Fahrrad Shorts", to: "/fahrradshorts"}, 
-    { icon: faGamepad, title: "Games - Konsolen", to: "/games"}
+    { icon: faGamepad, title: "Games - Konsolen", to: "/games"},
+    { icon: faCoffee, title: "Kaffeemaschine", to: "/kaffeemaschine"},
   ];
 
   const handleSearchChange = (e) => {
