@@ -325,7 +325,7 @@ function App() {
                 <Schmuck />
               </>
             }
-          />
+          /> */}
           <Route
             path="/schuhe"
             element={
@@ -335,6 +335,7 @@ function App() {
               </>
             }
           />
+          {/*
           <Route
             path="/schutzhuellen-smartphone"
             element={

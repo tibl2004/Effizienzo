@@ -61,7 +61,7 @@ function Schuhe() {
     doc.text(
       20,
       yPos + 20,
-      "Werbetext und Beschreibung\n\nZustand: Projekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr"
+      "Werbetext und Beschreibung\n\nProjekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr"
     );
 
     doc.save('exported-data.pdf');
@@ -80,7 +80,7 @@ function Schuhe() {
       text += `${label}: ${value}\n`;
     });
 
-    text += "Werbetext und Beschreibung\n\n Projekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr";
+    text += "Werbetext und Beschreibung\n\nProjekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr";
 
     try {
       const textArea = document.createElement('textarea');
