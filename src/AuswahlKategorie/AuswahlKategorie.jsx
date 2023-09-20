@@ -9,6 +9,7 @@ import {
   faRing,
   faStamp,
   faBook,
+  faPhone,
   faPrint,
   faMicrochip,
   faCompactDisc,
@@ -111,6 +112,12 @@ function Auswahlkategorie() {
         <Box
           icon={faChess}
           title="Spiele"
+        />
+      </Link>
+      <Link to="/schutzhuellensmartphone">
+        <Box
+          icon={faPhone}
+          title="Schutzhüllen für Smartphone"
         />
       </Link>
     </div>

@@ -18,6 +18,7 @@ import Druckerzubehoer from './InserierenVorlagen/Druckerzubehoer';
 import Geschirr from './InserierenVorlagen/Geschirr';
 import Kopfhoerer from './InserierenVorlagen/Kopfhoerer';
 import Spiele from './InserierenVorlagen/Spiele';
+import SchutzhuellenFuerSmartphone from './InserierenVorlagen/SchutzhuellenFuerSmartphone';
 import Reaktivierung from './Reaktivierung/Reaktivierung';
 
 function Navigation() {
@@ -336,16 +337,17 @@ function App() {
               </>
             }
           />
-          {/*
+          
           <Route
-            path="/schutzhuellen-smartphone"
+            path="/schutzhuellensmartphone"
             element={
               <>
                 <Navigation />
-                <Schutzhuellen />
+                <SchutzhuellenFuerSmartphone />
               </>
             }
           />
+          {/*
 
           <Route
             path="/skulpturen-figuren"
