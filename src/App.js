@@ -7,7 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 
-
+import Drucker from './InserierenVorlagen/Drucker';
 import Kleidung from './InserierenVorlagen/Kleidung';
 import Schuhe from './InserierenVorlagen/Schuhe';
 import Bastelartikel from './InserierenVorlagen/Bastelartikel';
@@ -123,7 +123,7 @@ function App() {
               </>
             }
           />
-           {/* 
+           
           <Route
             path="/drucker"
             element={
@@ -132,7 +132,7 @@ function App() {
                 <Drucker />
               </>
             }
-          />*/}
+          />
           <Route
             path="/druckerzubehoer"
             element={
