@@ -63,6 +63,9 @@ function Auswahlkategorie() {
 
   return (
     <div>
+      <div className='title'>
+        <h2>Kategorien</h2>
+      </div>
       <div className="search-bar">
         <input
           type="text"
