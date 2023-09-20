@@ -34,6 +34,7 @@ import {
   faCoffee,
   faGamepad,
   faKeyboard,
+  faShirt,
 } from '@fortawesome/free-solid-svg-icons';
 
 function Box(props) {
@@ -124,6 +125,12 @@ function Auswahlkategorie() {
         <Box
           icon={faImage}
           title="Bilderrahmen / Bilder"
+        />
+      </Link>
+      <Link to="/kopfbedeckungen">
+        <Box
+          icon={faShirt}
+          title="Kopfbedeckung"
         />
       </Link>
     </div>

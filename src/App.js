@@ -20,6 +20,8 @@ import Kopfhoerer from './InserierenVorlagen/Kopfhoerer';
 import Spiele from './InserierenVorlagen/Spiele';
 import SchutzhuellenFuerSmartphone from './InserierenVorlagen/SchutzhuellenFuerSmartphone';
 import Bilder from './InserierenVorlagen/Bilder';
+import Kopfbedeckungen from './InserierenVorlagen/Kopfbedeckung';
+
 import Reaktivierung from './Reaktivierung/Reaktivierung';
 
 function Navigation() {
@@ -209,7 +211,7 @@ function App() {
               </>
             }
           />
-          {/*
+          
           <Route
             path="/kopfbedeckungen"
             element={
@@ -218,7 +220,7 @@ function App() {
                 <Kopfbedeckungen />
               </>
             }
-          /> */}
+          /> 
          
           <Route
             path="/kopfhoerer"
