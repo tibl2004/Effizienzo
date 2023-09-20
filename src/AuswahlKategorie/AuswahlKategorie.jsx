@@ -120,6 +120,12 @@ function Auswahlkategorie() {
           title="Schutzhüllen für Smartphone"
         />
       </Link>
+      <Link to="/bilder">
+        <Box
+          icon={faImage}
+          title="Bilderrahmen / Bilder"
+        />
+      </Link>
     </div>
   );
 }

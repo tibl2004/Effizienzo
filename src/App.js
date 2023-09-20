@@ -19,6 +19,7 @@ import Geschirr from './InserierenVorlagen/Geschirr';
 import Kopfhoerer from './InserierenVorlagen/Kopfhoerer';
 import Spiele from './InserierenVorlagen/Spiele';
 import SchutzhuellenFuerSmartphone from './InserierenVorlagen/SchutzhuellenFuerSmartphone';
+import Bilder from './InserierenVorlagen/Bilder';
 import Reaktivierung from './Reaktivierung/Reaktivierung';
 
 function Navigation() {
@@ -77,7 +78,7 @@ function App() {
               </>
             }
           />
-            { /*
+        
           <Route
             path="/bilder"
             element={
@@ -87,7 +88,7 @@ function App() {
               </>
             }
           />
-        
+            { /*
           <Route
             path="/brautkleid"
             element={
