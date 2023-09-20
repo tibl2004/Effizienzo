@@ -7,6 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 
+import Plueschtiere from './InserierenVorlagen/Plueschtiere';
 import Musikinstrumente from './InserierenVorlagen/Musikinstrumente';
 import Monitore from './InserierenVorlagen/Monitore';
 import MigrosSprayer from './InserierenVorlagen/MigrosSprayer';
@@ -316,7 +317,7 @@ function App() {
                 <LCDProjektor />
               </>
             }
-          />
+          /> */}
           <Route
             path="/plueschtiere"
             element={
@@ -325,7 +326,7 @@ function App() {
                 <Plueschtiere />
               </>
             }
-          />
+          /> {/*
           <Route
             path="/portemonnaie"
             element={

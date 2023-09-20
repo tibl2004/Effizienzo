@@ -65,7 +65,8 @@ function Auswahlkategorie() {
     { icon: faBed, title: "Kopfkissen - Decken", to: "/kopfkissen"},
     { icon: faSprayCan, title: "MIGROS Sprayer 0.5L", to: "/migrossprayer"},
     { icon: faTv, title: "Monitore - TV", to: "/monitore"},
-    { icon: faMusic, title: "Musikinstrumente", to: "/musikinstrumente"}
+    { icon: faMusic, title: "Musikinstrumente", to: "/musikinstrumente"},
+    { icon: faImage, title: "Plüschtiere", to:"/plueschtiere"}
   ];
 
   const handleSearchChange = (e) => {
