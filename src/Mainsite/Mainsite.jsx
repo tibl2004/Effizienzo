@@ -26,6 +26,13 @@ function Mainsite() {
         onClick={() => handleBoxClick('Inserieren')}
       />
       </Link>
+      <Link to="/reaktivierung">
+      <Box
+        title="Reaktiverierung"
+        text="Hier kannst du das aktuelle Datum für die Restwert Datenbank kopieren ohne es jedes mal einzugeben"
+        onClick={() => handleBoxClick('Reaktiverung')}
+      />
+      </Link>
     </div>
   );
 }
