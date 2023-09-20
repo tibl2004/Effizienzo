@@ -23,6 +23,7 @@ import Bilder from './InserierenVorlagen/Bilder';
 import Kopfbedeckungen from './InserierenVorlagen/Kopfbedeckung';
 import Moebel from './InserierenVorlagen/Moebel';
 import Kerzenstaender from './InserierenVorlagen/Kerzenstaender';
+import Brautkleid from './InserierenVorlagen/Brautkleid';
 
 import Reaktivierung from './Reaktivierung/Reaktivierung';
 
@@ -92,7 +93,7 @@ function App() {
               </>
             }
           />
-            { /*
+          
           <Route
             path="/brautkleid"
             element={
@@ -101,7 +102,8 @@ function App() {
                 <Brautkleid />
               </>
             }
-          /> */}
+          /> 
+          
           <Route
             path="/briefmarken"
             element={

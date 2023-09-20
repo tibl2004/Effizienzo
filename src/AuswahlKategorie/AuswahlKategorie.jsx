@@ -17,7 +17,8 @@ import {
   faPhone,
   faImage,
   faShirt,
-  faCouch
+  faCouch,
+  faRing
 } from '@fortawesome/free-solid-svg-icons';
 
 function Box(props) {
@@ -48,7 +49,8 @@ function Auswahlkategorie() {
     { icon: faImage, title: "Bilderrahmen / Bilder", to: "/bilder" },
     { icon: faShirt, title: "Kopfbedeckung", to: "/kopfbedeckungen" },
     { icon: faCouch, title: "Möbel", to: "/moebel"},
-    {title: "Kerzenständer", to: "/kerzenstaender" } // Using FaCandle here
+    {title: "Kerzenständer", to: "/kerzenstaender" }, // Using FaCandle here
+    { icon: faRing, title: "Brautkleid", to: "/brautkleid"}
   ];
 
   const handleSearchChange = (e) => {
