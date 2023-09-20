@@ -7,6 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 
+import Monitore from './InserierenVorlagen/Monitore';
 import MigrosSprayer from './InserierenVorlagen/MigrosSprayer';
 import Kopfkissen from './InserierenVorlagen/Kopfkissen';
 import Kaffeemaschine from './InserierenVorlagen/Kaffeemaschine';
@@ -287,7 +288,7 @@ function App() {
                 <Modelleisenbahnen />
               </>
             }
-          />
+          /> */}
           <Route
             path="/monitore"
             element={
@@ -296,7 +297,7 @@ function App() {
                 <Monitore />
               </>
             }
-          />
+          /> {/*
           <Route
             path="/musikinstrumente"
             element={

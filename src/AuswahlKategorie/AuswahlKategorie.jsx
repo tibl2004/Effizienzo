@@ -23,7 +23,8 @@ import {
   faCouch,
   faRing,
   faCoffee,
-  faBed
+  faBed,
+  faTv
 } from '@fortawesome/free-solid-svg-icons';
 
 function Box(props) {
@@ -61,7 +62,8 @@ function Auswahlkategorie() {
     { icon: faGamepad, title: "Games - Konsolen", to: "/games"},
     { icon: faCoffee, title: "Kaffeemaschine", to: "/kaffeemaschine"},
     { icon: faBed, title: "Kopfkissen - Decken", to: "/kopfkissen"},
-    { icon: faSprayCan, title: "MIGROS Sprayer 0.5L", to: "/migrossprayer"}
+    { icon: faSprayCan, title: "MIGROS Sprayer 0.5L", to: "/migrossprayer"},
+    { icon: faTv, title: "Monitore - TV", to: "/monitore"},
   ];
 
   const handleSearchChange = (e) => {
