@@ -21,6 +21,7 @@ import Spiele from './InserierenVorlagen/Spiele';
 import SchutzhuellenFuerSmartphone from './InserierenVorlagen/SchutzhuellenFuerSmartphone';
 import Bilder from './InserierenVorlagen/Bilder';
 import Kopfbedeckungen from './InserierenVorlagen/Kopfbedeckung';
+import Moebel from './InserierenVorlagen/Moebel';
 
 import Reaktivierung from './Reaktivierung/Reaktivierung';
 
@@ -249,7 +250,8 @@ function App() {
                 <MigrosSprayer />
               </>
             }
-          />
+          /> 
+          */}
           <Route
             path="/moebel"
             element={
@@ -258,7 +260,7 @@ function App() {
                 <Moebel />
               </>
             }
-          />
+          /> {/*
           <Route
             path="/modelleisenbahnen"
             element={

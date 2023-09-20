@@ -64,6 +64,7 @@ function Auswahlkategorie() {
     { icon: faPhone, title: "Schutzhüllen für Smartphone", to: "/schutzhuellensmartphone" },
     { icon: faImage, title: "Bilderrahmen / Bilder", to: "/bilder" },
     { icon: faShirt, title: "Kopfbedeckung", to: "/kopfbedeckungen" },
+    { icon: faCouch, title: "Möbel", to: "/moebel"}
   ];
 
   const handleSearchChange = (e) => {
