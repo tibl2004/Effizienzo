@@ -4,17 +4,17 @@ import { faTrash, faTimes, faQuestionCircle, faFilePdf, faCopy } from '@fortawes
 import jsPDF from 'jspdf';
 import '../Erfassen/Erfassen.scss';
 
-function FahrradShorts() {
+function Games() {
   const [data, setData] = useState({
-    "Marke": '',
-    "Modell": '',
-    "Grösse": '',
-    "Masse": '',
-    "Material / Stoff": '',
-    "Farbe / Muster": '',
-    "Anzahl": '',
-    "Waschbarkeit": '',
-    "Zustand": 'Neu, mit Originaletikett, Verpackung zur Erstellung der Fotos geöffnet',
+    "Titel": '',
+    "Herausgeber": '',
+    "Konsolentyp oder PC-Game": '',
+    "Genre": '',
+    "Altersfreigabe": '',
+    "Sprache": '',
+    "Erscheinungsjahr": '',
+    "Neupreis": '',
+    "Zustand": '',
   });
 
   const [copiedData, setCopiedData] = useState('');
@@ -32,14 +32,14 @@ function FahrradShorts() {
 
   const handleClearAll = () => {
     setData({
-      "Marke": '',
-      "Modell": '',
-      "Grösse": '',
-      "Masse": 'Beinlänge aussen (ohne Bund):  cm; Bundumfang:  cm',
-      "Material / Stoff": '',
-      "Farbe / Muster": '',
-      "Anzahl": '',
-      "Waschbarkeit": '',
+      "Titel": '',
+      "Herausgeber": '',
+      "Konsolentyp oder PC-Game": '',
+      "Genre": '',
+      "Altersfreigabe": '',
+      "Sprache": '',
+      "Erscheinungsjahr": '',
+      "Neupreis": '',
       "Zustand": '',
     });
     setCopiedData('');
@@ -57,7 +57,7 @@ function FahrradShorts() {
     doc.text(
       20,
       yPos + 20,
-      "Werbetext und Beschreibung\n\nProjekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr"
+      "(Der Inhalt des Spieles sollte kurz beschrieben werden. Bei mehreren Games in einem Set, muss jedes einzelne mit dem Titel in einer Liste aufgeführt werden.) \n\nProjekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr"
     );
 
     doc.save('exported-data.pdf');
@@ -75,11 +75,9 @@ function FahrradShorts() {
     Object.entries(data).forEach(([label, value]) => {
       text += `${label}: ${value}\n`;
     });
-  
-    text += "\n\n!WICHTIG! Bei allen Kleidungsstücken von Fuchs Movesa kann der obenstehende Text beim Zustand übernommen werden. Bitte jedoch trotzdem immer prüfen, ob Originaletikett noch vorhanden + ob keine Gebrauchsspuren ersichtlich und sonst ggf. anpassen!\n";
-    
-    text += "\n\nWerbetext und Beschreibung\n\nProjekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr\n";
-  
+
+    text += "\n\n(Der Inhalt des Spieles sollte kurz beschrieben werden. Bei mehreren Games in einem Set, muss jedes einzelne mit dem Titel in einer Liste aufgeführt werden.) \n\nProjekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr";
+
     try {
       const textArea = document.createElement('textarea');
       textArea.value = text;
@@ -87,16 +85,16 @@ function FahrradShorts() {
       textArea.select();
       document.execCommand('copy');
       document.body.removeChild(textArea);
-  
+
       setCopiedData(text);
     } catch (error) {
       console.error('Kopieren fehlgeschlagen:', error);
     }
   };
-  
 
   return (
     <div className="App">
+
       <div className='button-container'>
         <button
           onClick={handleClearAll}
@@ -134,6 +132,7 @@ function FahrradShorts() {
           </div>
         )}
       </div>
+
       <div className="input-container">
         {Object.entries(data).map(([label, value]) => (
           <div key={label} className="input-field">
@@ -145,9 +144,10 @@ function FahrradShorts() {
             />
           </div>
         ))}
+      
       </div>
     </div>
   );
 }
 
-export default FahrradShorts;
+export default Games;

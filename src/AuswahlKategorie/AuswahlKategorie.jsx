@@ -14,6 +14,7 @@ import {
   faHeadphones,
   faShoePrints,
   faChess,
+  faGamepad,
   faPhone,
   faImage,
   faShirt,
@@ -53,7 +54,8 @@ function Auswahlkategorie() {
     {title: "Kerzenständer", to: "/kerzenstaender" }, // Using FaCandle here
     { icon: faRing, title: "Brautkleid", to: "/brautkleid"},
     { icon: faPrint, title: "Drucker", to: "/drucker"},
-    { icon: faTshirt, title: "Fahrrad Shorts", to: "/fahrradshorts"}
+    { icon: faTshirt, title: "Fahrrad Shorts", to: "/fahrradshorts"}, 
+    { icon: faGamepad, title: "Games - Konsolen", to: "/games"}
   ];
 
   const handleSearchChange = (e) => {

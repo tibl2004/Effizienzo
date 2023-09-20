@@ -7,6 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 
+import Games from './InserierenVorlagen/Games';
 import Drucker from './InserierenVorlagen/Drucker';
 import Kleidung from './InserierenVorlagen/Kleidung';
 import Schuhe from './InserierenVorlagen/Schuhe';
@@ -161,7 +162,7 @@ function App() {
               </>
             }
           /> 
-          {/*
+          
           <Route
             path="/fahrrad-shorts"
             element={
@@ -179,7 +180,7 @@ function App() {
                 <Games />
               </>
             }
-          /> */} 
+          /> 
           <Route
             path="/geschirr"
             element={
