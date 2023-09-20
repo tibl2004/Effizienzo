@@ -3,38 +3,21 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './AuswahlButtons.scss';
 
+
 import {
   faPaintBrush,
-  faImage,
-  faRing,
   faStamp,
   faBook,
-  faPhone,
-  faPrint,
   faMicrochip,
   faCompactDisc,
-  faBicycle,
   faTshirt,
   faHeadphones,
-  faBed,
-  faSprayCan,
-  faCouch,
-  faTrain,
-  faTv,
-  faGuitar,
-  faProjectDiagram,
-  faChess,
-  faRecordVinyl,
-  faGem,
   faShoePrints,
-  faMobileAlt,
-  faWallet,
-  faClock,
-  faTools,
-  faCoffee,
-  faGamepad,
-  faKeyboard,
+  faChess,
+  faPhone,
+  faImage,
   faShirt,
+  faCouch
 } from '@fortawesome/free-solid-svg-icons';
 
 function Box(props) {
@@ -64,7 +47,8 @@ function Auswahlkategorie() {
     { icon: faPhone, title: "Schutzhüllen für Smartphone", to: "/schutzhuellensmartphone" },
     { icon: faImage, title: "Bilderrahmen / Bilder", to: "/bilder" },
     { icon: faShirt, title: "Kopfbedeckung", to: "/kopfbedeckungen" },
-    { icon: faCouch, title: "Möbel", to: "/moebel"}
+    { icon: faCouch, title: "Möbel", to: "/moebel"},
+    {title: "Kerzenständer", to: "/kerzenstaender" } // Using FaCandle here
   ];
 
   const handleSearchChange = (e) => {

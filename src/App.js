@@ -22,6 +22,7 @@ import SchutzhuellenFuerSmartphone from './InserierenVorlagen/SchutzhuellenFuerS
 import Bilder from './InserierenVorlagen/Bilder';
 import Kopfbedeckungen from './InserierenVorlagen/Kopfbedeckung';
 import Moebel from './InserierenVorlagen/Moebel';
+import Kerzenstaender from './InserierenVorlagen/Kerzenstaender';
 
 import Reaktivierung from './Reaktivierung/Reaktivierung';
 
@@ -193,7 +194,7 @@ function App() {
                 <Kaffeemaschine />
               </>
             }
-          />
+          /> */}
           <Route
             path="/kerzenstaender"
             element={
@@ -202,7 +203,7 @@ function App() {
                 <Kerzenstaender />
               </>
             }
-          /> */}
+          /> 
           <Route
             path="/kleidung"
             element={
