@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './AuswahlButtons.scss';
@@ -48,91 +48,52 @@ function Box(props) {
 }
 
 function Auswahlkategorie() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const categories = [
+    { icon: faPaintBrush, title: "Bastelartikel", to: "/bastelartikel" },
+    { icon: faStamp, title: "Briefmarken", to: "/briefmarken" },
+    { icon: faBook, title: "Bücher & Comics", to: "/buecher" },
+    { icon: faMicrochip, title: "Druckerzubehör", to: "/druckerzubehoer" },
+    { icon: faCompactDisc, title: "DVD - Blue Ray Player", to: "/dvd" },
+    { title: "Geschirr", to: "/geschirr" },
+    { icon: faTshirt, title: "Kleidung", to: "/kleidung" },
+    { icon: faHeadphones, title: "Kopfhörer", to: "/kopfhoerer" },
+    { icon: faShoePrints, title: "Schuhe", to: "/schuhe" },
+    { icon: faChess, title: "Spiele", to: "/spiele" },
+    { icon: faPhone, title: "Schutzhüllen für Smartphone", to: "/schutzhuellensmartphone" },
+    { icon: faImage, title: "Bilderrahmen / Bilder", to: "/bilder" },
+    { icon: faShirt, title: "Kopfbedeckung", to: "/kopfbedeckungen" },
+  ];
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredCategories = categories.filter((category) =>
+    category.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div className="category-buttons">
-      <Link to="/bastelartikel">
-        <Box
-          icon={faPaintBrush}
-          title="Bastelartikel"
+    <div>
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Suche nach Kategorien..."
+          value={searchQuery}
+          onChange={handleSearchChange}
         />
-      </Link>
-      
-      <Link to="/briefmarken">
-        <Box
-          icon={faStamp}
-          title="Briefmarken"
-        />
-      </Link>
-      <Link to="/buecher">
-        <Box
-          icon={faBook}
-          title="Bücher & Comics"
-
-        />
-      </Link>
-      
-      <Link to="/druckerzubehoer">
-        <Box
-          icon={faMicrochip}
-          title="Druckerzubehör"
-        />
-      </Link>
-      <Link to="/dvd">
-        <Box
-          icon={faCompactDisc}
-          title="DVD - Blue Ray Player"
-        />
-      </Link>
-      
-      <Link to="/geschirr">
-        <Box
-          title="Geschirr"
-        />
-      </Link>
-
-      <Link to="/kleidung">
-        <Box
-          icon={faTshirt}
-          title="Kleidung"
-        />
-      </Link>
-      <Link to="/kopfhoerer">
-      <Box
-        icon={faHeadphones}
-        title="Kopfhörer"
-      />
-      </Link>
-      
-      <Link to="/schuhe">
-        <Box
-          icon={faShoePrints}
-          title="Schuhe"
-        />
-      </Link>
-      <Link to="/spiele">
-        <Box
-          icon={faChess}
-          title="Spiele"
-        />
-      </Link>
-      <Link to="/schutzhuellensmartphone">
-        <Box
-          icon={faPhone}
-          title="Schutzhüllen für Smartphone"
-        />
-      </Link>
-      <Link to="/bilder">
-        <Box
-          icon={faImage}
-          title="Bilderrahmen / Bilder"
-        />
-      </Link>
-      <Link to="/kopfbedeckungen">
-        <Box
-          icon={faShirt}
-          title="Kopfbedeckung"
-        />
-      </Link>
+      </div>
+      <div className="category-buttons">
+        {filteredCategories.map((category, index) => (
+          <Link key={index} to={category.to}>
+            <Box
+              icon={category.icon}
+              title={category.title}
+            />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
