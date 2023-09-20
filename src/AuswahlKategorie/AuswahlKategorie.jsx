@@ -24,7 +24,8 @@ import {
   faRing,
   faCoffee,
   faBed,
-  faTv
+  faTv,
+  faMusic
 } from '@fortawesome/free-solid-svg-icons';
 
 function Box(props) {
@@ -64,6 +65,7 @@ function Auswahlkategorie() {
     { icon: faBed, title: "Kopfkissen - Decken", to: "/kopfkissen"},
     { icon: faSprayCan, title: "MIGROS Sprayer 0.5L", to: "/migrossprayer"},
     { icon: faTv, title: "Monitore - TV", to: "/monitore"},
+    { icon: faMusic, title: "Musikinstrumente", to: "/musikinstrumente"}
   ];
 
   const handleSearchChange = (e) => {

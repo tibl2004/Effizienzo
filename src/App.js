@@ -7,6 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 
+import Musikinstrumente from './InserierenVorlagen/Musikinstrumente';
 import Monitore from './InserierenVorlagen/Monitore';
 import MigrosSprayer from './InserierenVorlagen/MigrosSprayer';
 import Kopfkissen from './InserierenVorlagen/Kopfkissen';
@@ -297,7 +298,7 @@ function App() {
                 <Monitore />
               </>
             }
-          /> {/*
+          /> 
           <Route
             path="/musikinstrumente"
             element={
@@ -306,7 +307,7 @@ function App() {
                 <Musikinstrumente />
               </>
             }
-          />
+          />{/*
           <Route
             path="/lcd-projektor"
             element={
