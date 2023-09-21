@@ -7,6 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 
+import WandStandUhren from './InserierenVorlagen/WandStandUhren';
 import Werkzeug from './InserierenVorlagen/Werkzeug';
 import Portemonnaie from './InserierenVorlagen/Portemonnaie';
 import Schallplatten from './InserierenVorlagen/Schallplatten';
@@ -433,16 +434,16 @@ function App() {
                 <Vasen />
               </>
             }
-          />
+          />*/}
           <Route
-            path="/wanduhren-standuhren"
+            path="/wandstanduhren"
             element={
               <>
                 <Navigation />
-                <Wanduhren />
+                <WandStandUhren />
               </>
             }
-          />  */}
+          />  
           <Route
             path="/werkzeug"
             element={

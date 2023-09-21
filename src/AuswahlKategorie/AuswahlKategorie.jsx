@@ -15,6 +15,7 @@ import {
   faShoePrints,
   faHammer,
   faChess,
+  faClock,
   faGamepad,
   faPhone,
   faSprayCan,
@@ -71,7 +72,8 @@ function Auswahlkategorie() {
     { icon: faImage, title: "Plüschtiere", to:"/plueschtiere"},
     { icon: faMusic, title: "Schallplatten", to:"/schallplatten"},
     { icon: faMoneyBill, title: "Portemonnaie", to: "/portemonnaie"},
-    { icon: faHammer, title: "Werkzeug", to: "/werkzeug"}
+    { icon: faHammer, title: "Werkzeug", to: "/werkzeug"},
+    { icon: faClock, title: "Wanduhren - Standuhren", to: "/wandstanduhren"}
   ];
 
   const handleSearchChange = (e) => {
