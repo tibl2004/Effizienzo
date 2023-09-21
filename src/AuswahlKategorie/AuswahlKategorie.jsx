@@ -13,6 +13,7 @@ import {
   faTshirt,
   faHeadphones,
   faShoePrints,
+  faHammer,
   faChess,
   faGamepad,
   faPhone,
@@ -69,7 +70,8 @@ function Auswahlkategorie() {
     { icon: faMusic, title: "Musikinstrumente", to: "/musikinstrumente"},
     { icon: faImage, title: "Plüschtiere", to:"/plueschtiere"},
     { icon: faMusic, title: "Schallplatten", to:"/schallplatten"},
-    { icon: faMoneyBill, title: "Portemonnaie", to: "/portemonnaie"}
+    { icon: faMoneyBill, title: "Portemonnaie", to: "/portemonnaie"},
+    { icon: faHammer, title: "Werkzeug", to: "/werkzeug"}
   ];
 
   const handleSearchChange = (e) => {

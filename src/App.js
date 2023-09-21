@@ -7,6 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 
+import Werkzeug from './InserierenVorlagen/Werkzeug';
 import Portemonnaie from './InserierenVorlagen/Portemonnaie';
 import Schallplatten from './InserierenVorlagen/Schallplatten';
 import Plueschtiere from './InserierenVorlagen/Plueschtiere';
@@ -441,7 +442,7 @@ function App() {
                 <Wanduhren />
               </>
             }
-          />
+          />  */}
           <Route
             path="/werkzeug"
             element={
@@ -451,7 +452,7 @@ function App() {
               </>
             }
           />
-          */}
+        
         </Routes>
       </Router>
     </div>
