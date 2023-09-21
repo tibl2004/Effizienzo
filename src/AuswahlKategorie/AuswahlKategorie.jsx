@@ -66,7 +66,8 @@ function Auswahlkategorie() {
     { icon: faSprayCan, title: "MIGROS Sprayer 0.5L", to: "/migrossprayer"},
     { icon: faTv, title: "Monitore - TV", to: "/monitore"},
     { icon: faMusic, title: "Musikinstrumente", to: "/musikinstrumente"},
-    { icon: faImage, title: "Plüschtiere", to:"/plueschtiere"}
+    { icon: faImage, title: "Plüschtiere", to:"/plueschtiere"},
+    { icon: faMusic, title: "Schallplatten", to:"/schallplatten"}
   ];
 
   const handleSearchChange = (e) => {
