@@ -7,6 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 
+import Portemonnaie from './InserierenVorlagen/Portemonnaie';
 import Schallplatten from './InserierenVorlagen/Schallplatten';
 import Plueschtiere from './InserierenVorlagen/Plueschtiere';
 import Musikinstrumente from './InserierenVorlagen/Musikinstrumente';
@@ -327,7 +328,7 @@ function App() {
                 <Plueschtiere />
               </>
             }
-          /> {/*
+          /> 
           <Route
             path="/portemonnaie"
             element={
@@ -336,7 +337,7 @@ function App() {
                 <Portemonnaie />
               </>
             }
-          /> */}
+          /> 
           <Route
             path="/schallplatten"
             element={

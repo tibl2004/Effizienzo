@@ -25,7 +25,8 @@ import {
   faCoffee,
   faBed,
   faTv,
-  faMusic
+  faMusic,
+  faMoneyBill
 } from '@fortawesome/free-solid-svg-icons';
 
 function Box(props) {
@@ -67,7 +68,8 @@ function Auswahlkategorie() {
     { icon: faTv, title: "Monitore - TV", to: "/monitore"},
     { icon: faMusic, title: "Musikinstrumente", to: "/musikinstrumente"},
     { icon: faImage, title: "Plüschtiere", to:"/plueschtiere"},
-    { icon: faMusic, title: "Schallplatten", to:"/schallplatten"}
+    { icon: faMusic, title: "Schallplatten", to:"/schallplatten"},
+    { icon: faMoneyBill, title: "Portemonnaie", to: "/portemonnaie"}
   ];
 
   const handleSearchChange = (e) => {
