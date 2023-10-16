@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <div className='navbar'>
       <div className='logo-container'>
-        <div className='version-label'>V.1.7 BETA</div>
+        <div className='version-label'>V.2.0</div>
         <img src={logo} alt="Restwert" />
         <div className='links'>
           <li>
@@ -21,6 +21,9 @@ function Navbar() {
           </li>
           <li>
             <Link to="/reaktivierung">Reaktivierung</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
           </li>
         </div>
       </div>
