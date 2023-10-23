@@ -4,6 +4,7 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userFirstName, setUserFirstName] = useState(''); // Zustand für den Vornamen des Benutzers
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
@@ -30,7 +31,7 @@ function Login() {
     const user = users.find(user => user.username === username && user.password === password);
 
     if (user) {
-      console.log('Erfolgreich eingeloggt!'); // Erfolgreiche Anmeldung in der Konsole anzeigen
+      setUserFirstName(user.firstName); // Den Vornamen des Benutzers setzen
       setLoggedIn(true);
       setErrorMessage(''); // Zurücksetzen der Fehlermeldung
     } else {
@@ -42,7 +43,12 @@ function Login() {
     <div>
       <h1>Login</h1>
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      {loggedIn && <p style={{ color: 'green' }}>Login korrekt!</p>}
+      {loggedIn && (
+        <div>
+          <p style={{ color: 'green' }}>Login korrekt!</p>
+          <p>Hallo, {username}! Das Login war erfolgreich, aber die Webseite ist noch nicht bereit, um Ihren Account zu verwalten.</p>
+        </div>
+      )}
       <input
         type="text"
         placeholder="Benutzername"
