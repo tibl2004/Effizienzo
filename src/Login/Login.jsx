@@ -4,17 +4,26 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
-  const [users, setUsers] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    // Laden Sie die Benutzerdaten aus dem JSON-Server
-    fetch('http://localhost:3001/users')
+    // Laden Sie die Benutzerdaten aus dem angegebenen Server
+    const apiUrl = 'https://users-8a52.onrender.com/users';
+
+    fetch(apiUrl)
       .then(response => response.json())
-      .then(data => setUsers(data))
+      .then(data => {
+        if (data && data.length > 0) {
+          // Setzen Sie die Benutzerdaten im State
+          setUsers(data);
+        } else {
+          console.error('Fehler beim Laden der Benutzerdaten.');
+        }
+      })
       .catch(error => console.error('Fehler beim Laden der Benutzerdaten: ', error));
   }, []);
-  
+
+  const [users, setUsers] = useState([]); // Benutzerdaten im State speichern
 
   const handleLogin = () => {
     // Überprüfen, ob die eingegebenen Daten in einem der Benutzerobjekte im Array übereinstimmen
@@ -23,6 +32,7 @@ function Login() {
     if (user) {
       console.log('Erfolgreich eingeloggt!'); // Erfolgreiche Anmeldung in der Konsole anzeigen
       setLoggedIn(true);
+      setErrorMessage(''); // Zurücksetzen der Fehlermeldung
     } else {
       setErrorMessage('Ungültige Anmeldeinformationen. Bitte versuchen Sie es erneut.');
     }
@@ -32,6 +42,7 @@ function Login() {
     <div>
       <h1>Login</h1>
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      {loggedIn && <p style={{ color: 'green' }}>Login korrekt!</p>}
       <input
         type="text"
         placeholder="Benutzername"
