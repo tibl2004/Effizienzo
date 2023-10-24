@@ -40,6 +40,7 @@ import FahrradShorts from './InserierenVorlagen/FahrradShorts';
 import Reaktivierung from './Reaktivierung/Reaktivierung';
 
 import Login from './Login/Login';
+import Admins from './Admin/Admins';
 
 function Navigation() {
   return <Navbar />;
@@ -86,6 +87,15 @@ function App() {
               <>
                 <Navigation />
                 <Login />
+              </>
+            }
+          />
+           <Route 
+            path='/admins'
+            element={
+              <>
+                <Navigation />
+                <Admins />
               </>
             }
           />
@@ -316,6 +326,7 @@ function App() {
               </>
             }
           />
+         
           <Route
             path="/musikinstrumente"
             element={
