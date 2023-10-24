@@ -1,145 +1,153 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
+
+import "./Admin.scss";
+
+function formatDatum(enddatum) {
+  const date = new Date(enddatum);
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  return `${day < 10 ? '0' : ''}${day}.${month < 10 ? '0' : ''}${month}.${year}`;
+}
 
 function Admins() {
-    const [admins, setAdmins] = useState([]);
-    const [newAdmin, setNewAdmin] = useState({ username: "", password: "" });
-    const [editMode, setEditMode] = useState(null); // Hier speichern wir die ID des Admins im Bearbeitungsmodus
+  const [admins, setAdmins] = useState([]);
+  const [newAdmin, setNewAdmin] = useState({ username: "", password: "" });
+  const [editMode, setEditMode] = useState(null);
 
-    useEffect(() => {
-        // Hier sollte der Code stehen, um die Admin-Daten vom Server abzurufen
-        // Ändern Sie die URL entsprechend Ihrer Anforderungen
+  useEffect(() => {
+    axios.get("https://users-8a52.onrender.com/users")
+      .then(response => {
+        setAdmins(response.data);
+      })
+      .catch(error => {
+        console.error("Fehler beim Abrufen der Daten: " + error);
+      });
+  }, []);
+
+  const handleInputChange = (e, adminId) => {
+    const { name, value } = e.target;
+    const updatedAdmins = admins.map(admin => {
+      if (admin.id === adminId) {
+        return { ...admin, [name]: value };
+      }
+      return admin;
+    });
+    setAdmins(updatedAdmins);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post("https://users-8a52.onrender.com/users", newAdmin)
+      .then(response => {
         axios.get("https://users-8a52.onrender.com/users")
-            .then(response => {
-                // Wenn die Daten erfolgreich abgerufen wurden, setzen Sie den State
-                setAdmins(response.data);
-            })
-            .catch(error => {
-                console.error("Fehler beim Abrufen der Daten: " + error);
-            });
-    }, []);
+          .then(response => {
+            setAdmins(response.data);
+          })
+          .catch(error => {
+            console.error("Fehler beim Abrufen der Daten: " + error);
+          });
+      })
+      .catch(error => {
+        console.error("Fehler beim Erstellen des neuen Admins: " + error);
+      });
+  };
 
-    const handleInputChange = (e, adminId) => {
-        const { name, value } = e.target;
-        const updatedAdmins = admins.map(admin => {
-            if (admin.id === adminId) {
-                return { ...admin, [name]: value };
-            }
-            return admin;
-        });
-        setAdmins(updatedAdmins);
-    };
+  const handleDeleteAdmin = (adminId) => {
+    axios.delete(`https://users-8a52.onrender.com/users/${adminId}`)
+      .then(response => {
+        axios.get("https://users-8a52.onrender.com/users")
+          .then(response => {
+            setAdmins(response.data);
+          })
+          .catch(error => {
+            console.error("Fehler beim Abrufen der Daten: " + error);
+          });
+      })
+      .catch(error => {
+        console.error("Fehler beim Löschen des Admins: " + error);
+      });
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Hier sollten Sie die POST-Anfrage senden, um einen neuen Admin hinzuzufügen
-        // Ändern Sie die URL und die Daten entsprechend Ihrer Anforderungen
-        axios.post("https://users-8a52.onrender.com/users", newAdmin)
-            .then(response => {
-                // Nach erfolgreicher Erstellung können Sie die Admins erneut abrufen
-                axios.get("https://users-8a52.onrender.com/users")
-                    .then(response => {
-                        setAdmins(response.data);
-                    })
-                    .catch(error => {
-                        console.error("Fehler beim Abrufen der Daten: " + error);
-                    });
-            })
-            .catch(error => {
-                console.error("Fehler beim Erstellen des neuen Admins: " + error);
-            });
-    };
+  const handleEditAdmin = (adminId) => {
+    setEditMode(adminId);
+  };
 
-    const handleDeleteAdmin = (adminId) => {
-        // Hier sollten Sie die DELETE-Anfrage senden, um den Admin zu löschen
-        // Ändern Sie die URL entsprechend Ihrer Anforderungen
-        axios.delete(`https://users-8a52.onrender.com/users/${adminId}`)
-            .then(response => {
-                // Nach erfolgreicher Löschung können Sie die Admins erneut abrufen
-                axios.get("https://users-8a52.onrender.com/users")
-                    .then (response => {
-                        setAdmins(response.data);
-                    })
-                    .catch(error => {
-                        console.error("Fehler beim Abrufen der Daten: " + error);
-                    });
-            })
-            .catch(error => {
-                console.error("Fehler beim Löschen des Admins: " + error);
-            });
-    };
+  const handleSaveAdmin = (adminId) => {
+    const editedAdmin = admins.find(admin => admin.id === adminId);
+    axios.put(`https://users-8a52.onrender.com/users/${adminId}`, editedAdmin)
+      .then(response => {
+        setEditMode(null);
+      })
+      .catch(error => {
+        console.error("Fehler beim Speichern der Änderungen: " + error);
+      });
+  };
 
-    const handleEditAdmin = (adminId) => {
-        setEditMode(adminId); // Aktivieren Sie den Bearbeitungsmodus für diesen Admin
-    };
+  return (
+    <div className="admin-container">
+      <Link to="/admincreate">
+        <button className="add">+</button>
+      </Link>
 
-    const handleSaveAdmin = (adminId) => {
-        // Hier sollten Sie die PUT- oder PATCH-Anfrage senden, um die Änderungen zu speichern
-        // Ändern Sie die URL und die Daten entsprechend Ihrer Anforderungen
-        const editedAdmin = admins.find(admin => admin.id === adminId);
-        axios.put(`https://users-8a52.onrender.com/users/${adminId}`, editedAdmin)
-            .then(response => {
-                // Nach erfolgreicher Aktualisierung können Sie den Bearbeitungsmodus beenden
-                setEditMode(null);
-            })
-            .catch(error => {
-                console.error("Fehler beim Speichern der Änderungen: " + error);
-            });
-    };
-
-    return (
-        <div className="App">
-            <h1>Admins:</h1>
-            <div className="admin-boxes">
-                {admins.map(admin => (
-                    <div className="admin-box" key={admin.id}>
-                        {admin.id === editMode ? (
-                            <div>
-                                <input
-                                    type="text"
-                                    name="username"
-                                    value={admin.username}
-                                    onChange={(e) => handleInputChange(e, admin.id)}
-                                />
-                                <input
-                                    type="text"
-                                    name="password"
-                                    value={admin.password}
-                                    onChange={(e) => handleInputChange(e, admin.id)}
-                                />
-                                <button onClick={() => handleSaveAdmin(admin.id)}>Speichern</button>
-                            </div>
-                        ) : (
-                            <div>
-                                {admin.username}
-                                <button onClick={() => handleEditAdmin(admin.id)}>Bearbeiten</button>
-                                <button onClick={() => handleDeleteAdmin(admin.id)}>Löschen</button>
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div>
-
-            <h2>Neuen Admin erstellen:</h2>
-            <form onSubmit={handleSubmit}>
+      <h1>Admins:</h1>
+      <div className="admin-list">
+        {admins.map(admin => (
+          <div className="admin-item" key={admin.id}>
+            {admin.id === editMode ? (
+              <div>
                 <input
-                    type="text"
-                    name="username"
-                    placeholder="Benutzername"
-                    value={newAdmin.username}
-                    onChange={handleInputChange}
+                  type="text"
+                  name="vorname"
+                  value={admin.vorname}
+                  onChange={(e) => handleInputChange(e, admin.id)}
                 />
                 <input
-                    type="text"
-                    name="password"
-                    placeholder="Passwort"
-                    value={newAdmin.password}
-                    onChange={handleInputChange}
+                  type="text"
+                  name="nachname"
+                  value={admin.nachname}
+                  onChange={(e) => handleInputChange(e, admin.id)}
                 />
-                <button type="submit">Admin erstellen</button>
-            </form>
-        </div>
-    );
+                <input
+                  type="text"
+                  name="username"
+                  value={admin.username}
+                  onChange={(e) => handleInputChange(e, admin.id)}
+                />
+                <input
+                  type="text"
+                  name="password"
+                  value={admin.password}
+                  onChange={(e) => handleInputChange(e, admin.id)}
+                />
+                <input
+                  type="text"
+                  name="enddatum"
+                  value={admin.enddatum}
+                  onChange={(e) => handleInputChange(e, admin.id)}
+                />
+                <button onClick={() => handleSaveAdmin(admin.id)}>Speichern</button>
+              </div>
+            ) : (
+              <div className="admin-details">
+                <p><strong>Vorname:</strong> {admin.vorname}</p>
+                <p><strong>Name:</strong> {admin.nachname}</p>
+                <p><strong>Benutzername:</strong> {admin.username}</p>
+                <p><strong>Passwort:</strong> {admin.password}</p>
+                <p><strong>Enddatum:</strong> {formatDatum(admin.enddatum)}</p>
+                <div className="admin-buttons">
+                  <button className="bearbeiten" onClick={() => handleEditAdmin(admin.id)}>Bearbeiten</button>
+                  <button className="delete" onClick={() => handleDeleteAdmin(admin.id)}>Löschen</button>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default Admins;

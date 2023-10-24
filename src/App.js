@@ -41,6 +41,7 @@ import Reaktivierung from './Reaktivierung/Reaktivierung';
 
 import Login from './Login/Login';
 import Admins from './Admin/Admins';
+import CreateAdmin from './Admin/CreateAdmin';
 
 function Navigation() {
   return <Navbar />;
@@ -99,6 +100,16 @@ function App() {
               </>
             }
           />
+           <Route 
+            path='/admincreate'
+            element={
+              <>
+                <Navigation />
+                <CreateAdmin />
+              </>
+            }
+          />
+          
           <Route
             path="/inserieren"
             element={
