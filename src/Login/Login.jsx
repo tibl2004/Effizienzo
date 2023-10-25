@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -29,15 +30,28 @@ function Login() {
   const handleLogin = () => {
     // Überprüfen, ob die eingegebenen Daten in einem der Benutzerobjekte im Array übereinstimmen
     const user = users.find(user => user.username === username && user.password === password);
-
+  
     if (user) {
-      setUserFirstName(user.firstName); // Den Vornamen des Benutzers setzen
-      setLoggedIn(true);
+      setUserFirstName(user.vorname); // Den Vornamen des Benutzers setzen
       setErrorMessage(''); // Zurücksetzen der Fehlermeldung
+  
+      // Setzen Sie loggedIn auf true
+      user.loggedIn = true;
+  
+      // Senden Sie eine PUT-Anfrage, um den loggedIn-Status auf dem Server zu aktualisieren
+      axios.put(`https://users-8a52.onrender.com/users/${user.id}`, user)
+        .then(response => {
+          // response enthält die Antwort vom Server
+          console.log('loggedIn-Status wurde auf dem Server aktualisiert');
+        })
+        .catch(error => {
+          console.error('Fehler beim Aktualisieren des loggedIn-Status auf dem Server: ', error);
+        });
     } else {
       setErrorMessage('Ungültige Anmeldeinformationen. Bitte versuchen Sie es erneut.');
     }
   }
+  
 
   return (
     <div>
