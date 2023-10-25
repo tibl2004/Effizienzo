@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 import Erfassen from './Erfassen/Erfassen';
 import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
@@ -50,6 +50,24 @@ function Navigation() {
 
 function App() {
 
+  const [loggedIn, setLoggedIn] = useState(null);
+
+  // Effekt, um den eingeloggten Status abzurufen
+  useEffect(() => {
+    // Hier die Anfrage an den Server senden, um den Benutzerstatus abzurufen
+    fetch('https://users-8a52.onrender.com/users')
+      .then((response) => response.json())
+      .then((data) => {
+        // Überprüfen, ob der Benutzer eingeloggt ist
+        const loggedInUser = data.find((user) => user.loggedIn);
+        if (loggedInUser) {
+          setLoggedIn(true);
+        }
+      })
+      .catch((error) => {
+        console.error('Fehler beim Abrufen des Benutzerstatus: ', error);
+      });
+  }, []);
 
   return (
     <div className="App">
@@ -84,14 +102,29 @@ function App() {
           />
 
           <Route
+            path="/admins"
+            element={loggedIn ? (
+              <>
+                <Navigation />
+                <Admins />
+              </>
+            ) : (
+              <Navigate to="/Effizienzo" replace />
+            )}
+          />
+          <Route
             path="/tagesplanung"
-            element={
+            element={loggedIn ? (
               <>
                 <Navigation />
                 <Tagesplanung />
               </>
-            }
+            ) : (
+              <Navigate to="/Effizienzo" replace />
+            )}
           />
+
+          
           <Route
             path="/login"
             element={
@@ -101,15 +134,7 @@ function App() {
               </>
             }
           />
-          <Route
-            path='/admins'
-            element={
-              <>
-                <Navigation />
-                <Admins />
-              </>
-            }
-          />
+
           <Route
             path='/admincreate'
             element={
