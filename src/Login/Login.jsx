@@ -43,6 +43,7 @@ function Login() {
         .then(response => {
           // response enthält die Antwort vom Server
           console.log('loggedIn-Status wurde auf dem Server aktualisiert');
+          window.location = '/admins'; // Zur Login-Seite weiterleiten
         })
         .catch(error => {
           console.error('Fehler beim Aktualisieren des loggedIn-Status auf dem Server: ', error);
