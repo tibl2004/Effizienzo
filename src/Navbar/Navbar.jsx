@@ -28,6 +28,9 @@ function Navbar() {
           <li>
             <Link to="/admins">Admins</Link>
           </li>
+          <li>
+            <Link to="/tagesplanung">Tagesplanung</Link>
+          </li>
         </div>
       </div>
     </div>

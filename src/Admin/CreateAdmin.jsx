@@ -14,21 +14,24 @@ function CreateAdmin() {
         // Konvertiere das Enddatum in ISO 8601-Format
         const isoEnddatum = newAdmin.enddatum;
         newAdmin.enddatum = isoEnddatum;
-
+        
         // Hier sollten Sie die POST-Anfrage senden, um einen neuen Admin hinzuzufügen
-        // Ändern Sie die URL und die Daten entsprechend Ihrer Anforderungen
+        // Setzen Sie das loggedIn-Feld auf true
+        newAdmin.loggedIn = false;
+      
         axios.post("https://users-8a52.onrender.com/users", newAdmin)
-            .then(response => {
-                // Hier können Sie je nach Bedarf eine Bestätigung anzeigen
-                console.log("Neuer Admin wurde erstellt.");
-                
-                // Zurück zur /admins-Seite navigieren
-                window.location = '/admins';
-            })
-            .catch(error => {
-                console.error("Fehler beim Erstellen des neuen Admins: " + error);
-            });
-    };
+          .then(response => {
+            // Hier können Sie je nach Bedarf eine Bestätigung anzeigen
+            console.log("Neuer Admin wurde erstellt.");
+      
+            // Zurück zur /admins-Seite navigieren
+            window.location = '/admins';
+          })
+          .catch(error => {
+            console.error("Fehler beim Erstellen des neuen Admins: " + error);
+          });
+      };
+      
 
     return (
         <div>

@@ -6,6 +6,7 @@ import Erfassen from './Erfassen/Erfassen';
 import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
+import Tagesplanung from './Admin/Tagesplanung';
 
 import WandStandUhren from './InserierenVorlagen/WandStandUhren';
 import Werkzeug from './InserierenVorlagen/Werkzeug';
@@ -83,6 +84,15 @@ function App() {
           />
 
           <Route
+            path="/tagesplanung"
+            element={
+              <>
+                <Navigation />
+                <Tagesplanung />
+              </>
+            }
+          />
+          <Route
             path="/login"
             element={
               <>
@@ -91,7 +101,7 @@ function App() {
               </>
             }
           />
-           <Route 
+          <Route
             path='/admins'
             element={
               <>
@@ -100,7 +110,7 @@ function App() {
               </>
             }
           />
-           <Route 
+          <Route
             path='/admincreate'
             element={
               <>
@@ -109,7 +119,7 @@ function App() {
               </>
             }
           />
-          
+
           <Route
             path="/inserieren"
             element={
@@ -337,7 +347,7 @@ function App() {
               </>
             }
           />
-         
+
           <Route
             path="/musikinstrumente"
             element={

@@ -33,6 +33,13 @@ function Mainsite() {
         onClick={() => handleBoxClick('Reaktiverung')}
       />
       </Link>
+      <Link to="/Admins">
+      <Box
+        title="Admins"
+        text="Hier kannst du die Admin Logins verwalten."
+        onClick={() => handleBoxClick('Admins')}
+      />
+      </Link>
     </div>
   );
 }
