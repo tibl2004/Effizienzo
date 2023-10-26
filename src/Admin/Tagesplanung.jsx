@@ -19,11 +19,13 @@ function Tagesplanung() {
         <div className="App">
             <h1>Tagesplanung</h1>
             <div className="box-container">
+            <button className="addTable">+</button>
                 {boxes.map((box, index) => (
                     <div key={index} className="aufgaben" style={{ backgroundColor: box.backgroundColor }}>
                         <p>{box.text}</p>
                     </div>
                 ))}
+                
             </div>
         </div>
     );
