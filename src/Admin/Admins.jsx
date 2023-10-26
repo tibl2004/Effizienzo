@@ -132,11 +132,11 @@ function Admins() {
               </div>
             ) : (
               <div className="admin-details">
-                <p><strong>Vorname:</strong> {admin.vorname}</p>
-                <p><strong>Name:</strong> {admin.nachname}</p>
-                <p><strong>Benutzername:</strong> {admin.username}</p>
-                <p><strong>Passwort:</strong> {admin.password}</p>
-                <p><strong>Enddatum:</strong> {formatDatum(admin.enddatum)}</p>
+                <p className="box-content"><strong>Vorname:</strong> {admin.vorname}</p>
+                <p className="box-content"><strong>Name:</strong> {admin.nachname}</p>
+                <p className="box-content"><strong>Benutzername:</strong> {admin.username}</p>
+                <p className="box-content"><strong>Passwort:</strong> {admin.password}</p>
+                <p className="box-content"><strong>Enddatum:</strong> {formatDatum(admin.enddatum)}</p>
                 <div className="admin-buttons">
                   <button className="bearbeiten" onClick={() => handleEditAdmin(admin.id)}>Bearbeiten</button>
                   <button className="delete" onClick={() => handleDeleteAdmin(admin.id)}>Löschen</button>
