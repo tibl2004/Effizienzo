@@ -43,6 +43,7 @@ import Reaktivierung from './Reaktivierung/Reaktivierung';
 import Login from './Login/Login';
 import Admins from './Admin/Admins';
 import CreateAdmin from './Admin/CreateAdmin';
+import BuchungsbelegVerkauf from './Admin/BuchungsbelegVerkauf';
 
 function Navigation() {
   return <Navbar />;
@@ -118,6 +119,17 @@ function App() {
               <>
                 <Navigation />
                 <Tagesplanung />
+              </>
+            ) : (
+              <Navigate to="/Effizienzo" replace />
+            )}
+          />
+          <Route
+            path="/interner-verkauf"
+            element={loggedIn ? (
+              <>
+                <Navigation />
+                <BuchungsbelegVerkauf />
               </>
             ) : (
               <Navigate to="/Effizienzo" replace />

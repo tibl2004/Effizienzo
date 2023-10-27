@@ -65,6 +65,9 @@ function Navbar() {
                 <Link to="/tagesplanung">Tagesplanung</Link>
               </li>
               <li>
+                <Link to="/interner-verkauf">Interner Verkauf</Link>
+              </li>
+              <li>
                 <span>{loggedInUser.username}</span>
               </li>
               <li>
