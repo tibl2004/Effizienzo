@@ -71,6 +71,11 @@ function Navbar() {
             Symbole
           </Link>
         </li>
+        <li>
+          <Link to="/schluss" className={currentPath === '/schluss' ? 'active' : ''}>
+            Schluss
+          </Link>
+        </li>
 
         {loggedInUser ? (
           <>
