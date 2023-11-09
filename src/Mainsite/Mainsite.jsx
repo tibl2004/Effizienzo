@@ -57,6 +57,13 @@ function Mainsite() {
           onClick={() => handleBoxClick('Symbole')}
         />
       </Link>
+      <Link to="/schluss">
+        <Box
+          title="Schluss"
+          text="Hier kannst du den Schluss kopieren, ohne es jedes Mal einzugeben."
+          onClick={() => handleBoxClick('Schluss')}
+        />
+      </Link>
       {loggedInUser ? (
         <>
           <Link to="/Admins">
@@ -71,6 +78,13 @@ function Mainsite() {
               title="Tagesplanung"
               text="Hier kannst du die Tagesplanung machen."
               onClick={() => handleBoxClick('Tagesplanung')}
+            />
+          </Link>
+          <Link to="/interner-verkauf">
+            <Box
+              title="Interner Verkauf"
+              text="Hier kannst du Interne Verkäufe abwickeln"
+              onClick={() => handleBoxClick('Interner Verkauf')}
             />
           </Link>
         </>
