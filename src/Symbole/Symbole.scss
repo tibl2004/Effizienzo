@@ -1,0 +1,24 @@
+/* Symbole.module.scss */
+
+.symbol {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  
+    button {
+      background: orange;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s, color 0.3s;
+  
+      &.copied {
+        color: white;
+        background-color: green;
+      }
+  
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  

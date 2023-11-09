@@ -41,7 +41,7 @@ function Navbar() {
   return (
     <div className='navbar'>
       <div className='logo-container'>
-        <div className='version-label'>V.2.0</div>
+        <div className='version-label'>V.2.1</div>
         <img src={logo} alt="Restwert" />
         <ul className='links'>
           <li>
@@ -56,6 +56,10 @@ function Navbar() {
           <li>
             <Link to="/reaktivierung">Reaktivierung</Link>
           </li>
+          <li>
+            <Link to="/symbole">Symbole</Link>
+          </li>
+
           {loggedInUser ? (
             <>
               <li>

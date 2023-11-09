@@ -50,7 +50,13 @@ function Mainsite() {
           onClick={() => handleBoxClick('Reaktivierung')}
         />
       </Link>
-
+      <Link to="/symbole">
+        <Box
+          title="Symbole"
+          text="Hier kannst du Symbole kopieren, ohne es jedes Mal einzugeben."
+          onClick={() => handleBoxClick('Symbole')}
+        />
+      </Link>
       {loggedInUser ? (
         <>
           <Link to="/Admins">
