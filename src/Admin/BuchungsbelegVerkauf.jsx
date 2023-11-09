@@ -89,11 +89,25 @@ class BuchungsbelegVerkauf extends Component {
       doc.text(20, doc.autoTable.previous.finalY + 140, `E-Mail: ${this.state.buyer.email}`);
       doc.text(20, doc.autoTable.previous.finalY + 160, `Telefonnummer: ${this.state.buyer.telefonnummer}`);
   
+      // Datum und Unterschrift
+const currentDate = new Date().toLocaleDateString();
+doc.setFontSize(12); // Ändern Sie die Schriftgröße
+doc.text(20, doc.autoTable.previous.finalY + 200, `Datum: ${currentDate}`);
+doc.setFontSize(14); // Ändern Sie die Schriftgröße
+doc.text(20, doc.autoTable.previous.finalY + 220, 'Unterschrift:');
+
+  
+      // Linie für die Unterschrift
+      doc.setLineWidth(1);
+      doc.line(120, doc.autoTable.previous.finalY + 220, 240, doc.autoTable.previous.finalY + 220);
+  
       doc.save('Buchungsbeleg.pdf');
   
       this.setState({ pdfGenerating: false });
     }
   };
+  
+  
   
   
   
