@@ -6,6 +6,7 @@ import logo from '../Logo.jpeg';
 
 function Navbar() {
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const currentPath = window.location.pathname; // Aktuelle URL-Pfad ermitteln
 
   useEffect(() => {
     // Hier rufen wir die Benutzerdaten ab, um den eingeloggten Benutzer zu ermitteln
@@ -43,48 +44,66 @@ function Navbar() {
       <div className='logo-container'>
         <div className='version-label'>V.2.1</div>
         <img src={logo} alt="Restwert" />
-        <ul className='links'>
-          <li>
-            <Link to="/Effizienzo">Home</Link>
-          </li>
-          <li>
-            <Link to="/erfassen">Erfassen</Link>
-          </li>
-          <li>
-            <Link to="/inserieren">Inserieren</Link>
-          </li>
-          <li>
-            <Link to="/reaktivierung">Reaktivierung</Link>
-          </li>
-          <li>
-            <Link to="/symbole">Symbole</Link>
-          </li>
-
-          {loggedInUser ? (
-            <>
-              <li>
-                <Link to="/admins">Admins</Link>
-              </li>
-              <li>
-                <Link to="/tagesplanung">Tagesplanung</Link>
-              </li>
-              <li>
-                <Link to="/interner-verkauf">Interner Verkauf</Link>
-              </li>
-              <li>
-                <span>{loggedInUser.username}</span>
-              </li>
-              <li>
-                <button onClick={handleLogout}>Logout</button>
-              </li>
-            </>
-          ) : (
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          )}
-        </ul>
       </div>
+      <ul className='links'>
+        <li>
+          <Link to="/Effizienzo" className={currentPath === '/Effizienzo' ? 'active' : ''}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/erfassen" className={currentPath === '/erfassen' ? 'active' : ''}>
+            Erfassen
+          </Link>
+        </li>
+        <li>
+          <Link to="/inserieren" className={currentPath === '/inserieren' ? 'active' : ''}>
+            Inserieren
+          </Link>
+        </li>
+        <li>
+          <Link to="/reaktivierung" className={currentPath === '/reaktivierung' ? 'active' : ''}>
+            Reaktivierung
+          </Link>
+        </li>
+        <li>
+          <Link to="/symbole" className={currentPath === '/symbole' ? 'active' : ''}>
+            Symbole
+          </Link>
+        </li>
+
+        {loggedInUser ? (
+          <>
+            <li>
+              <Link to="/admins" className={currentPath === '/admins' ? 'active' : ''}>
+                Admins
+              </Link>
+            </li>
+            <li>
+              <Link to="/tagesplanung" className={currentPath === '/tagesplanung' ? 'active' : ''}>
+                Tagesplanung
+              </Link>
+            </li>
+            <li>
+              <Link to="/interner-verkauf" className={currentPath === '/interner-verkauf' ? 'active' : ''}>
+                Interner Verkauf
+              </Link>
+            </li>
+            <div>
+              <p>{loggedInUser.username}</p>
+            </div>
+            <li>
+              <button onClick={handleLogout}>Logout</button>
+            </li>
+          </>
+        ) : (
+          <li>
+            <Link to="/login" className={currentPath === '/login' ? 'active' : ''}>
+              Login
+            </Link>
+          </li>
+        )}
+      </ul>
     </div>
   );
 }
