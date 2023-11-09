@@ -42,7 +42,7 @@ function Navbar() {
   return (
     <div className='navbar'>
       <div className='logo-container'>
-        <div className='version-label'>V.2.1</div>
+        <div className='version-label'>V.2.2</div>
         <img src={logo} alt="Restwert" />
       </div>
       <ul className='links'>
