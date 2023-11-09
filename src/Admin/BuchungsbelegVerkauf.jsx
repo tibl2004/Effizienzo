@@ -1,5 +1,6 @@
 import React, { Component, createRef } from 'react';
-import ReactToPdf from 'react-to-pdf';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 class BuchungsbelegVerkauf extends Component {
   constructor(props) {
@@ -7,9 +8,19 @@ class BuchungsbelegVerkauf extends Component {
 
     this.state = {
       rows: [{ artikel: '', verkaufspreis: '' }],
+      pdfGenerating: false,
+      buyer: {
+        vorname: '',
+        nachname: '',
+        strasse: '',
+        plz: '',
+        ort: '',
+        email: '',
+        telefonnummer: '',
+      },
     };
 
-    this.pdfRef = createRef(); // Ref für die Tabelle
+    this.pdfRef = createRef();
   }
 
   handleAddRow = () => {
@@ -35,27 +46,74 @@ class BuchungsbelegVerkauf extends Component {
     });
     return gesamt;
   };
-
   handleCreatePdf = () => {
-    const pdfOptions = {
-      orientation: 'portrait', // Sie können 'landscape' verwenden, wenn gewünscht
-    };
-
-    if (this.pdfRef.current) {
-      const table = this.pdfRef.current; // Das ref auf die Tabelle
-      table.toPdf(pdfOptions).then((pdf) => {
-        // PDF ist erstellt, Sie können es hier verwenden, z.B. speichern oder anzeigen
-        // Hier ist ein Beispiel, wie Sie es anzeigen können:
-        const blobURL = URL.createObjectURL(pdf);
-        window.open(blobURL, '_blank');
+    if (!this.state.pdfGenerating) {
+      this.setState({ pdfGenerating: true });
+  
+      const doc = new jsPDF('p', 'pt', 'a4');
+  
+      // Titel des Dokuments
+      doc.setFontSize(18);
+      doc.text('BUCHUNGSBELEG VERKAUF', 210, 20, 'center');
+  
+      // Tabelle
+      const tableData = [];
+      tableData.push(['ARTIKEL', 'VERKAUFSPREIS (in CHF)']);
+      let gesamt = 0; // Hier wird die Gesamtsumme initialisiert
+      this.state.rows.forEach((row) => {
+        const preisMitCHF = `${row.verkaufspreis} CHF`; // Preis mit CHF anzeigen
+        tableData.push([row.artikel, preisMitCHF]);
+        if (!isNaN(row.verkaufspreis)) {
+          gesamt += parseFloat(row.verkaufspreis); // Die Verkaufspreise werden summiert
+        }
       });
+  
+      // Gesamt in der Tabelle
+      const gesamtRow = ['', `Gesamt: ${gesamt} CHF`];
+      tableData.push(gesamtRow);
+  
+      doc.autoTable({
+        startY: 50, // Position der Tabelle
+        head: [tableData[0]],
+        body: tableData.slice(1),
+      });
+  
+      // Käuferangaben
+      doc.setFontSize(12);
+      doc.text(20, doc.autoTable.previous.finalY + 20, 'Käuferinformationen');
+      doc.text(20, doc.autoTable.previous.finalY + 40, `Vorname: ${this.state.buyer.vorname}`);
+      doc.text(20, doc.autoTable.previous.finalY + 60, `Nachname: ${this.state.buyer.nachname}`);
+      doc.text(20, doc.autoTable.previous.finalY + 80, `Straße: ${this.state.buyer.strasse}`);
+      doc.text(20, doc.autoTable.previous.finalY + 100, `PLZ: ${this.state.buyer.plz}`);
+      doc.text(20, doc.autoTable.previous.finalY + 120, `Ort: ${this.state.buyer.ort}`);
+      doc.text(20, doc.autoTable.previous.finalY + 140, `E-Mail: ${this.state.buyer.email}`);
+      doc.text(20, doc.autoTable.previous.finalY + 160, `Telefonnummer: ${this.state.buyer.telefonnummer}`);
+  
+      doc.save('Buchungsbeleg.pdf');
+  
+      this.setState({ pdfGenerating: false });
     }
+  };
+  
+  
+  
+  
+
+  handleBuyerInputChange = (e) => {
+    const { name, value } = e.target;
+    this.setState((prevState) => ({
+      buyer: {
+        ...prevState.buyer,
+        [name]: value,
+      },
+    }));
   };
 
   render() {
     return (
       <div>
         <h1>Buchungsbeleg Verkauf</h1>
+        
         <table ref={this.pdfRef}>
           <thead>
             <tr>
@@ -87,10 +145,71 @@ class BuchungsbelegVerkauf extends Component {
           </tbody>
         </table>
         <div>
+          <h2>Käuferinformationen</h2>
+          <label>Vorname:
+            <input
+              type="text"
+              name="vorname"
+              value={this.state.buyer.vorname}
+              onChange={this.handleBuyerInputChange}
+            />
+          </label>
+          <label>Nachname:
+            <input
+              type="text"
+              name="nachname"
+              value={this.state.buyer.nachname}
+              onChange={this.handleBuyerInputChange}
+            />
+          </label>
+          <label>Straße:
+            <input
+              type="text"
+              name="strasse"
+              value={this.state.buyer.strasse}
+              onChange={this.handleBuyerInputChange}
+            />
+          </label>
+          <label>PLZ:
+            <input
+              type="text"
+              name="plz"
+              value={this.state.buyer.plz}
+              onChange={this.handleBuyerInputChange}
+            />
+          </label>
+          <label>Ort:
+            <input
+              type="text"
+              name="ort"
+              value={this.state.buyer.ort}
+              onChange={this.handleBuyerInputChange}
+            />
+          </label>
+          <label>E-Mail:
+            <input
+              type="email"
+              name="email"
+              value={this.state.buyer.email}
+              onChange={this.handleBuyerInputChange}
+            />
+          </label>
+          <label>Telefonnummer:
+            <input
+              type="tel"
+              name="telefonnummer"
+              value={this.state.buyer.telefonnummer}
+              onChange={this.handleBuyerInputChange}
+            />
+          </label>
+        </div>
+        <div>
           <strong>Gesamt: {this.berechneGesamt()} CHF</strong>
         </div>
         <button onClick={this.handleAddRow}>Zeile hinzufügen</button>
-        <button onClick={this.handleCreatePdf}>PDF erstellen</button>
+        <button onClick={this.handleCreatePdf} disabled={this.state.pdfGenerating}>
+          {this.state.pdfGenerating ? 'PDF wird generiert...' : 'PDF erstellen'}
+        </button>
       </div>
     );
   }
