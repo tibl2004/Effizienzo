@@ -1,9 +1,10 @@
 // Versand.scss
 
-$primary-color: #3498db; // Hier kannst du die Hauptfarbe anpassen
+$primary-color: #3498db;
+$custom-color: #f2ffe9; // Neue Farbe für die Faktura-Preis-Spalte
+$special-color: #a6cf98; // Farbe für die letzten beiden Zellen in Faktura-Preis
 
 div {
- 
   h1 {
     color: $primary-color;
   }
@@ -17,19 +18,31 @@ div {
       border: 1px solid #ddd;
       padding: 8px;
       text-align: left;
+
+      &:last-child {
+        color: black;
+        background-color: $custom-color;
+      }
     }
 
     th {
-      background-color: $primary-color;
-      color: white;
+      background-color: white;
+      color: black;
     }
 
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
+    tr:first-child {
+      background-color: white; // Hintergrundfarbe für die erste Zeile
     }
+
+    
 
     tr:hover {
       background-color: #f5f5f5;
+    }
+
+    // Füge die folgenden Stile hinzu, um die spezielle Farbe basierend auf der ID zu setzen
+    td#fak-5, td#fak-6 {
+      background-color: $special-color;
     }
 
     td {
@@ -38,4 +51,21 @@ div {
       }
     }
   }
+  .copied {
+    position: relative;
+
+    &::after {
+        content: 'Kopiert!';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: green; // Ändere dies nach Bedarf
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+    }
+}
+
 }
