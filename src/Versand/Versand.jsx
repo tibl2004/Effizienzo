@@ -22,7 +22,7 @@ function Versand() {
             <th>Dicke *</th>
             <th>Gewicht</th>
             <th>Portokosten Post</th>
-            <th>Faktura-Preis</th>
+            <th>Faktura-Preis **</th>
           </tr>
         </thead>
         <tbody>
@@ -37,6 +37,9 @@ function Versand() {
           ))}
         </tbody>
       </table>
+
+      <p>* Dicke = Kuvert + Inhalt</p>
+      <p>** Faktura-Preis = Portokosten Post + Zuschlag für Verpackungsmaterial</p>
     </div>
   );
 }
