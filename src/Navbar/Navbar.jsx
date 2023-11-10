@@ -51,6 +51,7 @@ function Navbar() {
             Home
           </Link>
         </li>
+
         <li>
           <Link to="/erfassen" className={currentPath === '/erfassen' ? 'active' : ''}>
             Erfassen
@@ -62,10 +63,16 @@ function Navbar() {
           </Link>
         </li>
         <li>
+          <Link to="/versand" className={currentPath === '/versand' ? 'active' : ''}>
+            Versand
+          </Link>
+        </li>
+        <li>
           <Link to="/reaktivierung" className={currentPath === '/reaktivierung' ? 'active' : ''}>
             Reaktivierung
           </Link>
         </li>
+        
         <li>
           <Link to="/symbole" className={currentPath === '/symbole' ? 'active' : ''}>
             Symbole

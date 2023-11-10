@@ -47,6 +47,7 @@
   import BuchungsbelegVerkauf from './Admin/BuchungsbelegVerkauf';
 import Symbole from './Symbole/Symbole';
 import Schluss from './Schluss/Schluss';
+import Versand from './Versand/Versand';
 
   function Navigation() {
     return <Navbar />;
@@ -110,6 +111,15 @@ import Schluss from './Schluss/Schluss';
                 <>
                   <Navigation />
                   <Schluss />
+                </>
+              }
+            />
+             <Route
+              path="/versand"
+              element={
+                <>
+                  <Navigation />
+                  <Versand />
                 </>
               }
             />
