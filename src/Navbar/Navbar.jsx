@@ -51,17 +51,30 @@ function Navbar() {
             Home
           </Link>
         </li>
+        <li>
+    <Link to="/artikel" className={currentPath.startsWith('/artikel') ? 'active' : ''}>
+      Artikel
+    </Link>
+    <ul className="submenu">
+      <li>
+        <Link to="/artikel/erfassen" className={currentPath === '/artikel/erfassen' ? 'active' : ''}>
+          Erfassen
+        </Link>
+      </li>
+      <li>
+        <Link to="/artikel/inserieren" className={currentPath === '/artikel/inserieren' ? 'active' : ''}>
+          Inserieren
+        </Link>
+      </li>
+      <li>
+        <Link to="/artikel/schluss" className={currentPath === '/artikel/schluss' ? 'active' : ''}>
+          Schluss
+        </Link>
+      </li>
+    </ul>
+  </li>
 
-        <li>
-          <Link to="/erfassen" className={currentPath === '/erfassen' ? 'active' : ''}>
-            Erfassen
-          </Link>
-        </li>
-        <li>
-          <Link to="/inserieren" className={currentPath === '/inserieren' ? 'active' : ''}>
-            Inserieren
-          </Link>
-        </li>
+       
         <li>
           <Link to="/versand" className={currentPath === '/versand' ? 'active' : ''}>
             Versand
@@ -78,11 +91,7 @@ function Navbar() {
             Symbole
           </Link>
         </li>
-        <li>
-          <Link to="/schluss" className={currentPath === '/schluss' ? 'active' : ''}>
-            Schluss
-          </Link>
-        </li>
+      
 
         {loggedInUser ? (
           <>
