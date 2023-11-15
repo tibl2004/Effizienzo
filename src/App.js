@@ -79,7 +79,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router basename='/effizienzo_Login'>
+      <Router>
         <Routes>
         <Route
             path="/Effizienzo"
