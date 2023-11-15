@@ -82,7 +82,7 @@ function App() {
       <Router>
         <Routes>
         <Route
-            path="/Effzienzo"
+            path="/Effizienzo"
             element={
               
                 <Startsite />
