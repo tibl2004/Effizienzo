@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Startsite.scss';
 
-const Startsite = () => {
+function Startsite() {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [loginAttempted, setLoginAttempted] = useState(false);
   const [loginSuccessful, setLoginSuccessful] = useState(false);
@@ -14,7 +14,6 @@ const Startsite = () => {
 
     if (username === '123' && password === '123') {
       setLoginSuccessful(true);
-      window.location = '/mainsite'
     } else {
       setErrorMessage('Falscher Benutzername oder Passwort');
       setLoginAttempted(true);
@@ -23,7 +22,6 @@ const Startsite = () => {
 
   const handleInputChange = () => {
     setErrorMessage('');
-    setLoginAttempted(false); // Zurücksetzen, wenn der Benutzername oder das Passwort geändert wird
   };
 
   useEffect(() => {
@@ -31,6 +29,13 @@ const Startsite = () => {
       setShowLoginForm(true);
     }, 2000);
   }, []);
+
+  useEffect(() => {
+    // Zurücksetzen des Login-Versuch-Status, wenn loginAttempted sich ändert
+    if (loginAttempted) {
+      setLoginAttempted(false);
+    }
+  }, [loginAttempted]);
 
   useEffect(() => {
     if (loginSuccessful) {
@@ -47,17 +52,19 @@ const Startsite = () => {
             <input
               type='text'
               placeholder='Benutzername'
-              disabled={loginAttempted && !loginSuccessful}
+              disabled={loginAttempted}
               onChange={(e) => setUsername(e.target.value)}
+              onFocus={handleInputChange}
             />
             <input
               type='password'
               placeholder='Passwort'
-              disabled={loginAttempted && !loginSuccessful}
+              disabled={loginAttempted}
               onChange={(e) => setPassword(e.target.value)}
+              onFocus={handleInputChange}
             />
             <div className='error-message'>{errorMessage}</div>
-            <button type='submit' disabled={loginAttempted && !loginSuccessful}>
+            <button type='submit' disabled={loginAttempted}>
               Login
             </button>
           </form>
@@ -65,6 +72,6 @@ const Startsite = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Startsite;

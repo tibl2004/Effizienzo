@@ -190,7 +190,7 @@ function App() {
                 <Admins />
               </>
             ) : (
-              <Navigate to="/Effizienzo" replace />
+              <Navigate to="/" replace />
             )}
           />
           <Route
@@ -201,7 +201,7 @@ function App() {
                 <Tagesplanung />
               </>
             ) : (
-              <Navigate to="/Effizienzo" replace />
+              <Navigate to="/" replace />
             )}
           />
           <Route
@@ -212,7 +212,7 @@ function App() {
                 <BuchungsbelegVerkauf />
               </>
             ) : (
-              <Navigate to="/Effizienzo" replace />
+              <Navigate to="/" replace />
             )}
           />
           <Route
@@ -223,7 +223,7 @@ function App() {
                 <CreateAdmin />
               </>
             ) : (
-              <Navigate to="/Effizienzo" replace />
+              <Navigate to="/" replace />
             )}
           />
 
