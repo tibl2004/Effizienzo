@@ -47,7 +47,7 @@ function Navbar() {
       </div>
       <ul className='links'>
         <li>
-          <Link to="/Effizienzo" className={currentPath === '/Effizienzo' ? 'active' : ''}>
+          <Link to="/mainsite" className={currentPath === '/mainsite' ? 'active' : ''}>
             Home
           </Link>
         </li>

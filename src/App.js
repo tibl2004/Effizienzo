@@ -49,6 +49,7 @@ import BuchungsbelegVerkauf from './Admin/BuchungsbelegVerkauf';
 import Symbole from './Symbole/Symbole';
 import Schluss from './Schluss/Schluss';
 import Versand from './Versand/Versand';
+import Startsite from './Loginn/Startsite';
 
 
 function Navigation() {
@@ -80,6 +81,14 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+        <Route
+            path="/"
+            element={
+              
+                <Startsite />
+              
+            }
+          />
           <Route
             path="/artikel"
             element={
@@ -90,7 +99,7 @@ function App() {
             }
           />
           <Route
-            path="/Effizienzo"
+            path="/mainsite"
             element={
               <>
                 <Navigation />
