@@ -10,7 +10,7 @@ function Login() {
 
   useEffect(() => {
     // Laden Sie die Benutzerdaten aus dem angegebenen Server
-    const apiUrl = 'https://users-8a52.onrender.com/users';
+    const apiUrl = 'https://users-8a52.onrender.com/a';
 
     fetch(apiUrl)
       .then(response => response.json())

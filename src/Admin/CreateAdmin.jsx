@@ -8,12 +8,11 @@ function CreateAdmin() {
     username: "",
     password: "",
     enddatum: "",
-    isAdmin: false, // Neues Feld für die Admin-Rolle
+    isAdmin: false,
   });
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    // Falls es sich um eine Checkbox handelt, setze den Wert auf checked, sonst auf value
     const inputValue = type === "checkbox" ? checked : value;
 
     setNewAdmin({ ...newAdmin, [name]: inputValue });
@@ -21,20 +20,20 @@ function CreateAdmin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Konvertiere das Enddatum in ISO 8601-Format
     const isoEnddatum = newAdmin.enddatum;
     newAdmin.enddatum = isoEnddatum;
 
-    // Hier sollten Sie die POST-Anfrage senden, um einen neuen Admin hinzuzufügen
-    // Setzen Sie das loggedIn-Feld auf true
+    const apiUrl = newAdmin.isAdmin
+      ? "https://users-8a52.onrender.com/admins"
+      : "https://users-8a52.onrender.com/users";
+
     axios
-      .post("https://users-8a52.onrender.com/users", newAdmin)
+      .post(apiUrl, newAdmin)
       .then((response) => {
-        // Hier können Sie je nach Bedarf eine Bestätigung anzeigen
         console.log("Neuer Admin wurde erstellt.");
 
-        // Zurück zur /admins-Seite navigieren
-        window.location = "/admins";
+        const redirectUrl = newAdmin.isAdmin ? "/admins" : "/users";
+        window.location = redirectUrl;
       })
       .catch((error) => {
         console.error("Fehler beim Erstellen des neuen Admins: " + error);

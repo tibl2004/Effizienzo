@@ -63,7 +63,7 @@ function App() {
   // Effekt, um den eingeloggten Status abzurufen
   useEffect(() => {
     // Hier die Anfrage an den Server senden, um den Benutzerstatus abzurufen
-    fetch('https://users-8a52.onrender.com/users')
+    fetch('https://users-8a52.onrender.com/admins')
       .then((response) => response.json())
       .then((data) => {
         // Überprüfen, ob der Benutzer eingeloggt ist
