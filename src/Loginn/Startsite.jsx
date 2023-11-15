@@ -9,15 +9,35 @@ function Startsite() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const checkLogin = async (username, password) => {
+    try {
+      const userResponse = await fetch('https://users-8a52.onrender.com/users');
+      const adminsResponse = await fetch('https://users-8a52.onrender.com/admins');
 
-    if (username === '123' && password === '123') {
-      setLoginSuccessful(true);
-    } else {
-      setErrorMessage('Falscher Benutzername oder Passwort');
+      const userData = await userResponse.json();
+      const adminsData = await adminsResponse.json();
+
+      // Check if the username and password match any user or admin
+      const userFound = userData.find(user => user.username === username && user.password === password);
+      const adminFound = adminsData.find(admin => admin.username === username && admin.password === password);
+
+      if (userFound || adminFound) {
+        setLoginSuccessful(true);
+      } else {
+        setErrorMessage('Falscher Benutzername oder Passwort');
+        setLoginAttempted(true);
+      }
+    } catch (error) {
+      console.error('Error checking login:', error);
+      setErrorMessage('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
       setLoginAttempted(true);
     }
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    await checkLogin(username, password);
   };
 
   const handleInputChange = () => {
@@ -40,6 +60,7 @@ function Startsite() {
   useEffect(() => {
     if (loginSuccessful) {
       window.location = '/mainsite';
+      console.log('Login erfolgreich! Weiterleitung zur Hauptseite...');
     }
   }, [loginSuccessful]);
 
