@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Startsite.scss';
 
 function Startsite() {
@@ -23,6 +24,19 @@ function Startsite() {
 
       if (userFound || adminFound) {
         setLoginSuccessful(true);
+
+        // Senden Sie eine PUT-Anfrage, um den loggedIn-Status auf dem Server zu aktualisieren
+        if (userFound) {
+          await axios.put(`https://users-8a52.onrender.com/users/${userFound.id}`, {
+            ...userFound,
+            loggedIn: true
+          });
+        } else if (adminFound) {
+          await axios.put(`https://users-8a52.onrender.com/admins/${adminFound.id}`, {
+            ...adminFound,
+            loggedIn: true
+          });
+        }
       } else {
         setErrorMessage('Falscher Benutzername oder Passwort');
         setLoginAttempted(true);
