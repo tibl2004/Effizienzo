@@ -81,12 +81,13 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-        <Route
+          <Route
             path="/Effizienzo"
             element={
-              
-                <Startsite />
-              
+              <>
+                <Navbar />
+                <Mainsite />
+              </>
             }
           />
           <Route
