@@ -82,7 +82,7 @@ function App() {
       <Router>
         <Routes>
           <Route
-            path="/Effizienzo"
+            path="/"
             element={
               <>
                 <Navbar />
