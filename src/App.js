@@ -8,6 +8,9 @@ import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 import Tagesplanung from './Admin/Tagesplanung';
 import Artikel from './Artikel/Artikel';
+import Spenden from './Vorlagen/Spenden/Spenden';
+import Abholung from './Vorlagen/Abholung/Abholung';
+
 
 import WandStandUhren from './InserierenVorlagen/WandStandUhren';
 import Werkzeug from './InserierenVorlagen/Werkzeug';
@@ -50,6 +53,9 @@ import Symbole from './Symbole/Symbole';
 import Schluss from './Schluss/Schluss';
 import Versand from './Versand/Versand';
 import Startsite from './Loginn/Startsite';
+import Users from './Admin/Users/Users';
+import Chat from './Chat/Chat';
+import Vorlagen from './Vorlagen/Volagen';
 
 
 function Navigation() {
@@ -85,8 +91,46 @@ function App() {
             path="/"
             element={
               <>
-                <Navbar />
-                <Mainsite />
+          
+
+                <Startsite />
+              </>
+            }
+          />
+          <Route
+            path="/vorlagen"
+            element={
+              <>
+                <Navigation />
+                <Vorlagen />
+              </>
+            }
+          />
+          
+          <Route
+            path="/spenden"
+            element={
+              <>
+                <Navigation />
+                <Spenden />
+              </>
+            }
+          />
+          <Route
+            path="/abholung"
+            element={
+              <>
+                <Navigation />
+                <Abholung />
+              </>
+            }
+          />
+          <Route
+            path="/users"
+            element={
+              <>
+                <Navigation />
+                <Users />
               </>
             }
           />
@@ -185,47 +229,48 @@ function App() {
 
           <Route
             path="/admins"
-            element={loggedIn ? (
+            element={
               <>
                 <Navigation />
                 <Admins />
               </>
-            ) : (
-              <Navigate to="/" replace />
-            )}
+            }
           />
           <Route
             path="/tagesplanung"
-            element={loggedIn ? (
+            element={
               <>
                 <Navigation />
                 <Tagesplanung />
               </>
-            ) : (
-              <Navigate to="/" replace />
-            )}
+            }
           />
           <Route
             path="/interner-verkauf"
-            element={loggedIn ? (
+            element={
               <>
                 <Navigation />
                 <BuchungsbelegVerkauf />
               </>
-            ) : (
-              <Navigate to="/" replace />
-            )}
+            }
           />
           <Route
             path="/admincreate"
-            element={loggedIn ? (
+            element={
               <>
                 <Navigation />
                 <CreateAdmin />
               </>
-            ) : (
-              <Navigate to="/" replace />
-            )}
+            }
+          />
+          <Route
+            path="/chat"
+            element={
+              <>
+                <Navigation />
+                <Chat />
+              </>
+            }
           />
 
 

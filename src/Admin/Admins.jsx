@@ -18,7 +18,7 @@ function Admins() {
   const [editMode, setEditMode] = useState(null);
 
   useEffect(() => {
-    axios.get("https://users-8a52.onrender.com/users")
+    axios.get("https://users-8a52.onrender.com/admins")
       .then(response => {
         setAdmins(response.data);
       })
@@ -42,7 +42,7 @@ function Admins() {
     e.preventDefault();
     axios.post("https://users-8a52.onrender.com/users", newAdmin)
       .then(response => {
-        axios.get("https://users-8a52.onrender.com/users")
+        axios.get("https://users-8a52.onrender.com/adminså")
           .then(response => {
             setAdmins(response.data);
           })
