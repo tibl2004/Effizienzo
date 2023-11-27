@@ -119,7 +119,9 @@ function Navbar() {
             Symbole
           </Link>
         </li>
-        <li>
+        {
+          /*
+              <li>
           <Link to="/chat" className={currentPath === '/chat' ? 'active' : ''}>
             Chat
           </Link>
@@ -152,6 +154,10 @@ function Navbar() {
             Interner Verkauf
           </Link>
         </li>
+          
+          */
+        }
+    
         
       </ul>
     </div>

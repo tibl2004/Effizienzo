@@ -56,6 +56,7 @@ import Startsite from './Loginn/Startsite';
 import Users from './Admin/Users/Users';
 import Chat from './Chat/Chat';
 import Vorlagen from './Vorlagen/Volagen';
+import Main from 'react-router-dom/dist/main';
 
 
 function Navigation() {
@@ -93,7 +94,8 @@ function App() {
               <>
           
 
-                <Startsite />
+                <Navbar />
+                <Mainsite />
               </>
             }
           />
