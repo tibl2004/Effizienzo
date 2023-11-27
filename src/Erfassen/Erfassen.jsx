@@ -182,21 +182,11 @@ function Erfassen() {
             <FontAwesomeIcon icon={faTrash} /> Alle Eingaben Löschen
           </span>
         </button>
-        <button onClick={toggleOverlay} className="question-button">
-          <FontAwesomeIcon icon={faQuestionCircle} /> Tutorial
-        </button>
+       
         <button onClick={handleExportToPDF} className="export-button">
           <FontAwesomeIcon icon={faFilePdf} /> PDF Exportieren
         </button>
-        {isOverlayVisible && (
-          <div className="overlay">
-            <button className="close-button" onClick={closeOverlay}>
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-            {/* Hier den Inhalt des Overlays platzieren */}
-            Hier kommt das Tutorial hin. Es folgt beim nächsten Update. ...
-          </div>
-        )}
+        
       </div>
 
       <div className="input-container">
