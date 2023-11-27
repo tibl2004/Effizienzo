@@ -10,6 +10,7 @@ import Tagesplanung from './Admin/Tagesplanung';
 import Artikel from './Artikel/Artikel';
 import Spenden from './Vorlagen/Spenden/Spenden';
 import Abholung from './Vorlagen/Abholung/Abholung';
+import Offline from './Offline/Offline';
 
 
 import WandStandUhren from './InserierenVorlagen/WandStandUhren';
@@ -230,6 +231,16 @@ function App() {
             }
           />
 
+<Route
+            path="/offline"
+            element={
+              <>
+                
+                <Offline />
+              </>
+            }
+          />
+
           <Route
             path="/admins"
             element={
@@ -338,6 +349,8 @@ function App() {
               </>
             }
           />
+
+
 
           <Route
             path="/brautkleid"
