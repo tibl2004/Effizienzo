@@ -57,6 +57,7 @@ import Users from './Admin/Users/Users';
 import Chat from './Chat/Chat';
 import Vorlagen from './Vorlagen/Volagen';
 import Main from 'react-router-dom/dist/main';
+import Vasen from './InserierenVorlagen/Vasen';
 
 
 function Navigation() {
@@ -92,7 +93,7 @@ function App() {
             path="/"
             element={
               <>
-          
+
 
                 <Navbar />
                 <Mainsite />
@@ -108,7 +109,7 @@ function App() {
               </>
             }
           />
-          
+
           <Route
             path="/spenden"
             element={
@@ -324,6 +325,16 @@ function App() {
               <>
                 <Navigation />
                 <Bilder />
+              </>
+            }
+          />
+
+          <Route
+            path="/vasen"
+            element={
+              <>
+                <Navigation />
+                <Vasen />
               </>
             }
           />

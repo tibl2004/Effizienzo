@@ -72,6 +72,7 @@ function Auswahlkategorie() {
     { icon: faImage, title: "Plüschtiere", to:"/plueschtiere"},
     { icon: faMusic, title: "Schallplatten", to:"/schallplatten"},
     { icon: faMoneyBill, title: "Portemonnaie", to: "/portemonnaie"},
+    { title: "Vasen", to: "/vasen"},
     { icon: faHammer, title: "Werkzeug", to: "/werkzeug"},
     { icon: faClock, title: "Wanduhren - Standuhren", to: "/wandstanduhren"}
   ];
