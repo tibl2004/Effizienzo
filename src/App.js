@@ -96,8 +96,7 @@ function App() {
               <>
 
 
-                <Navbar />
-                <Mainsite />
+                <Offline />
               </>
             }
           />
