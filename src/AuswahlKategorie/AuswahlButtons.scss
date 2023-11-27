@@ -1,20 +1,25 @@
 .category-buttons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin: 5px; /* Füge Abstand zwischen den Buttons hinzu */
+  justify-content: space-between;
+}
+
+.title{
+  font-size: 20px;
 }
 
 .category-box {
-  margin: 5px; /* Füge Abstand zwischen den Boxen hinzu */
+  width: 200px; /* Beispielbreite, ändere dies entsprechend deinen Anforderungen */
+  height: 150px; /* Beispielhöhe, ändere dies entsprechend deinen Anforderungen */
+  margin: 5px;
   background-color: #007bff;
   border-radius: 30px;
   padding: 20px;
+  box-sizing: border-box;
+  transition: background-color 0.3s;
+
   &:hover {
-      background-color: #0056b3;
+    background-color: #0056b3;
   }
 }
 

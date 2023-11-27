@@ -34,12 +34,13 @@ import {
 function Box(props) {
   return (
     <div className="category-box" onClick={props.onClick}>
-      <FontAwesomeIcon icon={props.icon} />
-      <h2>{props.title}</h2>
+      <FontAwesomeIcon icon={props.icon} size="2x" /> {/* Ändere "3x" entsprechend deinen Anforderungen */}
+      <h2 className='title'>{props.title}</h2>
       <p>{props.text}</p>
     </div>
   );
 }
+
 
 function Auswahlkategorie() {
   const [searchQuery, setSearchQuery] = useState('');
