@@ -91,7 +91,7 @@ function App() {
       <Router>
         <Routes>
           <Route
-            path="/Effizienzo"
+            path="/offline"
             element={
               <>
 
