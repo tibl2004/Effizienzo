@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './Startsite.scss';
 
 function Startsite() {
@@ -10,40 +9,12 @@ function Startsite() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const checkLogin = async (username, password) => {
+  const checkLogin = () => {
     try {
-      // Benutzer- und Admin-Daten separat abrufen
-      const usersResponse = await fetch('https://users-8a52.onrender.com/users');
-      const adminsResponse = await fetch('https://users-8a52.onrender.com/admins');
-  
-      const usersData = await usersResponse.json();
-      const adminsData = await adminsResponse.json();
-  
-      // Prüfen Sie, ob der Benutzer in Benutzern oder Admins gefunden wurde
-      const userFound = usersData.find((user) => user.username === username && user.password === password);
-      const adminFound = adminsData.find((admin) => admin.username === username && admin.password === password);
-  
-      if (userFound || adminFound) {
-        const userId = userFound ? userFound.userId : adminFound.userId;
-  
-        // Hier die URL für die PUT-Anfrage einfügen (zum Beispiel für Benutzer)
-        try {
-          console.log('Sende PUT-Anfrage für Benutzer...');
-          const response = await axios.put(`https://users-8a52.onrender.com/users/${userId}`, {
-            loggedIn: true,
-            // other fields you want to update
-          });
-          console.log('PUT response:', response);
-  
-          console.log('PUT-Anfrage für Benutzer erfolgreich gesendet.');
-  
-          // Setze den Login-Erfolg nur nach erfolgreicher PUT-Anfrage
-          setLoginSuccessful(true);
-        } catch (error) {
-          console.error('Fehler bei der PUT-Anfrage:', error);
-          setErrorMessage('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
-          setLoginAttempted(true);
-        }
+      // Nur den Benutzer mit dem Benutzernamen "123" und dem Passwort "123" zulassen
+      if (username === '123' && password === '123') {
+        // Setze den Login-Erfolg
+        setLoginSuccessful(true);
       } else {
         setErrorMessage('Falscher Benutzername oder Passwort');
         setLoginAttempted(true);
@@ -54,12 +25,10 @@ function Startsite() {
       setLoginAttempted(true);
     }
   };
-  
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-
-    await checkLogin(username, password);
+    checkLogin();
   };
 
   const handleInputChange = () => {

@@ -93,12 +93,12 @@ function App() {
             path="/"
             element={
               <>
-
-<Navbar />
-                <Mainsite />
+                <Startsite />
               </>
             }
           />
+
+          
           <Route
             path="/vorlagen"
             element={
@@ -283,7 +283,7 @@ function App() {
             path="/login"
             element={
               <>
-                <Navigation />
+              <Navbar />
                 <Login />
               </>
             }

@@ -1,94 +1,64 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './Mainsite.scss';
-import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
+import './Mainsite.scss';
 
 function Mainsite() {
-  const handleBoxClick = (title) => {
-    // Add your logic here to execute when a box is clicked.
-    console.log(`Box "${title}" was clicked.`);
-  };
-
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [updates, setUpdates] = useState([]);
 
   useEffect(() => {
-    // Fetch user data to determine the logged-in user
-    axios.get('https://users-8a52.onrender.com/users')
-      .then(response => {
-        const users = response.data;
-        const loggedInUser = users.find(user => user.loggedIn);
-        if (loggedInUser) {
-          setLoggedInUser(loggedInUser);
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching the logged-in user: ', error);
-      });
+    // Mock data for demonstration purposes
+    const mockUpdates = [
+      { id: 1, datum: "28.11.2023", title: 'Home Seite Neues Design', text: 'Die Home Seite hat ein neues Design bekommen.' },
+      { id: 2, datum: "29.11.2023", title: 'Login Fertig gestellt', text: 'Das Login wurde fertiggestellt und jeder Benutzer muss sich einloggen.' },
+
+      
+      // Add more updates as needed
+    ];
+
+    // Sort updates by date in descending order
+    const sortedUpdates = mockUpdates.sort((a, b) => new Date(parseDate(b.datum)) - new Date(parseDate(a.datum)));
+
+    setUpdates(sortedUpdates);
   }, []);
+
+  // Function to parse date in DD.MM.YYYY format and return as YYYY-MM-DD
+  const parseDate = (dateString) => {
+    const [day, month, year] = dateString.split('.');
+    return `${year}-${month}-${day}`;
+  };
 
   return (
     <div className="container">
-      <Link to="/artikel">
-        <Box
-          title="Artikel"
-          text="Hier kannst du alle Sachen die du mit Artikeln machen kannst machen"
-          onClick={() => handleBoxClick('Artikel')}
-        />
-      </Link>
+      <h2 className="hello-message">Hallo Vorname</h2>
 
-      <Link to="/reaktivierung">
-        <Box
-          title="Reaktivierung"
-          text="Hier kannst du das aktuelle Datum für die Restwert Datenbank kopieren, ohne es jedes Mal einzugeben."
-          onClick={() => handleBoxClick('Reaktivierung')}
-        />
-      </Link>
-      <Link to="/symbole">
-        <Box
-          title="Symbole"
-          text="Hier kannst du Symbole kopieren, ohne es jedes Mal einzugeben."
-          onClick={() => handleBoxClick('Symbole')}
-        />
-      </Link>
-      
-      {loggedInUser ? (
-        <>
-          <Link to="/Admins">
-            <Box
-              title="Admins"
-              text="Hier kannst du die Admin Logins verwalten."
-              onClick={() => handleBoxClick('Admins')}
-            />
-          </Link>
-          <Link to="/tagesplanung">
-            <Box
-              title="Tagesplanung"
-              text="Hier kannst du die Tagesplanung machen."
-              onClick={() => handleBoxClick('Tagesplanung')}
-            />
-          </Link>
-          <Link to="/interner-verkauf">
-            <Box
-              title="Interner Verkauf"
-              text="Hier kannst du Interne Verkäufe abwickeln"
-              onClick={() => handleBoxClick('Interner Verkauf')}
-            />
-          </Link>
-        </>
-      ) : null}
+
+      <div className='updates-container'>
+        <h3>Updates</h3>
+        <div className='updates'>
+          {updates.map((update, index) => (
+            <React.Fragment key={update.id}>
+              <Update datum={update.datum} title={update.title} text={update.text} />
+              {index !== updates.length - 1 && <hr />} {/* Display horizontal line if not the last update */}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
 
-function Box({ title, text, onClick }) {
+function Update({ datum, title, text }) {
   return (
     <div>
-      <button className="box" onClick={onClick}>
+      <div className="Update">
+        <p><em>{datum}</em></p>
         <p><strong>{title}</strong></p>
         <p>{text}</p>
-      </button>
+      </div>
     </div>
-)}
+  );
+}
+
+
 
 export default Mainsite;

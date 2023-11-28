@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
 import logo from '../Logo.jpeg';
@@ -73,7 +75,7 @@ function Navbar() {
   return (
     <div className='navbar'>
       <div className='logo-container'>
-        <div className='version-label'>V.3.1</div>
+        <div className='version-label'>V.4.0</div>
         <img src={logo} alt="Restwert" />
       </div>
       <ul className='links'>
@@ -119,6 +121,13 @@ function Navbar() {
             Symbole
           </Link>
         </li>
+        
+        <li>
+          <Link to="/" className="logout" onClick={handleLogout}>
+            <FontAwesomeIcon icon={faSignOutAlt} />
+            Logout
+          </Link>
+        </li>
         {
           /*
               <li>
@@ -126,7 +135,7 @@ function Navbar() {
             Chat
           </Link>
         </li>
-        <li>
+       <li>
           <Link to="/vorlagen" className={currentPath === '/vorlagen' ? 'active' : ''}>
             Vorlagen
           </Link>
