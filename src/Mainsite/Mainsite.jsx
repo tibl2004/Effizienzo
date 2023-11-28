@@ -29,7 +29,7 @@ function Mainsite() {
 
   return (
     <div className="container">
-      <h2 className="hello-message">Hallo Vorname</h2>
+      <h2 className="hello-message">Lieber Benutzer</h2>
 
 
       <div className='updates-container'>
