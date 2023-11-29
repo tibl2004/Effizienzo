@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Startsite.scss';
 
 function Startsite() {
@@ -9,26 +10,40 @@ function Startsite() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShowLoginForm(true);
+    }, 2000);
+  }, []);
+
+  useEffect(() => {
+    // Überprüfen Sie, ob der Benutzer bereits eingeloggt ist
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn === 'true') {
+      setLoginSuccessful(true);
+    }
+  }, []); // Nur beim ersten Laden ausführen
+
   const checkLogin = () => {
     try {
       // Nur den Benutzer mit dem Benutzernamen "123" und dem Passwort "123" zulassen
       if (
-  (username === 'LeBa' && password === 'L3nnyBalm3r') ||
-  (username === 'LuHa' && password === 'Luk4sH4nk3') ||
-  (username === 'ElHa' && password === 'El3n4H4ldim4nn') ||
-  (username === 'LeMü' && password === 'L3v1nMüh1eth4ler') ||
-  (username === 'AnKu' && password === 'Andr3Kuhlo') ||
-  (username === 'MaSc' && password === 'M4tthi4sSch1ld') ||
-  (username === 'LeMo' && password === 'L34M0ser') ||
-  (username === 'JaAf' && password === 'J4nin3Aff0lt3r') ||
-  (username === 'ChAn' && password === 'Ch4t3lain4ngel3s') ||
-  (username === 'FlBl' && password === 'Luk4sH4nk3') ||
-  (username === 'TiBl' && password === 'BlTimo') ||
-  (username === 'AlHof' && password === 'A73xR35tw3rt') ||
-  (username === 'NaBar' && password === 'Nad7aR35tw3rt') ||
-  (username === 'CoSch' && password === 'C0rn371aR35tw3rt') 
-) {
+        (username === 'LeBa' && password === 'L3nnyBalm3r') ||
+        (username === 'LuHa' && password === 'Luk4sH4nk3') ||
+        (username === 'ElHa' && password === 'El3n4H4ldim4nn') ||
+        (username === 'LeMü' && password === 'L3v1nMüh1eth4ler') ||
+        (username === 'AnKu' && password === 'Andr3Kuhlo') ||
+        (username === 'MaSc' && password === 'M4tthi4sSch1ld') ||
+        (username === 'LeMo' && password === 'L34M0ser') ||
+        (username === 'JaAf' && password === 'J4nin3Aff0lt3r') ||
+        (username === 'ChAn' && password === 'Ch4t3lain4ngel3s') ||
+        (username === 'FlBl' && password === 'Luk4sH4nk3') ||
+        (username === '123' && password === '123') 
+      ) {
+        // Login erfolgreich - speichern Sie den Benutzernamen im localStorage
+        localStorage.setItem('isLoggedIn', "true");
         setLoginSuccessful(true);
+        window.location = `/mainsite?username=${username}`;
       } else {
         setErrorMessage('Falscher Benutzername oder Passwort');
         setLoginAttempted(true);
@@ -39,29 +54,19 @@ function Startsite() {
       setLoginAttempted(true);
     }
   };
-
-  const handleLogin = (e) => {
+  
+  
+  const handleLogin = async (e) => {
     e.preventDefault();
-    checkLogin();
+    await checkLogin();
   };
+  
+
+
 
   const handleInputChange = () => {
     setErrorMessage('');
   };
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShowLoginForm(true);
-    }, 2000);
-  }, []);
-
-  useEffect(() => {
-    if (loginSuccessful) {
-      // Hier wird nach dem erfolgreichen Login der Benutzername an die Hauptseite weitergegeben.
-      window.location = `/mainsite?username=${username}`;
-      console.log('Login erfolgreich! Weiterleitung zur Hauptseite...');
-    }
-  }, [loginSuccessful, username]);
 
   return (
     <div className='login'>
