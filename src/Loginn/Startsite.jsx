@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './Startsite.scss';
 
 function Startsite() {
@@ -40,10 +39,11 @@ function Startsite() {
         (username === 'FlBl' && password === 'Luk4sH4nk3') ||
         (username === 'AlHof' && password === 'A73xR35tw3rt') ||
         (username === 'NaBar' && password === 'Nad7aR35tw3rt') ||
-        (username === 'CoSch' && password === 'C0rn371aR35tw3rt') 
+        (username === 'CoSch' && password === 'C0rn371aR35tw3rt') ||
+        (username === 'FlBl' && password === 'F7or1anB1um') 
       ) {
         // Login erfolgreich - speichern Sie den Benutzernamen im localStorage
-        localStorage.setItem('isLoggedIn', "true");
+        localStorage.setItem('isLoggedIn', 'true');
         setLoginSuccessful(true);
         window.location = `/mainsite?username=${username}`;
       } else {
@@ -56,15 +56,20 @@ function Startsite() {
       setLoginAttempted(true);
     }
   };
-  
-  
+
   const handleLogin = async (e) => {
     e.preventDefault();
+    // Zurücksetzen der Zustände
+    setLoginAttempted(false);
+    setLoginSuccessful(false);
     await checkLogin();
   };
-  
 
-
+  useEffect(() => {
+    setTimeout(() => {
+      setShowLoginForm(true);
+    }, 2000);
+  }, []);
 
   const handleInputChange = () => {
     setErrorMessage('');
