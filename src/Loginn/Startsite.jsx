@@ -38,7 +38,9 @@ function Startsite() {
         (username === 'JaAf' && password === 'J4nin3Aff0lt3r') ||
         (username === 'ChAn' && password === 'Ch4t3lain4ngel3s') ||
         (username === 'FlBl' && password === 'Luk4sH4nk3') ||
-        (username === '123' && password === '123') 
+        (username === 'AlHof' && password === 'A73xR35tw3rt') ||
+        (username === 'NaBar' && password === 'Nad7aR35tw3rt') ||
+        (username === 'CoSch' && password === 'C0rn371aR35tw3rt') 
       ) {
         // Login erfolgreich - speichern Sie den Benutzernamen im localStorage
         localStorage.setItem('isLoggedIn', "true");
