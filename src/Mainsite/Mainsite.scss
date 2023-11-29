@@ -16,3 +16,11 @@
 .box {
   height: 100px;
 }
+
+.muster-text {
+  margin-left: 20px; /* Passen Sie den Abstand nach Bedarf an */
+  font-style: italic; /* Optional: Kursivstil für den Muster-Text */
+  color: #555; /* Optional: Farbe für den Muster-Text */
+  max-width: 800px;
+}
+

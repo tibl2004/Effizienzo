@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Mainsite.scss';
 
 function Mainsite() {
   const [updates, setUpdates] = useState([]);
+  const [username, setUsername] = useState('');
+
+  const location = useLocation();
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    setUsername(searchParams.get('username') || '');
+  }, [location.search]);
 
   useEffect(() => {
     // Mock data for demonstration purposes
     const mockUpdates = [
       { id: 1, datum: "28.11.2023", title: 'Home Seite Neues Design', text: 'Die Home Seite hat ein neues Design bekommen.' },
       { id: 2, datum: "29.11.2023", title: 'Login Fertig gestellt', text: 'Das Login wurde fertiggestellt und jeder Benutzer muss sich einloggen.' },
-
-      
       // Add more updates as needed
     ];
 
@@ -29,8 +34,11 @@ function Mainsite() {
 
   return (
     <div className="container">
-      <h2 className="hello-message">Lieber Benutzer</h2>
+      <h2 className="hello-message">Lieber {username}</h2>
 
+      {/* Neuer Code: Muster-Text oder Lückenfüller-Text */}
+      <p className="muster-text">Herzlich willkommen auf Effizienzo! Schön hast du dich entschieden meine Plattform zu benutzen. Viel Spass und bei Fragen komme einfach auf mich zu!</p>
+      <p className='muster-text'>Liebe Grüsse, Timo Blumer</p>
 
       <div className='updates-container'>
         <h3>Updates</h3>
@@ -58,7 +66,5 @@ function Update({ datum, title, text }) {
     </div>
   );
 }
-
-
 
 export default Mainsite;

@@ -13,20 +13,20 @@ function Startsite() {
     try {
       // Nur den Benutzer mit dem Benutzernamen "123" und dem Passwort "123" zulassen
       if (
-        (username === 'LeBa' && password === 'L3nnyBalm3r') ||
-        (username === 'LuHa' && password === 'Luk4sH4nk3') ||
-        (username === 'ElHa' && password === 'El3n4H4ldim4nn') ||
-        (username === 'LeMü' && password === 'L3v1nMüh1eth4ler') ||
-        (username === 'AnKu' && password === 'Andr3Kuhlo') ||
-        (username === 'MaSc' && password === 'M4tthi4sSch1ld') ||
-        (username === 'LeMo' && password === 'L34M0ser') ||
-        (username === 'JaAf' && password === 'J4nin3Aff0lt3r') ||
-        (username === 'ChAn' && password === 'Ch4t3lain4ngel3s') ||
-        (username === 'FlBl' && password === 'Luk4sH4nk3') 
-      ) {
-
-
-
+  (username === 'LeBa' && password === 'L3nnyBalm3r') ||
+  (username === 'LuHa' && password === 'Luk4sH4nk3') ||
+  (username === 'ElHa' && password === 'El3n4H4ldim4nn') ||
+  (username === 'LeMü' && password === 'L3v1nMüh1eth4ler') ||
+  (username === 'AnKu' && password === 'Andr3Kuhlo') ||
+  (username === 'MaSc' && password === 'M4tthi4sSch1ld') ||
+  (username === 'LeMo' && password === 'L34M0ser') ||
+  (username === 'JaAf' && password === 'J4nin3Aff0lt3r') ||
+  (username === 'ChAn' && password === 'Ch4t3lain4ngel3s') ||
+  (username === 'FlBl' && password === 'Luk4sH4nk3') ||
+  (username === 'AlHof' && password === 'A73xR35tw3rt') ||
+  (username === 'NaBar' && password === 'Nad7aR35tw3rt') ||
+  (username === 'CoSch' && password === 'C0rn371aR35tw3rt') 
+) {
         setLoginSuccessful(true);
       } else {
         setErrorMessage('Falscher Benutzername oder Passwort');
@@ -55,18 +55,12 @@ function Startsite() {
   }, []);
 
   useEffect(() => {
-    // Zurücksetzen des Login-Versuch-Status, wenn loginAttempted sich ändert
-    if (loginAttempted) {
-      setLoginAttempted(false);
-    }
-  }, [loginAttempted]);
-
-  useEffect(() => {
     if (loginSuccessful) {
-      window.location = '/mainsite';
+      // Hier wird nach dem erfolgreichen Login der Benutzername an die Hauptseite weitergegeben.
+      window.location = `/mainsite?username=${username}`;
       console.log('Login erfolgreich! Weiterleitung zur Hauptseite...');
     }
-  }, [loginSuccessful]);
+  }, [loginSuccessful, username]);
 
   return (
     <div className='login'>
