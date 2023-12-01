@@ -58,6 +58,8 @@ import Chat from './Chat/Chat';
 import Vorlagen from './Vorlagen/Volagen';
 import Main from 'react-router-dom/dist/main';
 import Vasen from './InserierenVorlagen/Vasen';
+import Profil from './Profil/Profil';
+import Settings from './Settings/Settings';
 
 
 function Navigation() {
@@ -94,6 +96,25 @@ function App() {
             element={
               <>
                 <Startsite />
+              </>
+            }
+          />
+           <Route
+            path="/profil"
+            element={
+              <>
+              <Navbar />
+                <Profil />
+              </>
+            }
+          />
+
+<Route
+            path="/profil/settings"
+            element={
+              <>
+              <Navbar />
+                <Settings />
               </>
             }
           />

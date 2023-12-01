@@ -121,6 +121,19 @@ function Navbar() {
             Symbole
           </Link>
         </li>
+        <li>
+          <Link to="/profil" className={currentPath.startsWith('/profil') ? 'active' : ''}>
+            Profil
+          </Link>
+          <ul className="submenu">
+            <li>
+              <Link to="/profil/settings" className={currentPath === '/profil/settings' ? 'active' : ''}>
+                Einstellungen
+              </Link>
+            </li>
+            
+          </ul>
+        </li>
         
         <li>
           <Link to="/" className="logout" onClick={handleLogout}>
