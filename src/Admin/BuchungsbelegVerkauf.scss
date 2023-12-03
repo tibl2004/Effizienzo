@@ -1,0 +1,49 @@
+.buchungsbeleg-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .title {
+    color: #333;
+    text-align: center;
+  }
+  
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .buyer-info {
+    margin-top: 20px;
+  }
+  
+  .buyer-info label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .total-section {
+    margin-top: 20px;
+  }
+  
+  .add-row-btn, .pdf-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .add-row-btn:hover, .pdf-btn:hover {
+    background-color: #45a049;
+  }
+  

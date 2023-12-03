@@ -52,8 +52,9 @@ import BuchungsbelegVerkauf from './Admin/BuchungsbelegVerkauf';
 import Symbole from './Symbole/Symbole';
 import Schluss from './Schluss/Schluss';
 import Versand from './Versand/Versand';
-import Startsite from './Loginn/Startsite';
+
 import Users from './Admin/Users/Users';
+import CreateUser from './Admin/Users/CreateUser';
 import Chat from './Chat/Chat';
 import Vorlagen from './Vorlagen/Volagen';
 import Main from 'react-router-dom/dist/main';
@@ -95,7 +96,7 @@ function App() {
             path="/"
             element={
               <>
-                <Startsite />
+                <Login />
               </>
             }
           />
@@ -149,11 +150,20 @@ function App() {
             }
           />
           <Route
-            path="/users"
+            path="/admins/users"
             element={
               <>
                 <Navigation />
                 <Users />
+              </>
+            }
+          />
+          <Route
+            path="/admins/usercreate"
+            element={
+              <>
+                <Navigation />
+                <CreateUser />
               </>
             }
           />
@@ -261,8 +271,9 @@ function App() {
               </>
             }
           />
-          <Route
-            path="/tagesplanung"
+
+<Route
+            path="/admins/tagesplanung"
             element={
               <>
                 <Navigation />
@@ -270,8 +281,9 @@ function App() {
               </>
             }
           />
+          
           <Route
-            path="/interner-verkauf"
+            path="/admins/interner-verkauf"
             element={
               <>
                 <Navigation />
@@ -280,7 +292,7 @@ function App() {
             }
           />
           <Route
-            path="/admincreate"
+            path="/admins/admincreate"
             element={
               <>
                 <Navigation />
@@ -300,16 +312,7 @@ function App() {
 
 
 
-          <Route
-            path="/login"
-            element={
-              <>
-              <Navbar />
-                <Login />
-              </>
-            }
-          />
-
+     
 
           <Route
             path="/nichtverkauf"

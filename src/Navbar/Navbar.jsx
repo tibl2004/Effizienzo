@@ -5,6 +5,7 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
 import logo from '../Logo.jpeg';
+import Clock from '../Clock/Clock';
 
 function Navbar() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -75,9 +76,10 @@ function Navbar() {
   return (
     <div className='navbar'>
       <div className='logo-container'>
-        <div className='version-label'>V.4.0</div>
+        <div className='version-label'>V.4.5</div>
         <img src={logo} alt="Restwert" />
       </div>
+      <Clock />
       <ul className='links'>
         <li>
           <Link to="/mainsite" className={currentPath === '/mainsite' ? 'active' : ''}>
@@ -122,6 +124,39 @@ function Navbar() {
           </Link>
         </li>
         <li>
+          <Link to="/admins" className={currentPath.startsWith('/admins') ? 'active' : ''}>
+            Admins
+          </Link>
+          <ul className="submenu">
+            <li>
+              <Link to="/admins/admincreate" className={currentPath === '/admins/admincreate' ? 'active' : ''}>
+                Admin erstellen
+              </Link>
+            </li>
+            <li>
+              <Link to="/admins/tagesplanung" className={currentPath === '/artikel/tagesplanung' ? 'active' : ''}>
+                Tagesplanung
+              </Link>
+            </li>
+            <li>
+              <Link to="/admins/interner-verkauf" className={currentPath === '/admins/interner-verkauf' ? 'active' : ''}>
+                Interner Verkauf
+              </Link>
+            </li>
+            <li>
+              <Link to="/admins/users" className={currentPath === '/admins/users' ? 'active' : ''}>
+                Benutzer
+              </Link>
+            </li>
+            <li>
+              <Link to="/admins/usercreate" className={currentPath === '/admins/usercreate' ? 'active' : ''}>
+                Benutzer erstellen
+              </Link>
+            </li>
+            
+          </ul>
+        </li>
+        <li>
           <Link to="/profil" className={currentPath.startsWith('/profil') ? 'active' : ''}>
             Profil
           </Link>
@@ -134,15 +169,15 @@ function Navbar() {
             
           </ul>
         </li>
+
         
-        <li>
-          <Link to="/" className="logout" onClick={handleLogout}>
-            <FontAwesomeIcon icon={faSignOutAlt} />
-            Logout
-          </Link>
-        </li>
+        
+        
         {
           /*
+
+
+
               <li>
           <Link to="/chat" className={currentPath === '/chat' ? 'active' : ''}>
             Chat
