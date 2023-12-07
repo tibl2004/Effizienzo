@@ -79,15 +79,7 @@ function CreateAdmin() {
           value={newAdmin.enddatum}
           onChange={handleInputChange}
         />
-        <label>
-          Admin-Rolle:
-          <input
-            type="checkbox"
-            name="isAdmin"
-            checked={newAdmin.isAdmin}
-            onChange={handleInputChange}
-          />
-        </label>
+      
         <button type="submit">Admin erstellen</button>
       </form>
     </div>

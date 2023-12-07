@@ -1,84 +1,96 @@
 import React, { useState, useEffect } from 'react';
+import './Login.scss';
 import axios from 'axios';
 
-function Login() {
+function Startsite() {
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [loginAttempted, setLoginAttempted] = useState(false);
+  const [loginSuccessful, setLoginSuccessful] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [userFirstName, setUserFirstName] = useState(''); // Zustand für den Vornamen des Benutzers
-  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    // Laden Sie die Benutzerdaten aus dem angegebenen Server
-    const apiUrl = 'https://users-8a52.onrender.com/admins';
+    const storedLoginStatus = localStorage.getItem('loggedIn');
 
-    fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-        if (data && data.length > 0) {
-          // Setzen Sie die Benutzerdaten im State
-          setUsers(data);
-        } else {
-          console.error('Fehler beim Laden der Benutzerdaten.');
-        }
-      })
-      .catch(error => console.error('Fehler beim Laden der Benutzerdaten: ', error));
+    if (storedLoginStatus === 'true') {
+      setLoginSuccessful(true);
+    } else {
+      setTimeout(() => {
+        setShowLoginForm(true);
+      }, 2000);
+    }
   }, []);
 
-  const [users, setUsers] = useState([]); // Benutzerdaten im State speichern
-
-  const handleLogin = () => {
-    // Überprüfen, ob die eingegebenen Daten in einem der Benutzerobjekte im Array übereinstimmen
-    const user = users.find(user => user.username === username && user.password === password);
+  const checkUserLocation = async () => {
+    try {
+      const response = await axios.get('http://localhost:4000/users', {
+        params: {
+          username: username,
+          password: password
+        }
+      });
   
-    if (user) {
-      setUserFirstName(user.vorname); // Den Vornamen des Benutzers setzen
-      setErrorMessage(''); // Zurücksetzen der Fehlermeldung
+      const loggedInUser = response.data.find(user => user.username === username);
   
-      // Setzen Sie loggedIn auf true
-      user.loggedIn = true;
-  
-      // Senden Sie eine PUT-Anfrage, um den loggedIn-Status auf dem Server zu aktualisieren
-      axios.put(`https://users-8a52.onrender.com/users/${user.id}`, user)
-        .then(response => {
-          // response enthält die Antwort vom Server
-          console.log('loggedIn-Status wurde auf dem Server aktualisiert');
-          window.location = '/admins'; // Zur Login-Seite weiterleiten
-        })
-        .catch(error => {
-          console.error('Fehler beim Aktualisieren des loggedIn-Status auf dem Server: ', error);
-        });
-    } else {
-      setErrorMessage('Ungültige Anmeldeinformationen. Bitte versuchen Sie es erneut.');
+      if (loggedInUser) {
+        const updatedUser = { ...loggedInUser, loggedIn: true };
+        localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
+        localStorage.setItem('loggedIn', 'true');
+        window.location = "/mainsite";
+      } else {
+        setErrorMessage('Falscher Benutzername oder Passwort.');
+        setLoginAttempted(true);
+        alert('Fehler beim Einloggen!');
+      }
+    } catch (error) {
+      console.error('Error checking user location:', error);
+      setErrorMessage('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
+      setLoginAttempted(true);
     }
-  }
+  };
   
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoginAttempted(false);
+    setLoginSuccessful(false);
+    await checkUserLocation();
+  };
+
+  const handleInputChange = () => {
+    setErrorMessage('');
+  };
 
   return (
-    <div>
-      <h1>Login</h1>
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      {loggedIn && (
-        <div>
-          <p style={{ color: 'green' }}>Login korrekt!</p>
-          <p>Hallo, {username}! Das Login war erfolgreich, aber die Webseite ist noch nicht bereit, um Ihren Account zu verwalten.</p>
-        </div>
-      )}
-      <input
-        type="text"
-        placeholder="Benutzername"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Passwort"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
+    <div className='login'>
+      <div className={`Circle ${showLoginForm ? 'visible' : ''} ${loginSuccessful ? 'login-successful' : ''}`}>
+        {showLoginForm && (
+          <form className='LoginForm' onSubmit={handleLogin}>
+            <h1>Login</h1>
+            <input
+              type='text'
+              placeholder='Benutzername'
+              disabled={loginAttempted}
+              onChange={(e) => setUsername(e.target.value)}
+              onFocus={handleInputChange}
+            />
+            <input
+              type='password'
+              placeholder='Passwort'
+              disabled={loginAttempted}
+              onChange={(e) => setPassword(e.target.value)}
+              onFocus={handleInputChange}
+            />
+            <div className='error-message'>{errorMessage}</div>
+            <button type='submit' disabled={loginAttempted}>
+              Login
+            </button>
+          </form>
+        )}
+      </div>
     </div>
   );
 }
 
-export default Login;
+export default Startsite;

@@ -8,6 +8,7 @@
   
   .Circle {
     width: 50px;
+    visibility: visible; /* oder display: block; */
     height: 50px;
     background-color: #ffffff;
     border-radius: 50%;
@@ -21,6 +22,7 @@
   .Circle.visible {
     opacity: 1;
     visibility: visible;
+    visibility: visible; /* oder display: block; */
     transition: opacity 1s ease-out;
   }
   

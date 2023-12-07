@@ -1,26 +1,65 @@
-.hello-message {
-  margin-left: 20px;
+// Mainsite.scss
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
+.hello-widget {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+
+  .hello-message {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+  }
+
+  .muster-text-container {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #555;
+    font-style: italic;
+  }
+}
 
 .updates-container {
-  max-width: 200px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: 30px;
-}
 
-.updates {
-  /* Add any additional styles for the updates container if needed */
-}
+  h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
 
-.box {
-  height: 100px;
-}
+  .updates {
+    .Update {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
 
-.muster-text {
-  margin-left: 20px; /* Passen Sie den Abstand nach Bedarf an */
-  font-style: italic; /* Optional: Kursivstil für den Muster-Text */
-  color: #555; /* Optional: Farbe für den Muster-Text */
-  max-width: 800px;
-}
+      p {
+        margin: 0;
+      }
 
+      strong {
+        color: #333;
+      }
+
+      em {
+        color: #777;
+      }
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #ccc;
+      margin: 10px 0;
+    }
+  }
+}

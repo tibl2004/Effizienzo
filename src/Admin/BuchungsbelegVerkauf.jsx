@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import './BuchungsbelegVerkauf.scss'; // Importieren Sie Ihre CSS-Datei
 
 class BuchungsbelegVerkauf extends Component {
   constructor(props) {
@@ -46,16 +47,17 @@ class BuchungsbelegVerkauf extends Component {
     });
     return gesamt;
   };
+
   handleCreatePdf = () => {
     if (!this.state.pdfGenerating) {
       this.setState({ pdfGenerating: true });
-  
+
       const doc = new jsPDF('p', 'pt', 'a4');
-  
+
       // Titel des Dokuments
       doc.setFontSize(18);
       doc.text('BUCHUNGSBELEG VERKAUF', 210, 20, 'center');
-  
+
       // Tabelle
       const tableData = [];
       tableData.push(['ARTIKEL', 'VERKAUFSPREIS (in CHF)']);
@@ -67,17 +69,17 @@ class BuchungsbelegVerkauf extends Component {
           gesamt += parseFloat(row.verkaufspreis); // Die Verkaufspreise werden summiert
         }
       });
-  
+
       // Gesamt in der Tabelle
       const gesamtRow = ['', `Gesamt: ${gesamt} CHF`];
       tableData.push(gesamtRow);
-  
+
       doc.autoTable({
         startY: 50, // Position der Tabelle
         head: [tableData[0]],
         body: tableData.slice(1),
       });
-  
+
       // Käuferangaben
       doc.setFontSize(12);
       doc.text(20, doc.autoTable.previous.finalY + 20, 'Käuferinformationen');
@@ -88,30 +90,23 @@ class BuchungsbelegVerkauf extends Component {
       doc.text(20, doc.autoTable.previous.finalY + 120, `Ort: ${this.state.buyer.ort}`);
       doc.text(20, doc.autoTable.previous.finalY + 140, `E-Mail: ${this.state.buyer.email}`);
       doc.text(20, doc.autoTable.previous.finalY + 160, `Telefonnummer: ${this.state.buyer.telefonnummer}`);
-  
-      // Datum und Unterschrift
-const currentDate = new Date().toLocaleDateString();
-doc.setFontSize(12); // Ändern Sie die Schriftgröße
-doc.text(20, doc.autoTable.previous.finalY + 200, `Datum: ${currentDate}`);
-doc.setFontSize(14); // Ändern Sie die Schriftgröße
-doc.text(20, doc.autoTable.previous.finalY + 220, 'Unterschrift:');
 
-  
+      // Datum und Unterschrift
+      const currentDate = new Date().toLocaleDateString();
+      doc.setFontSize(12); // Ändern Sie die Schriftgröße
+      doc.text(20, doc.autoTable.previous.finalY + 200, `Datum: ${currentDate}`);
+      doc.setFontSize(14); // Ändern Sie die Schriftgröße
+      doc.text(20, doc.autoTable.previous.finalY + 220, 'Unterschrift:');
+
       // Linie für die Unterschrift
       doc.setLineWidth(1);
       doc.line(120, doc.autoTable.previous.finalY + 220, 240, doc.autoTable.previous.finalY + 220);
-  
+
       doc.save('Buchungsbeleg.pdf');
-  
+
       this.setState({ pdfGenerating: false });
     }
   };
-  
-  
-  
-  
-  
-  
 
   handleBuyerInputChange = (e) => {
     const { name, value } = e.target;
@@ -125,10 +120,10 @@ doc.text(20, doc.autoTable.previous.finalY + 220, 'Unterschrift:');
 
   render() {
     return (
-      <div>
-        <h1>Buchungsbeleg Verkauf</h1>
-        
-        <table ref={this.pdfRef}>
+      <div className="buchungsbeleg-container">
+        <h1 className="title">Buchungsbeleg Verkauf</h1>
+
+        <table ref={this.pdfRef} className="data-table">
           <thead>
             <tr>
               <th>ARTIKEL</th>
@@ -158,7 +153,8 @@ doc.text(20, doc.autoTable.previous.finalY + 220, 'Unterschrift:');
             ))}
           </tbody>
         </table>
-        <div>
+
+        <div className="buyer-info">
           <h2>Käuferinformationen</h2>
           <label>Vorname:
             <input
@@ -217,11 +213,16 @@ doc.text(20, doc.autoTable.previous.finalY + 220, 'Unterschrift:');
             />
           </label>
         </div>
-        <div>
+
+        <div className="total-section">
           <strong>Gesamt: {this.berechneGesamt()} CHF</strong>
         </div>
-        <button onClick={this.handleAddRow}>Zeile hinzufügen</button>
-        <button onClick={this.handleCreatePdf} disabled={this.state.pdfGenerating}>
+
+        <button className="add-row-btn" onClick={this.handleAddRow}>
+          Zeile hinzufügen
+        </button>
+
+        <button className="pdf-btn" onClick={this.handleCreatePdf} disabled={this.state.pdfGenerating}>
           {this.state.pdfGenerating ? 'PDF wird generiert...' : 'PDF erstellen'}
         </button>
       </div>

@@ -88,7 +88,7 @@ function Admins() {
 
   return (
     <div className="admin-container">
-      <Link to="/admincreate">
+      <Link to="/admins/admincreate">
         <button className="add">+</button>
       </Link>
 

@@ -11,7 +11,7 @@ const Users = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://users-8a52.onrender.com/users');
+                const response = await axios.get('http://localhost:4000/users');
                 console.log('Response data:', response.data);
                 setUsers(response.data);
             } catch (error) {
@@ -27,11 +27,9 @@ const Users = () => {
 
         if (isConfirmed) {
             try {
-                // Hier wird die DELETE-Anfrage mit Axios durchgeführt
-                const response = await axios.delete(`https://users-8a52.onrender.com/users/${userId}`);
+                const response = await axios.delete(`http://localhost:4000/users/${userId}`);
                 console.log('Benutzer erfolgreich gelöscht:', response.data);
 
-                // Aktualisiere die Benutzerliste nach dem Löschen
                 const updatedUsers = users.filter(user => user.id !== userId);
                 setUsers(updatedUsers);
             } catch (error) {
@@ -51,12 +49,10 @@ const Users = () => {
     };
 
     const handleSaveEdit = async () => {
-        // Hier sollten die geänderten Informationen an die API gesendet werden
         try {
-            const response = await axios.put(`https://users-8a52.onrender.com/users/${editedUser.id}`, editedUser);
+            const response = await axios.put(`http://localhost:4000/users/${editedUser.id}`, editedUser);
             console.log('Benutzer erfolgreich aktualisiert:', response.data);
 
-            // Aktualisiere die Benutzerliste nach dem Speichern
             const updatedUsers = users.map(user =>
                 user.id === editedUser.id ? response.data : user
             );
@@ -76,7 +72,6 @@ const Users = () => {
                     <div key={user.id} className="user-box">
                         <div className={`status-circle ${user.loggedIn ? 'online' : 'offline'}`} title={user.loggedIn ? 'Online' : 'Offline'}></div>
                         {editedUser && editedUser.id === user.id ? (
-                            // Bearbeitungsmodus
                             <>
                                 <input
                                     type="text"
@@ -85,31 +80,28 @@ const Users = () => {
                                 />
                                 <input
                                     type="text"
-                                    value={editedUser.name}
-                                    onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
+                                    value={editedUser.nachname}
+                                    onChange={(e) => setEditedUser({ ...editedUser, nachname: e.target.value })}
                                 />
                                 <input
                                     type="text"
-                                    value={editedUser.benutzername}
-                                    onChange={(e) => setEditedUser({ ...editedUser, benutzername: e.target.value })}
+                                    value={editedUser.username}
+                                    onChange={(e) => setEditedUser({ ...editedUser, username: e.target.value })}
                                 />
-
                                 <input
                                     type="password"
                                     value={editedUser.password}
                                     onChange={(e) => setEditedUser({ ...editedUser, password: e.target.value })}
-                                /> 
+                                />
                                 <button onClick={handleSaveEdit}>Speichern</button>
                                 <button onClick={handleCancelEdit}>Abbrechen</button>
                             </>
                         ) : (
-                            // Anzeigemodus
                             <>
                                 <p>Vorname: {user.vorname}</p>
-                                <p>Name: {user.name}</p>
-                                <p>Benutzername: {user.benutzername}</p>
-
-                                <p>Passwort: {user.passwort}</p>
+                                <p>Nachname: {user.nachname}</p>
+                                <p>Benutzername: {user.username}</p>
+                                <p>Passwort: {user.password}</p>
                                 <button className='delete' onClick={() => handleDeleteUser(user.id)}>
                                     <FontAwesomeIcon icon={faTrash} /> Löschen
                                 </button>
