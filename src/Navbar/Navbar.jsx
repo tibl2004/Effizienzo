@@ -126,7 +126,33 @@ function Navbar() {
             Symbole
           </Link>
         </li>
-        <li>
+        
+      <li>
+          <Link to="/profil" className={currentPath.startsWith('/profil') ? 'active' : ''}>
+            Profil
+          </Link>
+          <ul className="submenu">
+            <li>
+              <Link to="/profil/settings" className={currentPath === '/profil/settings' ? 'active' : ''}>
+                Einstellungen
+              </Link>
+            </li>
+
+          </ul>
+        </li>
+
+
+
+        {
+          /*
+<li>
+              <Link to="/artikel/versand" className={currentPath === '/artikel/versand' ? 'active' : ''}>
+                Versand
+              </Link>
+            </li>
+
+
+            <li>
           <Link to="/admins" className={currentPath.startsWith('/admins') ? 'active' : ''}>
             Admins
           </Link>
@@ -159,31 +185,7 @@ function Navbar() {
 
           </ul>
         </li>
-        <li>
-          <Link to="/profil" className={currentPath.startsWith('/profil') ? 'active' : ''}>
-            Profil
-          </Link>
-          <ul className="submenu">
-            <li>
-              <Link to="/profil/settings" className={currentPath === '/profil/settings' ? 'active' : ''}>
-                Einstellungen
-              </Link>
-            </li>
-
-          </ul>
-        </li>
-
-
-
-
-        {
-          /*
-<li>
-              <Link to="/artikel/versand" className={currentPath === '/artikel/versand' ? 'active' : ''}>
-                Versand
-              </Link>
-            </li>
-
+  
 
               <li>
           <Link to="/chat" className={currentPath === '/chat' ? 'active' : ''}>
