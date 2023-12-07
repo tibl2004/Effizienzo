@@ -106,16 +106,23 @@ function Navbar() {
                 Schluss
               </Link>
             </li>
+            <li>
+              <Link to="/artikel/reaktivierung" className={currentPath === '/reaktivierung' ? 'active' : ''}>
+                Reaktivierung
+              </Link>
+            </li>
+            <li>
+              <Link to="/artikel/versand" className={currentPath === '/versand' ? 'active' : ''}>
+                Versand
+              </Link>
+            </li>
           </ul>
         </li>
+
+
         <li>
-          <Link to="/versand" className={currentPath === '/versand' ? 'active' : ''}>
-            Versand
-          </Link>
-        </li>
-        <li>
-          <Link to="/reaktivierung" className={currentPath === '/reaktivierung' ? 'active' : ''}>
-            Reaktivierung
+          <Link to="/bewertung" className={currentPath === '/bewertung' ? 'active' : ''}>
+            Bewertungen
           </Link>
         </li>
         <li>
@@ -153,7 +160,7 @@ function Navbar() {
                 Benutzer erstellen
               </Link>
             </li>
-            
+
           </ul>
         </li>
         <li>
@@ -166,13 +173,13 @@ function Navbar() {
                 Einstellungen
               </Link>
             </li>
-            
+
           </ul>
         </li>
 
-        
-        
-        
+
+
+
         {
           /*
 
@@ -214,8 +221,8 @@ function Navbar() {
           
           */
         }
-    
-        
+
+
       </ul>
     </div>
   );
