@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
-import logo from '../Logo.jpeg';
+import logo from '../Logo.png';
 import Clock from '../Clock/Clock';
 
 function Navbar() {
