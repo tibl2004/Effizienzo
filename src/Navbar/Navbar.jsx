@@ -107,15 +107,11 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/artikel/reaktivierung" className={currentPath === '/reaktivierung' ? 'active' : ''}>
+              <Link to="/artikel/reaktivierung" className={currentPath === '/artikel/reaktivierung' ? 'active' : ''}>
                 Reaktivierung
               </Link>
             </li>
-            <li>
-              <Link to="/artikel/versand" className={currentPath === '/versand' ? 'active' : ''}>
-                Versand
-              </Link>
-            </li>
+            
           </ul>
         </li>
 
@@ -182,7 +178,11 @@ function Navbar() {
 
         {
           /*
-
+<li>
+              <Link to="/artikel/versand" className={currentPath === '/artikel/versand' ? 'active' : ''}>
+                Versand
+              </Link>
+            </li>
 
 
               <li>
