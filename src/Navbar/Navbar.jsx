@@ -125,7 +125,18 @@ function Navbar() {
           <Link to="/symbole" className={currentPath === '/symbole' ? 'active' : ''}>
             Symbole
           </Link>
+        </li>¨
+        <li className='disabled-link'>
+          <Link to="/chat" className={currentPath === '/chat' ? 'active' : ''}>
+            Chat
+          </Link>
         </li>
+        <li className='disabled-link'>
+          <Link to="/vorlagen" className={currentPath === '/vorlagen' ? 'active' : ''}>
+            Vorlagen
+          </Link>
+        </li>
+
         
       <li>
           <Link to="/profil" className={currentPath.startsWith('/profil') ? 'active' : ''}>
@@ -187,16 +198,8 @@ function Navbar() {
         </li>
   
 
-              <li>
-          <Link to="/chat" className={currentPath === '/chat' ? 'active' : ''}>
-            Chat
-          </Link>
-        </li>
-       <li>
-          <Link to="/vorlagen" className={currentPath === '/vorlagen' ? 'active' : ''}>
-            Vorlagen
-          </Link>
-        </li>
+             
+       
 
         <li>
           <Link to="/users" className={currentPath === '/users' ? 'active' : ''}>

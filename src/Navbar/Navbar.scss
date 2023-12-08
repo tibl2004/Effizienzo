@@ -44,6 +44,11 @@
       }
     }
 
+    .disabled-link {
+      pointer-events: none; // Das macht es nicht klickbar
+      opacity: 0.6; // Dies lässt es deaktiviert aussehen
+    }
+
     .submenu {
       display: none;
       position: absolute;
