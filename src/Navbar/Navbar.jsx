@@ -111,6 +111,24 @@ function Navbar() {
                 Reaktivierung
               </Link>
             </li>
+
+          </ul>
+        </li>
+        <li>
+          <Link to="/vorlagen" className={currentPath.startsWith('/vorlagen') ? 'active' : ''}>
+            Vorlagen
+          </Link>
+          <ul className="submenu">
+            <li>
+              <Link to="/vorlagen/spenden" className={currentPath === '/vorlagen/spenden' ? 'active' : ''}>
+                Spenden
+              </Link>
+            </li>
+            <li>
+              <Link to="/vorlagen/abholung" className={currentPath === '/vorlagen/abholung' ? 'active' : ''}>
+                Abholung
+              </Link>
+            </li>
             
           </ul>
         </li>
@@ -135,24 +153,16 @@ function Navbar() {
                 Controlling
               </Link>
             </li>
-            
-            
+
+
           </ul>
         </li>
-        
-        <li className='disabled-link'>
-          <Link to="/chat" className={currentPath === '/chat' ? 'active' : ''}>
-            Chat
-          </Link>
-        </li>
-        <li className='disabled-link'>
-          <Link to="/vorlagen" className={currentPath === '/vorlagen' ? 'active' : ''}>
-            Vorlagen
-          </Link>
-        </li>
 
-        
-      <li>
+
+
+
+
+        <li>
           <Link to="/profil" className={currentPath.startsWith('/profil') ? 'active' : ''}>
             Profil
           </Link>

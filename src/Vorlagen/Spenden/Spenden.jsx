@@ -7,6 +7,7 @@ function Spenden() {
   const [inputList, setInputList] = useState([{ id: 0, text: '' }]);
   const [lastName, setLastName] = useState('');
   const [isLastNameInputVisible, setLastNameInputVisible] = useState(true);
+  const [isFinishButtonVisible, setFinishButtonVisible] = useState(true);
 
   const handleCheckboxChange = () => {
     setChecked(!isChecked);
@@ -32,16 +33,39 @@ function Spenden() {
     const salutation = `Guten Tag ${selectedGender === 'mann' ? 'Herr' : 'Frau'}`;
     const lastNameText = lastName ? ` ${lastName}` : '';
     const leider = 'Leider überbringen wir Ihnen keine guten Neuigkeiten.';
+    const trotzBemuehungen = 'hat es trotz all unseren Bemühungen nicht geschafft, einen neuen Besitzer zu finden.';
+    const grosszuegigText = 'Sie haben sich grosszügig dazu entschlossen, den Artikel bei Nichtverkauf zu spenden. Die Bärner Brocki der GEWA wird sich nun darum kümmern, einen glücklichen Käufer zu finden.';
+    const dankText = 'Wir bedanken uns herzlich für die Spende und Ihr Vertrauen.';
     
     // Füge die Eingabefeld-Daten hinzu
     const inputText = inputList.map((item) => `• ${item.text}`).join('\n');
-    const fullTemplate = `${salutation}${lastNameText}\n${leider}\n${inputText}`;
+    const articleText = inputList.length === 1 ? 'Ihr Artikel' : 'Ihre Artikel';
+    const fullTemplate = `${salutation}${lastNameText}\n\n${leider} ${articleText}\n\n${inputText}\n\n${trotzBemuehungen}\n\n${grosszuegigText}\n\n${dankText}\n\n`;
     
-    // Kopiere den generierten Text in die Zwischenablage
-    navigator.clipboard.writeText(fullTemplate);
-    
+    // Erstelle ein unsichtbares HTML-Element
+    const hiddenElement = document.createElement('textarea');
+    hiddenElement.value = fullTemplate;
+    hiddenElement.style.position = 'absolute';
+    hiddenElement.style.left = '-9999px';
+
+    // Füge das Element zum DOM hinzu
+    document.body.appendChild(hiddenElement);
+
+    // Wähle den Text im Element aus
+    hiddenElement.select();
+    hiddenElement.setSelectionRange(0, 99999); // Für mobile Geräte
+
+    // Kopiere den ausgewählten Text in die Zwischenablage
+    document.execCommand('copy');
+
+    // Entferne das unsichtbare Element
+    document.body.removeChild(hiddenElement);
+
     // Hier könntest du auch andere Aktionen ausführen, z.B. eine Benachrichtigung anzeigen
     alert('Vorlage wurde generiert und in die Zwischenablage kopiert!');
+
+    // Setze den "Fertig"-Button auf unsichtbar
+    setFinishButtonVisible(false);
   };
 
   const handleFinishButtonClick = () => {
@@ -51,31 +75,33 @@ function Spenden() {
   return (
     <div className="spenden-container">
       <h1>Guten Tag {selectedGender === 'mann' ? 'Herr' : 'Frau'} {lastName}</h1>
-      <p>Leider überbringen wir Ihnen keine guten Neuigkeiten.</p>
+      <p>Leider überbringen wir Ihnen keine guten Neuigkeiten.</p> <p>{inputList.length === 1 ? 'Ihr' : 'Ihre'} Artikel</p>
 
-      <div className="radio-container">
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value="mann"
-            checked={selectedGender === 'mann'}
-            onChange={() => handleGenderChange('mann')}
-          />
-          Herr
-        </label>
+      {isLastNameInputVisible && (
+        <div className="radio-container">
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="mann"
+              checked={selectedGender === 'mann'}
+              onChange={() => handleGenderChange('mann')}
+            />
+            Herr
+          </label>
 
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value="frau"
-            checked={selectedGender === 'frau'}
-            onChange={() => handleGenderChange('frau')}
-          />
-          Frau
-        </label>
-      </div>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="frau"
+              checked={selectedGender === 'frau'}
+              onChange={() => handleGenderChange('frau')}
+            />
+            Frau
+          </label>
+        </div>
+      )}
 
       {isLastNameInputVisible && (
         <div className="last-name-container">
@@ -90,11 +116,16 @@ function Spenden() {
         </div>
       )}
 
+      {isLastNameInputVisible && (
+        <button onClick={handleFinishButtonClick}>Fertig</button>
+      )}
+
       <div className="input-list-container">
         {inputList.map((item) => (
           <div key={item.id} className="input-item">
             <input
               type="text"
+              placeholder='Artikel'
               value={item.text}
               onChange={(e) => handleInputChange(item.id, e.target.value)}
             />
@@ -102,13 +133,17 @@ function Spenden() {
         ))}
       </div>
 
+      <p>hat es trotz all unseren Bemühungen nicht geschafft, einen neuen Besitzer zu finden.</p>
+
+      <p>Sie haben sich grosszügig dazu entschlossen, den Artikel bei Nichtverkauf zu spenden. Die Bärner Brocki der GEWA wird sich nun darum kümmern, einen glücklichen Käufer zu finden.</p>
+
+      <p>Wir bedanken uns herzlich für die Spende und Ihr Vertrauen.</p>
+
       <button onClick={handleAddInput}>+</button>
 
       <button onClick={handleGenerateTemplate}>
         Vorlage generieren und kopieren
       </button>
-
-      <button onClick={handleFinishButtonClick}>Fertig</button>
     </div>
   );
 }

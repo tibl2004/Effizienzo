@@ -124,15 +124,7 @@ function App() {
           />
 
 
-          <Route
-            path="/vorlagen"
-            element={
-              <>
-                <Navigation />
-                <Vorlagen />
-              </>
-            }
-          />
+          
 
 
           <Route
@@ -162,9 +154,17 @@ function App() {
               </>
             }
           />
-
+<Route
+            path="/vorlagen"
+            element={
+              <>
+                <Navigation />
+                <Vorlagen />
+              </>
+            }
+          />
           <Route
-            path="/spenden"
+            path="/vorlagen/spenden"
             element={
               <>
                 <Navigation />
@@ -173,7 +173,7 @@ function App() {
             }
           />
           <Route
-            path="/abholung"
+            path="/vorlagen/abholung"
             element={
               <>
                 <Navigation />

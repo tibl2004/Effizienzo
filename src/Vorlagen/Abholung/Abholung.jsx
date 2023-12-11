@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import './Abholung.scss';
+import './Abholung.scss'; // Stile können in einer separaten Datei definiert werden
 
-function Abholung() {
+function Spenden() {
   const [isChecked, setChecked] = useState(false);
   const [selectedGender, setSelectedGender] = useState(null);
   const [inputList, setInputList] = useState([{ id: 0, text: '' }]);
   const [lastName, setLastName] = useState('');
   const [isLastNameInputVisible, setLastNameInputVisible] = useState(true);
-  const [generatedTemplate, setGeneratedTemplate] = useState('');
   const [isFinishButtonVisible, setFinishButtonVisible] = useState(true);
 
   const handleCheckboxChange = () => {
@@ -34,60 +33,74 @@ function Abholung() {
     const salutation = `Guten Tag ${selectedGender === 'mann' ? 'Herr' : 'Frau'}`;
     const lastNameText = lastName ? ` ${lastName}` : '';
     const leider = 'Leider überbringen wir Ihnen keine guten Neuigkeiten.';
-    const frist = 'Sie haben uns bei der Lieferung mitgeteilt, dass Sie bei einem Nicht verkauf den/die Artikel gerne wieder zu sich nehmen wollen. Bitte holen Sie die Artikel innerhalb der nächsten 14 Tagen auf Anmeldung bei uns ab.';
+    const trotzBemuehungen = 'hat es trotz all unseren Bemühungen nicht geschafft, einen neuen Besitzer zu finden.';
+    const grosszuegigText = 'Sie haben sich grosszügig dazu entschlossen, den Artikel bei Nichtverkauf zu spenden. Die Bärner Brocki der GEWA wird sich nun darum kümmern, einen glücklichen Käufer zu finden.';
+    const dankText = 'Wir bedanken uns herzlich für die Spende und Ihr Vertrauen.';
     
     // Füge die Eingabefeld-Daten hinzu
     const inputText = inputList.map((item) => `• ${item.text}`).join('\n');
-    const fullTemplate = `${salutation}${lastNameText}\n${leider}\n\n${inputText}\n\n${frist}`;
-  
-    // Erstelle ein unsichtbares Textarea-Element, füge den Text hinzu und kopiere ihn
-    const textarea = document.createElement('textarea');
-    textarea.value = fullTemplate;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
+    const fullTemplate = `${salutation}${lastNameText}\n\n${leider}\n\n${inputText}\n\n${trotzBemuehungen}\n\n${grosszuegigText}\n\n${dankText}`;
     
+    // Erstelle ein unsichtbares HTML-Element
+    const hiddenElement = document.createElement('textarea');
+    hiddenElement.value = fullTemplate;
+    hiddenElement.style.position = 'absolute';
+    hiddenElement.style.left = '-9999px';
+
+    // Füge das Element zum DOM hinzu
+    document.body.appendChild(hiddenElement);
+
+    // Wähle den Text im Element aus
+    hiddenElement.select();
+    hiddenElement.setSelectionRange(0, 99999); // Für mobile Geräte
+
+    // Kopiere den ausgewählten Text in die Zwischenablage
+    document.execCommand('copy');
+
+    // Entferne das unsichtbare Element
+    document.body.removeChild(hiddenElement);
+
     // Hier könntest du auch andere Aktionen ausführen, z.B. eine Benachrichtigung anzeigen
     alert('Vorlage wurde generiert und in die Zwischenablage kopiert!');
-    
-    // Setze den generierten Text in den State, wenn er gespeichert werden soll
-    setGeneratedTemplate(fullTemplate);
-    
-    // Verberge den Finish-Button und das Nachname-Feld
+
+    // Setze den "Fertig"-Button auf unsichtbar
     setFinishButtonVisible(false);
+  };
+
+  const handleFinishButtonClick = () => {
     setLastNameInputVisible(false);
   };
-  
 
   return (
-    <div className="abholung-container">
+    <div className="spenden-container">
       <h1>Guten Tag {selectedGender === 'mann' ? 'Herr' : 'Frau'} {lastName}</h1>
       <p>Leider überbringen wir Ihnen keine guten Neuigkeiten.</p>
 
-      <div className="radio-container">
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value="mann"
-            checked={selectedGender === 'mann'}
-            onChange={() => handleGenderChange('mann')}
-          />
-          Herr
-        </label>
+      {isLastNameInputVisible && (
+        <div className="radio-container">
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="mann"
+              checked={selectedGender === 'mann'}
+              onChange={() => handleGenderChange('mann')}
+            />
+            Herr
+          </label>
 
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value="frau"
-            checked={selectedGender === 'frau'}
-            onChange={() => handleGenderChange('frau')}
-          />
-          Frau
-        </label>
-      </div>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="frau"
+              checked={selectedGender === 'frau'}
+              onChange={() => handleGenderChange('frau')}
+            />
+            Frau
+          </label>
+        </div>
+      )}
 
       {isLastNameInputVisible && (
         <div className="last-name-container">
@@ -100,6 +113,10 @@ function Abholung() {
             />
           </label>
         </div>
+      )}
+
+      {isLastNameInputVisible && (
+        <button onClick={handleFinishButtonClick}>Fertig</button>
       )}
 
       <div className="input-list-container">
@@ -115,28 +132,19 @@ function Abholung() {
         ))}
       </div>
 
+      <p>hat es trotz all unseren Bemühungen nicht geschafft, einen neuen Besitzer zu finden.</p>
+
+      <p>Sie haben sich grosszügig dazu entschlossen, den Artikel bei Nichtverkauf zu spenden. Die Bärner Brocki der GEWA wird sich nun darum kümmern, einen glücklichen Käufer zu finden.</p>
+
+      <p>Wir bedanken uns herzlich für die Spende und Ihr Vertrauen.</p>
+
       <button onClick={handleAddInput}>+</button>
 
-      <p>
-            Sie haben uns bei der Lieferung mitgeteilt, dass Sie bei einem Nicht verkauf den/die Artikel gerne wieder zu sich nehmen wollen.
-            Bitte holen Sie die Artikel innerhalb der nächsten 14 Tagen auf Anmeldung bei uns ab.
-          </p>
-          <button onClick={handleGenerateTemplate}>
-            Vorlage generieren und kopieren
-          </button>
-
-      {isFinishButtonVisible && (
-        <div>
-          <button onClick={() => {
-            setFinishButtonVisible(false);
-            setLastNameInputVisible(false);
-          }}>Fertig</button>
-        </div>
-      )}
-
-     
+      <button onClick={handleGenerateTemplate}>
+        Vorlage generieren und kopieren
+      </button>
     </div>
   );
 }
 
-export default Abholung;
+export default Spenden;
