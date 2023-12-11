@@ -6,8 +6,20 @@ function Spenden() {
   const [selectedGender, setSelectedGender] = useState(null);
   const [inputList, setInputList] = useState([{ id: 0, text: '' }]);
   const [lastName, setLastName] = useState('');
+  const [mitarbeiter, setMitarbeiter] = useState('Max Mustermann'); // Beispiel-Mitarbeitername
   const [isLastNameInputVisible, setLastNameInputVisible] = useState(true);
   const [isFinishButtonVisible, setFinishButtonVisible] = useState(true);
+
+  const leider = 'Leider überbringen wir Ihnen keine guten Neuigkeiten.';
+  const trotzBemuehungen = 'hat es trotz all unseren Bemühungen nicht geschafft, einen neuen Besitzer zu finden.';
+  const grosszuegigText = 'Sie haben sich grosszügig dazu entschlossen, den Artikel bei Nichtverkauf zu spenden. Die Bärner Brocki der GEWA wird sich nun darum kümmern, einen glücklichen Käufer zu finden.';
+  const dankText = 'Wir bedanken uns herzlich für die Spende und Ihr Vertrauen.';
+  const greetings = 'Freundliche Grüsse';
+  const adresse = 'Grubenstrasse 22, 3322 Urtenen-Schönbühl';
+  const contact = 'Tel: 031 919 46 53 | schoenbuehl@projekt-restwert.ch | www.projekt-restwert.ch';
+  const ricardo = 'Alle aktuellen Artikel finden Sie auf ricardo.';
+  const oeffnungszeiten = 'Unsere Öffnungszeiten sind: Montag - Freitag 08.00 - 12.00 Uhr und 13.00 - 16.30 Uhr';
+  const betrieb = 'Betriebsferien über den Jahreswechsel: Bitte beachten Sie, dass unser Standort vom 23.12.2023 bis am 03.01.2024 geschlossen ist.';
 
   const handleCheckboxChange = () => {
     setChecked(!isChecked);
@@ -32,16 +44,11 @@ function Spenden() {
     // Hier kannst du die Daten zusammensetzen
     const salutation = `Guten Tag ${selectedGender === 'mann' ? 'Herr' : 'Frau'}`;
     const lastNameText = lastName ? ` ${lastName}` : '';
-    const leider = 'Leider überbringen wir Ihnen keine guten Neuigkeiten.';
-    const trotzBemuehungen = 'hat es trotz all unseren Bemühungen nicht geschafft, einen neuen Besitzer zu finden.';
-    const grosszuegigText = 'Sie haben sich grosszügig dazu entschlossen, den Artikel bei Nichtverkauf zu spenden. Die Bärner Brocki der GEWA wird sich nun darum kümmern, einen glücklichen Käufer zu finden.';
-    const dankText = 'Wir bedanken uns herzlich für die Spende und Ihr Vertrauen.';
-    
+
     // Füge die Eingabefeld-Daten hinzu
     const inputText = inputList.map((item) => `• ${item.text}`).join('\n');
     const articleText = inputList.length === 1 ? 'Ihr Artikel' : 'Ihre Artikel';
-    const fullTemplate = `${salutation}${lastNameText}\n\n${leider} ${articleText}\n\n${inputText}\n\n${trotzBemuehungen}\n\n${grosszuegigText}\n\n${dankText}\n\n`;
-    
+    const fullTemplate = `${salutation}${lastNameText}\n\n${leider} ${articleText}\n\n${inputText}\n\n${trotzBemuehungen}\n\n${grosszuegigText}\n\n${dankText}\n\n${greetings}\n\n${mitarbeiter}\n\n${adresse}\n${contact}\n${ricardo}\n${oeffnungszeiten}\n${betrieb}`;
     // Erstelle ein unsichtbares HTML-Element
     const hiddenElement = document.createElement('textarea');
     hiddenElement.value = fullTemplate;
@@ -75,7 +82,7 @@ function Spenden() {
   return (
     <div className="spenden-container">
       <h1>Guten Tag {selectedGender === 'mann' ? 'Herr' : 'Frau'} {lastName}</h1>
-      <p>Leider überbringen wir Ihnen keine guten Neuigkeiten.</p> <p>{inputList.length === 1 ? 'Ihr' : 'Ihre'} Artikel</p>
+      <p>{leider}</p> <p>{inputList.length === 1 ? 'Ihr' : 'Ihre'} Artikel</p>
 
       {isLastNameInputVisible && (
         <div className="radio-container">
@@ -133,11 +140,20 @@ function Spenden() {
         ))}
       </div>
 
-      <p>hat es trotz all unseren Bemühungen nicht geschafft, einen neuen Besitzer zu finden.</p>
+      <p>{trotzBemuehungen}</p>
+      <p>{grosszuegigText}</p>
+      <p>{dankText}</p>
 
-      <p>Sie haben sich grosszügig dazu entschlossen, den Artikel bei Nichtverkauf zu spenden. Die Bärner Brocki der GEWA wird sich nun darum kümmern, einen glücklichen Käufer zu finden.</p>
+      <p>{greetings}</p>
 
-      <p>Wir bedanken uns herzlich für die Spende und Ihr Vertrauen.</p>
+      <p>{mitarbeiter}</p>
+
+      <p>{adresse}</p>
+      <p>{contact}</p>
+      <p>{ricardo}</p>
+
+      <p>{oeffnungszeiten}</p>
+      <p>{betrieb}</p>
 
       <button onClick={handleAddInput}>+</button>
 
