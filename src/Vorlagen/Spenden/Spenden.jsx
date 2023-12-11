@@ -6,7 +6,7 @@ function Spenden() {
   const [selectedGender, setSelectedGender] = useState(null);
   const [inputList, setInputList] = useState([{ id: 0, text: '' }]);
   const [lastName, setLastName] = useState('');
-  const [mitarbeiter, setMitarbeiter] = useState('Max Mustermann'); // Beispiel-Mitarbeitername
+  const [mitarbeiter, setMitarbeiter] = useState(''); // Beispiel-Mitarbeitername
   const [isLastNameInputVisible, setLastNameInputVisible] = useState(true);
   const [isFinishButtonVisible, setFinishButtonVisible] = useState(true);
 
@@ -49,6 +49,7 @@ function Spenden() {
     const inputText = inputList.map((item) => `• ${item.text}`).join('\n');
     const articleText = inputList.length === 1 ? 'Ihr Artikel' : 'Ihre Artikel';
     const fullTemplate = `${salutation}${lastNameText}\n\n${leider} ${articleText}\n\n${inputText}\n\n${trotzBemuehungen}\n\n${grosszuegigText}\n\n${dankText}\n\n${greetings}\n\n${mitarbeiter}\n\n${adresse}\n${contact}\n${ricardo}\n${oeffnungszeiten}\n${betrieb}`;
+  
     // Erstelle ein unsichtbares HTML-Element
     const hiddenElement = document.createElement('textarea');
     hiddenElement.value = fullTemplate;
@@ -118,6 +119,19 @@ function Spenden() {
               type="text"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
+            />
+          </label>
+        </div>
+      )}
+
+      {isLastNameInputVisible && (
+        <div className="last-name-container">
+          <label>
+            Mitarbeiter:
+            <input
+              type="text"
+              value={mitarbeiter}
+              onChange={(e) => setMitarbeiter(e.target.value)}
             />
           </label>
         </div>
