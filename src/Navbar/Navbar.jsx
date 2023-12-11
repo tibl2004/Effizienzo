@@ -114,18 +114,32 @@ function Navbar() {
             
           </ul>
         </li>
-
-
-        <li>
-          <Link to="/bewertung" className={currentPath === '/bewertung' ? 'active' : ''}>
-            Bewertungen
-          </Link>
-        </li>
         <li>
           <Link to="/symbole" className={currentPath === '/symbole' ? 'active' : ''}>
             Symbole
           </Link>
-        </li>¨
+        </li>
+
+        <li>
+          <Link to="/nachbearbeitung" className={currentPath.startsWith('/nachbearbeitung') ? 'active' : ''}>
+            Nachbearbeitung
+          </Link>
+          <ul className="submenu">
+            <li>
+              <Link to="/nachbearbeitung/bewertungen" className={currentPath === '/nachbearbeitung/bewertungen' ? 'active' : ''}>
+                Bewertungen
+              </Link>
+            </li>
+            <li>
+              <Link to="/nachbearbeitung/controlling" className={currentPath === '/nachbearbeitung/controlling' ? 'active' : ''}>
+                Controlling
+              </Link>
+            </li>
+            
+            
+          </ul>
+        </li>
+        
         <li className='disabled-link'>
           <Link to="/chat" className={currentPath === '/chat' ? 'active' : ''}>
             Chat
