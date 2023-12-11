@@ -124,7 +124,7 @@ function Navbar() {
                 Spenden
               </Link>
             </li>
-            <li>
+            <li className='disabled-link'>
               <Link to="/vorlagen/abholung" className={currentPath === '/vorlagen/abholung' ? 'active' : ''}>
                 Abholung
               </Link>
