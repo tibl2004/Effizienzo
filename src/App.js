@@ -63,6 +63,9 @@ import Main from 'react-router-dom/dist/main';
 import Vasen from './InserierenVorlagen/Vasen';
 import Profil from './Profil/Profil';
 import Settings from './Settings/Settings';
+import Sendungsstatistik from './Nachbearbeitung/Controlling/Sendungsstatistik/Sendungsstatistik';
+import PostFinanceForm from './Postfinance/Postfinance';
+
 
 
 function Navigation() {
@@ -154,6 +157,17 @@ function App() {
               </>
             }
           />
+
+<Route
+            path="/nachbearbeitung/sendungsstatistik"
+            element={
+              <>
+                <Navigation />
+                <Sendungsstatistik />
+              </>
+            }
+          />
+          
 <Route
             path="/vorlagen"
             element={
@@ -172,6 +186,17 @@ function App() {
               </>
             }
           />
+
+<Route
+            path="/postfinancedaten"
+            element={
+              <>
+                <Navigation />
+                <PostFinanceForm />
+              </>
+            }
+          />
+
           <Route
             path="/vorlagen/abholung"
             element={

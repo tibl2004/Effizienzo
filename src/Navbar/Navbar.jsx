@@ -138,6 +138,7 @@ function Navbar() {
           </Link>
         </li>
 
+
         <li>
           <Link to="/nachbearbeitung" className={currentPath.startsWith('/nachbearbeitung') ? 'active' : ''}>
             Nachbearbeitung
@@ -154,12 +155,15 @@ function Navbar() {
               </Link>
             </li>
 
+           
+           
+
 
           </ul>
         </li>
 
 
-
+        
 
 
         <li>
@@ -185,9 +189,12 @@ function Navbar() {
                 Versand
               </Link>
             </li>
-
-
-            <li>
+ <li>
+          <Link to="/postfinancedaten" className={currentPath === '/postfinancedaten' ? 'active' : ''}>
+            Postfinance
+          </Link>
+        </li>
+<li>
           <Link to="/admins" className={currentPath.startsWith('/admins') ? 'active' : ''}>
             Admins
           </Link>
@@ -220,6 +227,7 @@ function Navbar() {
 
           </ul>
         </li>
+          
   
 
              

@@ -1,0 +1,25 @@
+.disabled-input {
+    position: relative;
+  }
+  
+  .disabled-input:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px; /* Adjust the thickness of the line */
+    background-color: black; /* Adjust the color of the line */
+    top: 50%;
+    transform: translateY(-50%) rotate(-15deg);
+    left: 0;
+    pointer-events: none; /* This prevents the line from interfering with mouse events */
+  }
+
+  input {
+    border: none;
+    outline: none;
+  }
+
+  .controlling-table {
+    width: 80%;
+    margin: 0 auto; /* Hier wird die automatische Zentrierung aktiviert */
+  }
