@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
-import logo from '../Logo.jpeg';
+import logo from '../Logo.png';
 import Clock from '../Clock/Clock';
 
 function Navbar() {
@@ -76,7 +76,7 @@ function Navbar() {
   return (
     <div className='navbar'>
       <div className='logo-container'>
-        <div className='version-label'>V.4.5</div>
+        <div className='version-label'>V.4.7</div>
         <img src={logo} alt="Restwert" />
       </div>
       <Clock />
@@ -111,23 +111,73 @@ function Navbar() {
                 Reaktivierung
               </Link>
             </li>
-            
+            <li>
+              <Link to="/artikel/versand" className={currentPath === '/artikel/versand' ? 'active' : ''}>
+                Versand
+              </Link>
+            </li>
           </ul>
         </li>
 
-
         <li>
-          <Link to="/bewertung" className={currentPath === '/bewertung' ? 'active' : ''}>
-            Bewertungen
+          <Link to="/beschreibung" className={currentPath === '/beschreibung' ? 'active' : ''}>
+            Ricardo
           </Link>
+        </li>
+        
+        <li>
+          <Link to="/vorlagen" className={currentPath.startsWith('/vorlagen') ? 'active' : ''}>
+            Vorlagen
+          </Link>
+          <ul className="submenu">
+            <li>
+              <Link to="/vorlagen/spenden" className={currentPath === '/vorlagen/spenden' ? 'active' : ''}>
+                Spenden
+              </Link>
+            </li>
+            <li className='disabled-link'>
+              <Link to="/vorlagen/abholung" className={currentPath === '/vorlagen/abholung' ? 'active' : ''}>
+                Abholung
+              </Link>
+            </li>
+            
+          </ul>
         </li>
         <li>
           <Link to="/symbole" className={currentPath === '/symbole' ? 'active' : ''}>
             Symbole
           </Link>
         </li>
+
+
+        <li>
+          <Link to="/nachbearbeitung" className={currentPath.startsWith('/nachbearbeitung') ? 'active' : ''}>
+            Nachbearbeitung
+          </Link>
+          <ul className="submenu">
+            <li>
+              <Link to="/nachbearbeitung/bewertungen" className={currentPath === '/nachbearbeitung/bewertungen' ? 'active' : ''}>
+                Bewertungen
+              </Link>
+            </li>
+            <li>
+              <Link to="/nachbearbeitung/controlling" className={currentPath === '/nachbearbeitung/controlling' ? 'active' : ''}>
+                Controlling
+              </Link>
+            </li>
+
+           
+           
+
+
+          </ul>
+        </li>
+
+
         
-      <li>
+
+
+        <li>
           <Link to="/profil" className={currentPath.startsWith('/profil') ? 'active' : ''}>
             Profil
           </Link>
@@ -150,9 +200,12 @@ function Navbar() {
                 Versand
               </Link>
             </li>
-
-
-            <li>
+ <li>
+          <Link to="/postfinancedaten" className={currentPath === '/postfinancedaten' ? 'active' : ''}>
+            Postfinance
+          </Link>
+        </li>
+<li>
           <Link to="/admins" className={currentPath.startsWith('/admins') ? 'active' : ''}>
             Admins
           </Link>
@@ -185,18 +238,11 @@ function Navbar() {
 
           </ul>
         </li>
+          
   
 
-              <li>
-          <Link to="/chat" className={currentPath === '/chat' ? 'active' : ''}>
-            Chat
-          </Link>
-        </li>
-       <li>
-          <Link to="/vorlagen" className={currentPath === '/vorlagen' ? 'active' : ''}>
-            Vorlagen
-          </Link>
-        </li>
+             
+       
 
         <li>
           <Link to="/users" className={currentPath === '/users' ? 'active' : ''}>

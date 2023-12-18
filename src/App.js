@@ -44,7 +44,9 @@ import FahrradShorts from './InserierenVorlagen/FahrradShorts';
 
 import NichtVerkauf from './nichtverkauf/NichtVerkauf';
 import Reaktivierung from './Reaktivierung/Reaktivierung';
-import Bewertungen from './Bewertung/Bewertungen';
+import Bewertungen from './Nachbearbeitung/Bewertungen/Bewertungen';
+import Nachbearbeitung from './Nachbearbeitung/Nachbearbeitung';
+import Controlling from './Nachbearbeitung/Controlling/Controlling'
 
 import Login from './Login/Login';
 import Admins from './Admin/Admins';
@@ -61,6 +63,10 @@ import Main from 'react-router-dom/dist/main';
 import Vasen from './InserierenVorlagen/Vasen';
 import Profil from './Profil/Profil';
 import Settings from './Settings/Settings';
+import Sendungsstatistik from './Nachbearbeitung/Controlling/Sendungsstatistik/Sendungsstatistik';
+import PostFinanceForm from './Postfinance/Postfinance';
+import BeschreibungRicardo from './Ricardo/BeschreibungRicardo';
+
 
 
 function Navigation() {
@@ -96,33 +102,74 @@ function App() {
             path="/"
             element={
               <>
-              <Navbar />
+                <Navbar />
                 <Mainsite />
               </>
             }
           />
-           <Route
+          <Route
             path="/profil"
             element={
               <>
-              <Navbar />
+                <Navbar />
                 <Profil />
               </>
             }
           />
 
-<Route
+          <Route
             path="/profil/settings"
             element={
               <>
-              <Navbar />
+                <Navbar />
                 <Settings />
               </>
             }
           />
 
+
           
+
+
           <Route
+            path="/nachbearbeitung"
+            element={
+              <>
+                <Navigation />
+                <Nachbearbeitung />
+              </>
+            }
+          />
+          <Route
+            path="/nachbearbeitung/bewertungen"
+            element={
+              <>
+                <Navigation />
+                <Bewertungen />
+              </>
+            }
+          />
+          <Route
+            path="/nachbearbeitung/controlling"
+            element={
+              <>
+                <Navigation />
+                <Controlling />
+              </>
+            }
+          />
+
+<Route
+            path="/nachbearbeitung/sendungsstatistik"
+            element={
+              <>
+                <Navigation />
+                <Sendungsstatistik />
+              </>
+            }
+          />
+          
+<Route
             path="/vorlagen"
             element={
               <>
@@ -131,19 +178,8 @@ function App() {
               </>
             }
           />
-
-<Route
-            path="/bewertung"
-            element={
-              <>
-                <Navigation />
-                <Bewertungen />
-              </>
-            }
-          />
-
           <Route
-            path="/spenden"
+            path="/vorlagen/spenden"
             element={
               <>
                 <Navigation />
@@ -151,8 +187,19 @@ function App() {
               </>
             }
           />
+
+<Route
+            path="/postfinancedaten"
+            element={
+              <>
+                <Navigation />
+                <PostFinanceForm />
+              </>
+            }
+          />
+
           <Route
-            path="/abholung"
+            path="/vorlagen/abholung"
             element={
               <>
                 <Navigation />
@@ -169,7 +216,7 @@ function App() {
               </>
             }
           />
-        
+
           <Route
             path="/artikel"
             element={
@@ -276,6 +323,16 @@ function App() {
           />
 
 <Route
+            path="/beschreibung"
+            element={
+              <>
+                <Navigation />
+                <BeschreibungRicardo />
+              </>
+            }
+          />
+
+          <Route
             path="/admins/tagesplanung"
             element={
               <>
@@ -284,7 +341,7 @@ function App() {
               </>
             }
           />
-          
+
           <Route
             path="/admins/interner-verkauf"
             element={
@@ -315,7 +372,7 @@ function App() {
 
 
 
-     
+
 
           <Route
             path="/nichtverkauf"

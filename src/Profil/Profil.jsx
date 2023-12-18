@@ -31,26 +31,10 @@ function Profil() {
     },
   });
 
-  const handleLogout = async () => {
-    try {
-      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || {};
-
-      if (loggedInUser.id) {
-        const updatedUser = { ...loggedInUser, loggedIn: false };
-        await axios.put(`http://localhost:4000/users/${loggedInUser.id}`, updatedUser);
-
-        localStorage.setItem('loggedIn', 'false');
-        localStorage.removeItem('loggedInUser');
-        window.location = "/";
-      } else {
-        console.error('User ID is undefined');
-      }
-    } catch (error) {
-      console.error('Error during logout:', error);
-      // Handle error as needed
-    }
+  const handleLogout = () => {
+    window.location = "/";
   };
-
+  
   const togglePermission = (permission) => {
     const updatedPermissions = { ...userProfile.permissions, [permission]: !userProfile.permissions[permission] };
     setUserProfile({ ...userProfile, permissions: updatedPermissions });

@@ -1,0 +1,43 @@
+.BeschreibungRicardo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  
+    textarea {
+      margin-bottom: 10px;
+      padding: 8px;
+      width: 650px;
+      max-height: 400px;
+      font-family:Verdana, Geneva, Tahoma, sans-serif;
+      border: 1px solid black;
+      resize: vertical;
+      border-radius: 20px;
+      font-size: 20px;
+    }
+  
+    .artikeldetails {
+      min-height: 410px;
+    }
+  
+    .beschreibung {
+      min-height: 200px;
+    }
+  
+    button {
+      margin-right: 10px; /* Add margin to create space between buttons */
+      padding: 8px 12px;
+      cursor: pointer;
+  
+      &:last-child {
+        margin-right: 0; /* Remove margin for the last button */
+        background-color: #4caf50;
+        color: white;
+      }
+  
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+  }
+  
