@@ -1,21 +1,22 @@
+// Versand.jsx
+
 import React, { useState } from 'react';
 import './Versand.scss';
 
 function Versand() {
   const tableData = [
-    { id: 1, format: 'B5', dicke: '2 cm', gewicht: '1 - 100g', porto: 'CHF 0.90', faktura: 'CHF 1.05' },
-    { id: 2, format: '', dicke: '', gewicht: '101 - 250g', porto: 'CHF 1.15', faktura: 'CHF 1.55' },
-    { id: 3, format: '', dicke: '2 - 5 cm', gewicht: '1 - 100g', porto: 'CHF 2.40', faktura: 'CHF 2.55' },
-    { id: 4, format: '', dicke: '', gewicht: '101 - 250g', porto: 'CHF 2.65', faktura: 'CHF 3.05' },
-    { id: 5, format: 'Grossbrief (bis B4)', dicke: '2 cm', gewicht: '1 - 500 g', porto: 'CHF 1.85', faktura: 'CHF 2.55' },
-    { id: 6, format: '', dicke: '', gewicht: '501 - 1000 g', porto: 'CHF 3.65', faktura: 'CHF 4.05' },
+    { id: 1, format: 'B5', dicke: '2 cm', gewicht: '1 - 100g', porto: 'CHF 1.00', faktura: 'CHF 1.50' },
+    { id: 2, format: '', dicke: '', gewicht: '101 - 500g', porto: 'CHF 1.40', faktura: 'CHF 1.90' },
+    { id: 3, format: '', dicke: '2 - 5 cm', gewicht: '1 - 100g', porto: 'CHF 3.00', faktura: 'CHF 3.50' },
+    { id: 4, format: '', dicke: '', gewicht: '101 - 250g', porto: 'CHF 3.40', faktura: 'CHF 3.90' },
+    { id: 5, format: 'Grossbrief (bis B4)', dicke: '2 cm', gewicht: '1 - 500 g', porto: 'CHF 2.00', faktura: 'CHF 2.50' },
+    { id: 6, format: '', dicke: '', gewicht: '501 - 1000 g', porto: 'CHF 2.00', faktura: 'CHF 2.50' },
   ];
 
   const pakete = [
-    { id: 1, masse: 'Bis 60.0 cm x 40.0 cm x 41.0 cm', gewicht: 'Bis 2 kg', priceStandard: 'CHF 8.50', priceExtra: 'CHF 12.50' },
-    { id: 2, masse: '', gewicht: 'Bis 5 kg', priceStandard: 'CHF 10.00', priceExtra: 'CHF 14.00' },
-    { id: 3, masse: '', gewicht: 'Bis 10 kg', priceStandard: 'CHF 12.00', priceExtra: 'CHF 16.00' },
-    { id: 4, masse: '', gewicht: 'Bis 30 kg', priceStandard: 'CHF 15.00', priceExtra: 'CHF 19.00' },
+    { id: 1, masse: 'Unter Sperrgutgrösse!', gewicht: 'Bis 5 kg', portopost: 'CHF 8.50', faktura: 'CHF 10.10' },
+    { id: 2, masse: '', gewicht: 'Bis 10 kg', portopost: 'CHF 11.50', faktura: 'CHF 13.10'},
+    { id: 3, masse: '', gewicht: 'Bis 30 kg', portopost: 'CHF 20.50', faktura: 'CHF 22.10'},
   ];
 
   const [copiedId, setCopiedId] = useState(null);
@@ -58,7 +59,7 @@ function Versand() {
     <div>
       <h1>Versand</h1>
 
-      <table border="1">
+      <table border="1" className="versand-table">
         <thead>
           <tr>
             <th>Format</th>
@@ -97,8 +98,8 @@ function Versand() {
           <tr>
             <th>Masse</th>
             <th>Gewicht</th>
-            <th>Preis Standard</th>
-            <th>Preis Extra</th>
+            <th>Portokosten Post</th>
+            <th>Faktura-Preis</th>
           </tr>
         </thead>
         <tbody>
@@ -110,14 +111,14 @@ function Versand() {
                 </>
               ) : null}
               <td>{paket.gewicht}</td>
+              <td>{paket.portopost}</td>
               <td
                 id={`paket-${paket.id}`}
-                onClick={() => handlePaketPrice(`paket-${paket.id}`, paket.priceStandard)}
+                onClick={() => handlePaketPrice(`paket-${paket.id}`, paket.faktura)}
                 className={copiedId === `paket-${paket.id}` ? 'copied' : ''}
               >
-                {paket.priceStandard}
+                {paket.faktura}
               </td>
-              <td>{paket.priceExtra}</td>
             </tr>
           ))}
         </tbody>

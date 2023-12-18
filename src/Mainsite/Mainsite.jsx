@@ -41,15 +41,13 @@ function Mainsite() {
 
   return (
     <div className="container">
-      <div className="hello-widget">
-        <h2 className="hello-message">Lieber {loggedInUser.username}</h2>
-        <div className="muster-text-container">
-          <p className="muster-text">Herzlich willkommen auf Effizienzo! Schön, dass du dich entschieden hast, meine Plattform zu benutzen. Viel Spaß und bei Fragen komme einfach auf mich zu!</p>
-          <p className='muster-text'>Liebe Grüße, Timo Blumer</p>
-        </div>
-      </div>
+      <div className="welcome-container">
+      <h2 className="hello-message">Willkommen, Benutzer!</h2>
 
-      
+        {/* Neuer Code: Muster-Text oder Lückenfüller-Text */}
+        <p className="muster-text">Herzlich willkommen auf Effizienzo! Schön, dass du dich entschieden hast, meine Plattform zu benutzen. Viel Spaß und bei Fragen komm einfach auf mich zu!</p>
+        <p className='muster-text'>Liebe Grüße, Timo Blumer</p>
+      </div>
 
       <div className='updates-container'>
         <h3>Updates</h3>
@@ -66,6 +64,16 @@ function Mainsite() {
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+function Update({ datum, title, text }) {
+  return (
+    <div className="update">
+      <p><em>{datum}</em></p>
+      <p><strong>{title}</strong></p>
+      <p>{text}</p>
     </div>
   );
 }

@@ -106,16 +106,19 @@ function Navbar() {
                 Schluss
               </Link>
             </li>
+            <li>
+              <Link to="/artikel/reaktivierung" className={currentPath === '/artikel/reaktivierung' ? 'active' : ''}>
+                Reaktivierung
+              </Link>
+            </li>
+            
           </ul>
         </li>
+
+
         <li>
-          <Link to="/versand" className={currentPath === '/versand' ? 'active' : ''}>
-            Versand
-          </Link>
-        </li>
-        <li>
-          <Link to="/reaktivierung" className={currentPath === '/reaktivierung' ? 'active' : ''}>
-            Reaktivierung
+          <Link to="/bewertung" className={currentPath === '/bewertung' ? 'active' : ''}>
+            Bewertungen
           </Link>
         </li>
         <li>
@@ -123,7 +126,33 @@ function Navbar() {
             Symbole
           </Link>
         </li>
-        <li>
+        
+      <li>
+          <Link to="/profil" className={currentPath.startsWith('/profil') ? 'active' : ''}>
+            Profil
+          </Link>
+          <ul className="submenu">
+            <li>
+              <Link to="/profil/settings" className={currentPath === '/profil/settings' ? 'active' : ''}>
+                Einstellungen
+              </Link>
+            </li>
+
+          </ul>
+        </li>
+
+
+
+        {
+          /*
+<li>
+              <Link to="/artikel/versand" className={currentPath === '/artikel/versand' ? 'active' : ''}>
+                Versand
+              </Link>
+            </li>
+
+
+            <li>
           <Link to="/admins" className={currentPath.startsWith('/admins') ? 'active' : ''}>
             Admins
           </Link>
@@ -153,30 +182,10 @@ function Navbar() {
                 Benutzer erstellen
               </Link>
             </li>
-            
+
           </ul>
         </li>
-        <li>
-          <Link to="/profil" className={currentPath.startsWith('/profil') ? 'active' : ''}>
-            Profil
-          </Link>
-          <ul className="submenu">
-            <li>
-              <Link to="/profil/settings" className={currentPath === '/profil/settings' ? 'active' : ''}>
-                Einstellungen
-              </Link>
-            </li>
-            
-          </ul>
-        </li>
-
-        
-        
-        
-        {
-          /*
-
-
+  
 
               <li>
           <Link to="/chat" className={currentPath === '/chat' ? 'active' : ''}>
@@ -214,8 +223,8 @@ function Navbar() {
           
           */
         }
-    
-        
+
+
       </ul>
     </div>
   );

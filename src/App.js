@@ -44,6 +44,7 @@ import FahrradShorts from './InserierenVorlagen/FahrradShorts';
 
 import NichtVerkauf from './nichtverkauf/NichtVerkauf';
 import Reaktivierung from './Reaktivierung/Reaktivierung';
+import Bewertungen from './Bewertung/Bewertungen';
 
 import Login from './Login/Login';
 import Admins from './Admin/Admins';
@@ -54,7 +55,6 @@ import Schluss from './Schluss/Schluss';
 import Versand from './Versand/Versand';
 
 import Users from './Admin/Users/Users';
-import CreateUser from './Admin/Users/CreateUser';
 import Chat from './Chat/Chat';
 import Vorlagen from './Vorlagen/Volagen';
 import Main from 'react-router-dom/dist/main';
@@ -96,7 +96,8 @@ function App() {
             path="/"
             element={
               <>
-                <Login />
+              <Navbar />
+                <Mainsite />
               </>
             }
           />
@@ -131,6 +132,16 @@ function App() {
             }
           />
 
+<Route
+            path="/bewertung"
+            element={
+              <>
+                <Navigation />
+                <Bewertungen />
+              </>
+            }
+          />
+
           <Route
             path="/spenden"
             element={
@@ -158,15 +169,7 @@ function App() {
               </>
             }
           />
-          <Route
-            path="/admins/usercreate"
-            element={
-              <>
-                <Navigation />
-                <CreateUser />
-              </>
-            }
-          />
+        
           <Route
             path="/artikel"
             element={
@@ -213,7 +216,7 @@ function App() {
             }
           />
           <Route
-            path="/versand"
+            path="/artikel/versand"
             element={
               <>
                 <Navigation />
@@ -222,7 +225,7 @@ function App() {
             }
           />
           <Route
-            path="/reaktivierung"
+            path="/artikel/reaktivierung"
             element={
               <>
                 <Navigation />
