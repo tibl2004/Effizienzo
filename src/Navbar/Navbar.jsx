@@ -111,9 +111,14 @@ function Navbar() {
                 Reaktivierung
               </Link>
             </li>
-
+            <li>
+              <Link to="/artikel/versand" className={currentPath === '/artikel/versand' ? 'active' : ''}>
+                Versand
+              </Link>
+            </li>
           </ul>
         </li>
+        
         <li>
           <Link to="/vorlagen" className={currentPath.startsWith('/vorlagen') ? 'active' : ''}>
             Vorlagen

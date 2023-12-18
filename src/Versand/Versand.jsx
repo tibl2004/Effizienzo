@@ -8,7 +8,7 @@ function Versand() {
     { id: 1, format: 'B5', dicke: '2 cm', gewicht: '1 - 100g', porto: 'CHF 1.00', faktura: 'CHF 1.50', specialClass: 'special-cell' },
     { id: 2, format: '', dicke: '', gewicht: '101 - 500g', porto: 'CHF 1.40', faktura: 'CHF 1.90' },
     { id: 3, format: '', dicke: '2 - 5 cm', gewicht: '1 - 100g', porto: 'CHF 3.00', faktura: 'CHF 3.50' },
-    { id: 4, format: '', dicke: '', gewicht: '101 - 250g', porto: 'CHF 3.40', faktura: 'CHF 3.90' },
+    { id: 4, format: '', dicke: '', gewicht: '101 - 500g', porto: 'CHF 3.40', faktura: 'CHF 3.90' },
     { id: 5, format: 'Grossbrief (bis B4)', dicke: '2 cm', gewicht: '1 - 500 g', porto: 'CHF 2.00', faktura: 'CHF 2.50', specialClass: 'special-cell' },
     { id: 6, format: '', dicke: '', gewicht: '501 - 1000 g', porto: 'CHF 2.00', faktura: 'CHF 2.50' },
   ];
