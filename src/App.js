@@ -66,6 +66,7 @@ import Settings from './Settings/Settings';
 import Sendungsstatistik from './Nachbearbeitung/Controlling/Sendungsstatistik/Sendungsstatistik';
 import PostFinanceForm from './Postfinance/Postfinance';
 import BeschreibungRicardo from './Ricardo/BeschreibungRicardo';
+import Lager from './Status/Lager/Lager';
 
 
 
@@ -116,6 +117,27 @@ function App() {
               </>
             }
           />
+
+<Route
+            path="/lager"
+            element={
+              <>
+                <Navbar />
+                <Lager />
+              </>
+            }
+          />
+
+<Route
+            path="/lagerort"
+            element={
+              <>
+                <Navbar />
+                <Lager />
+              </>
+            }
+          />
+
 
           <Route
             path="/profil/settings"
