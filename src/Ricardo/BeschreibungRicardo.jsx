@@ -26,18 +26,15 @@ class BeschreibungRicardo extends Component {
 
   handleLeereZeilenLoeschen = () => {
     this.setState((prevState) => {
-      // Remove the top empty line in beschreibung
-      let beschreibung = prevState.beschreibung.replace(/^\s*\n/, '');
-
-      // Remove the top empty line in artikelDetails
-      let artikelDetails = prevState.artikelDetails.replace(/^\s*\n/, '');
-
+      // Remove all empty lines in artikelDetails
+      let artikelDetails = prevState.artikelDetails.replace(/^\s*[\r\n]/gm, '');
+  
       return {
-        beschreibung,
         artikelDetails,
       };
     });
   };
+  
 
   handleZusammenkopieren = () => {
     const { beschreibung, artikelDetails } = this.state;
