@@ -89,6 +89,11 @@ const Users = () => {
                                     onChange={(e) => setEditedUser({ ...editedUser, username: e.target.value })}
                                 />
                                 <input
+                                    type="email"
+                                    value={editedUser.email}
+                                    onChange={(e) => setEditedUser({ ...editedUser, email: e.target.value })}
+                                />
+                                <input
                                     type="password"
                                     value={editedUser.password}
                                     onChange={(e) => setEditedUser({ ...editedUser, password: e.target.value })}
@@ -101,6 +106,7 @@ const Users = () => {
                                 <p>Vorname: {user.vorname}</p>
                                 <p>Nachname: {user.nachname}</p>
                                 <p>Benutzername: {user.username}</p>
+                                <p>E-Mail: {user.email}</p> {/* Hier wird das E-Mail-Feld angezeigt */}
                                 <p>Passwort: {user.password}</p>
                                 <button className='delete' onClick={() => handleDeleteUser(user.id)}>
                                     <FontAwesomeIcon icon={faTrash} /> Löschen

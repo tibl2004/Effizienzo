@@ -6,6 +6,7 @@ function CreateUser() {
     vorname: "",
     nachname: "",
     username: "",
+    email: "", // Hinzugefügtes Feld für die E-Mail-Adresse
     password: "",
   });
 
@@ -54,6 +55,13 @@ function CreateUser() {
           name="username"
           placeholder="Benutzername"
           value={newUser.username}
+          onChange={handleInputChange}
+        />
+        <input
+          type="email" 
+          name="email"
+          placeholder="E-Mail-Adresse"
+          value={newUser.email}
           onChange={handleInputChange}
         />
         <input
