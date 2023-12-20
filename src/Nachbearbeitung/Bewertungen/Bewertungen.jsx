@@ -5,11 +5,12 @@ import './Bewertungen.scss';
 function Bewertungen() {
   const bewertungen = [
     "Alles super. Vielen Dank und gerne wieder!",
-    "Besten Dank für Ihren Kauf gerne wieder",
-    "Vielen dank für Ihren Kauf bei uns.",
-    "Was alles so Tiptop.",
-    "Hat wie immer alles wunderbar geklappt-Herzlichen Dank!"
+    "Besten Dank für Ihren Kauf. Gerne wieder.",
+    "Vielen Dank für Ihren Kauf bei uns.",
+    "Alles tiptop.",
+    "Hat wie immer alles wunderbar geklappt. Herzlichen Dank!"
   ];
+  
 
   const [greetingMessage, setGreetingMessage] = useState(bewertungen[0]);
   const [copied, setCopied] = useState(false);

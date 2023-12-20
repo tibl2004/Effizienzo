@@ -168,7 +168,12 @@ function Erfassen() {
   };
 
   return (
-    <div className="App">
+    <div className="erfassen">
+
+      <div className="warning-box">
+      <FontAwesomeIcon icon={faTriangleExclamation} style={{ color: 'white', marginRight: '5px' }} />
+        Bitte sonst noch andere Wichtige Relevante Informationen erfassen! Wie z.B. für technische Geräte ist es sehr wichtig!
+      </div>
 
       <div className='button-container'>
         <button
@@ -182,11 +187,11 @@ function Erfassen() {
             <FontAwesomeIcon icon={faTrash} /> Alle Eingaben Löschen
           </span>
         </button>
-       
+
         <button onClick={handleExportToPDF} className="export-button">
           <FontAwesomeIcon icon={faFilePdf} /> PDF Exportieren
         </button>
-        
+
       </div>
 
       <div className="input-container">
