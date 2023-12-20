@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faTrash, faTimes, faQuestionCircle, faFilePdf, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faTrash, faTimes, faQuestionCircle, faFilePdf, faCheck, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 import jsPDF from 'jspdf';
 
