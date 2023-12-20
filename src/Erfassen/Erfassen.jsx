@@ -164,7 +164,7 @@ function Erfassen() {
     yPos += 10;
 
     // PDF herunterladen
-    doc.save('exported-data.pdf');
+    doc.save('erfassen.pdf');
   };
 
   return (
