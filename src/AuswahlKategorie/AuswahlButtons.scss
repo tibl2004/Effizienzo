@@ -52,3 +52,12 @@ input {
   font-size: 15px;
   padding-left: 15px;
 }
+
+.warning-box {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}

@@ -83,4 +83,12 @@
     z-index: 999; /* Stelle sicher, dass das Overlay über anderen Elementen liegt */
   }
   
+  .warning-box {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
   

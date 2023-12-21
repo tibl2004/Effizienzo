@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './AuswahlButtons.scss';
-import Warning from '../Warning/Warning';
+
 
 
 import {
@@ -89,7 +89,10 @@ function Auswahlkategorie() {
 
   return (
     <div>
-      <Warning />
+      <div className="warning-box">
+    <FontAwesomeIcon icon={faTriangleExclamation} style={{ color: 'white', marginRight: '5px' }} />
+    Bitte sonst noch andere Wichtige Relevante Informationen erfassen! Wie z.B. für technische Geräte ist es sehr wichtig!
+  </div>
       <div className='title'>
         <h2>Kategorien</h2>
       </div>
