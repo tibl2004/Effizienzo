@@ -314,7 +314,7 @@ function App() {
           />
 
           <Route
-            path="/artikel/inserieren"
+            path="/artikel/kategorien"
             element={
               <>
                 <Navigation />
@@ -408,11 +408,11 @@ function App() {
 
 
           <Route
-            path="/inserieren"
+            path="/artikel/beschreibung"
             element={
               <>
                 <Navigation />
-                <Auswahlkategorie />
+                < BeschreibungRicardo/>
               </>
             }
           />

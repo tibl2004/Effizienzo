@@ -97,8 +97,13 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/artikel/inserieren" className={currentPath === '/artikel/inserieren' ? 'active' : ''}>
-                Inserieren
+          <Link to="/artikel/beschreibung" className={currentPath === '/artikel/beschreibung' ? 'active' : ''}>
+            Ricardo
+          </Link>
+        </li>
+            <li>
+              <Link to="/artikel/kategorien" className={currentPath === '/artikel/kategorien' ? 'active' : ''}>
+                Inserat Vorlagen
               </Link>
             </li>
             <li>
@@ -119,11 +124,7 @@ function Navbar() {
           </ul>
         </li>
 
-        <li>
-          <Link to="/beschreibung" className={currentPath === '/beschreibung' ? 'active' : ''}>
-            Ricardo
-          </Link>
-        </li>
+        
         
         <li>
           <Link to="/vorlagen" className={currentPath.startsWith('/vorlagen') ? 'active' : ''}>
