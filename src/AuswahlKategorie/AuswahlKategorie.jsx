@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './AuswahlButtons.scss';
+import Warning from '../Warning/Warning';
 
 
 import {
@@ -88,6 +89,7 @@ function Auswahlkategorie() {
 
   return (
     <div>
+      <Warning />
       <div className='title'>
         <h2>Kategorien</h2>
       </div>

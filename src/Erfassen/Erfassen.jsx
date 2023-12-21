@@ -4,6 +4,7 @@ import { faCopy, faTrash, faFilePdf, faCheck, faQuestionCircle, faTriangleExclam
 import jsPDF from 'jspdf';
 import '../Erfassen/Erfassen.scss';
 import Navbar from '../Navbar/Navbar';
+import Warning from '../Warning/Warning';
 
 function Erfassen() {
   const [data, setData] = useState({
@@ -147,10 +148,8 @@ function Erfassen() {
 
   return (
     <div className="erfassen">
-      <div className="warning-box">
-        <FontAwesomeIcon icon={faTriangleExclamation} style={{ color: 'white', marginRight: '5px' }} />
-        Bitte sonst noch andere Wichtige Relevante Informationen erfassen! Wie z.B. für technische Geräte ist es sehr wichtig!
-      </div>
+      
+      <Warning />
 
       <div className='button-container'>
         <button
