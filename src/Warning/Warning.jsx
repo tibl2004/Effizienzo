@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Warning.scss'; 
+import { faCopy, faTrash, faFilePdf, faCheck, faQuestionCircle, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 function Warning() {
 
