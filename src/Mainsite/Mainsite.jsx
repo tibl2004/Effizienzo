@@ -21,9 +21,9 @@ function Mainsite() {
       { id: 1, version: "V.4.3", datum: "28.11.2023", title: 'Home Seite Neues Design', text: 'Die Home Seite hat ein neues Design bekommen.' },
       { id: 2, version: "V.4.4", datum: "29.11.2023", title: 'Login Fertig gestellt', text: 'Das Login wurde fertiggestellt und jeder Benutzer muss sich einloggen.' },
       { id: 3, version: "V.4.5", datum: "04.12.2023", title: 'Loginupdate fertig', text: 'Das Login hat jetzt alle Funktionen. Man kann sich einmal einloggen und dann ist man permanent eingeloggt.' },
-      { id: 4, version: "V.4.8", datum: "18.12.2023", title: 'Ricardo Beschreibung zusammengenerieren lassen', text: 'Man kann nun die Beschreibungen für das Inserat ganz einfach zusammen generieren. Sehr simpel und einfach. Viel Spass' },
-      // Add more updates as needed
-      // Add more updates as needed
+      { id: 4, version: "V.4.8", datum: "18.12.2023", title: "Ricardo Beschreibung zusammengenerieren lassen", text: "Man kann nun die Beschreibungen für das Inserat ganz einfach zusammen generieren. Sehr simpel und einfach. Viel Spass"},
+      { id: 4, version: "V.4.9", datum: "21.12.2023", title: "Wichtige Sachen hinzugefügt", text: "Es ist wichtig, dass ihr den Artikeln so viele Details wie möglich hinzufügt. Sonstige weiterführende Informationen müssen ebenfalls hinzugefügt werden."}
+    
     ];
 
     // Sort updates by date in descending order

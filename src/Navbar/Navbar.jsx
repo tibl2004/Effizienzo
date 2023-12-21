@@ -124,7 +124,11 @@ function Navbar() {
           </ul>
         </li>
 
-        
+        <li>
+          <Link to="/faq" className={currentPath === '/faq' ? 'active' : ''}>
+            Häufige Fragen
+          </Link>
+        </li>
         
         <li>
           <Link to="/vorlagen" className={currentPath.startsWith('/vorlagen') ? 'active' : ''}>

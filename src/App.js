@@ -67,6 +67,7 @@ import Sendungsstatistik from './Nachbearbeitung/Controlling/Sendungsstatistik/S
 import PostFinanceForm from './Postfinance/Postfinance';
 import BeschreibungRicardo from './Ricardo/BeschreibungRicardo';
 import Lager from './Lager/Lager';
+import FAQ from './Fragen/Fragen';
 
 
 
@@ -392,6 +393,15 @@ function App() {
             }
           />
 
+        <Route
+            path="/faq"
+            element={
+              <>
+                <Navigation />
+                <FAQ />
+              </>
+            }
+          />
 
 
 
