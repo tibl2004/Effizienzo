@@ -1,9 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faTrash, faTimes, faQuestionCircle, faFilePdf, faCheck, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-
+import { faCopy, faTrash, faFilePdf, faCheck, faQuestionCircle, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import jsPDF from 'jspdf';
-
 import '../Erfassen/Erfassen.scss';
 import Navbar from '../Navbar/Navbar';
 
@@ -26,20 +24,10 @@ function Erfassen() {
 
   const [selectedOption, setSelectedOption] = useState('');
   const [copiedLabel, setCopiedLabel] = useState(null);
-  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
   const pdfRef = useRef(); // Ref für das PDF-Element
 
-  const toggleOverlay = () => {
-    setIsOverlayVisible(!isOverlayVisible);
-  };
-
-  const closeOverlay = () => {
-    setIsOverlayVisible(false);
-  };
-
   const handleInputChange = (label, value) => {
-    // Überprüfe, ob der eingegebene Wert nur Zahlen und "." enthält, und aktualisiere das Datenobjekt entsprechend.
     if (/^[0-9.]*$/.test(value) || label !== 'Startpreis') {
       setData((prevData) => ({
         ...prevData,
@@ -49,7 +37,6 @@ function Erfassen() {
   };
 
   const handleMinimumpreisChange = (label, value) => {
-    // Überprüfe, ob der eingegebene Wert nur Zahlen und "." enthält, und aktualisiere das Datenobjekt entsprechend.
     if (/^[0-9.]*$/.test(value) || label !== 'Minimumpreis') {
       setData((prevData) => ({
         ...prevData,
@@ -59,7 +46,6 @@ function Erfassen() {
   };
 
   const handleReaktivierungChange = (label, value) => {
-    // Überprüfe, ob der eingegebene Wert nur Zahlen und "." enthält, und aktualisiere das Datenobjekt entsprechend.
     if (/^[0-9.]*$/.test(value) || label !== '1. Reaktivierung') {
       setData((prevData) => ({
         ...prevData,
@@ -69,7 +55,6 @@ function Erfassen() {
   };
 
   const handleReaktivierung2Change = (label, value) => {
-    // Überprüfe, ob der eingegebene Wert nur Zahlen und "." enthält, und aktualisiere das Datenobjekt entsprechend.
     if (/^[0-9.]*$/.test(value) || label !== '2. Reaktivierung') {
       setData((prevData) => ({
         ...prevData,
@@ -79,7 +64,6 @@ function Erfassen() {
   };
 
   const handleReaktivierung3Change = (label, value) => {
-    // Überprüfe, ob der eingegebene Wert nur Zahlen und "." enthält, und aktualisiere das Datenobjekt entsprechend.
     if (/^[0-9.]*$/.test(value) || label !== '3. Reaktivierung') {
       setData((prevData) => ({
         ...prevData,
@@ -91,7 +75,6 @@ function Erfassen() {
   const handleCopy = (label) => {
     let text = `${label}: ${data[label]}`;
 
-    // Wenn der Kopieren-Button für 'Startpreis' oder '1. Reaktivierung' geklickt wird, füge 'CHF ' vor der Zahl hinzu
     if (label === 'Minimumpreis' || label === 'Startpreis' || label === '1. Reaktivierung' || label === '2. Reaktivierung' || label === '3. Reaktivierung') {
       text = `CHF ${data[label]}`;
     }
@@ -148,7 +131,6 @@ function Erfassen() {
   };
 
   const handleExportToPDF = () => {
-    // Erstelle ein neues PDF-Dokument
     const doc = new jsPDF();
     let yPos = 20;
 
@@ -157,19 +139,16 @@ function Erfassen() {
       yPos += 10;
     });
 
-    // Füge den ausgewählten Wert im Dropdown hinzu
     doc.text(20, yPos, `Bei Nichtverkauf: ${selectedOption}`);
     yPos += 10;
 
-    // PDF herunterladen
     doc.save('erfassen.pdf');
   };
 
   return (
     <div className="erfassen">
-
       <div className="warning-box">
-      <FontAwesomeIcon icon={faTriangleExclamation} style={{ color: 'white', marginRight: '5px' }} />
+        <FontAwesomeIcon icon={faTriangleExclamation} style={{ color: 'white', marginRight: '5px' }} />
         Bitte sonst noch andere Wichtige Relevante Informationen erfassen! Wie z.B. für technische Geräte ist es sehr wichtig!
       </div>
 
@@ -189,13 +168,21 @@ function Erfassen() {
         <button onClick={handleExportToPDF} className="export-button">
           <FontAwesomeIcon icon={faFilePdf} /> PDF Exportieren
         </button>
-
       </div>
 
       <div className="input-container">
         {Object.entries(data).map(([label, value]) => (
           <div key={label} className="input-field">
-            <label style={{ fontSize: '18px', marginRight: '10px' }}>{label}:</label>
+            <label style={{ fontSize: '18px', marginRight: '10px' }}>
+              {label}:
+              {label === 'Hinweise' && (
+                <FontAwesomeIcon
+                  icon={faQuestionCircle}
+                  style={{ marginLeft: '5px', color: '#007bff', cursor: 'pointer' }}
+                  title="Sonstige Weiterführende Informationen hier eintragen!!"
+                />
+              )}
+            </label>
             {label === 'Bei Nichtverkauf' ? (
               <div>
                 <select
