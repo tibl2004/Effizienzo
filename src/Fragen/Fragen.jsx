@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './FAQ.scss';
 
 const FAQ = () => {
   const [faqs, setFaqs] = useState([
@@ -39,7 +40,7 @@ const FAQ = () => {
   };
 
   return (
-    <div>
+    <div className="faq-container">
       <h2>Häufig gestellte Fragen</h2>
 
       {faqs.map((faq) => (
