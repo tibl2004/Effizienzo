@@ -130,54 +130,12 @@ function Navbar() {
           </Link>
         </li>
         
-        <li>
-          <Link to="/vorlagen" className={currentPath.startsWith('/vorlagen') ? 'active' : ''}>
-            Vorlagen
-          </Link>
-          <ul className="submenu">
-            <li>
-              <Link to="/vorlagen/spenden" className={currentPath === '/vorlagen/spenden' ? 'active' : ''}>
-                Spenden
-              </Link>
-            </li>
-            <li className='disabled-link'>
-              <Link to="/vorlagen/abholung" className={currentPath === '/vorlagen/abholung' ? 'active' : ''}>
-                Abholung
-              </Link>
-            </li>
-            
-          </ul>
-        </li>
-        <li>
-          <Link to="/symbole" className={currentPath === '/symbole' ? 'active' : ''}>
-            Symbole
-          </Link>
-        </li>
+       
+      
 
-
-        <li>
-          <Link to="/nachbearbeitung" className={currentPath.startsWith('/nachbearbeitung') ? 'active' : ''}>
-            Nachbearbeitung
-          </Link>
-          <ul className="submenu">
-            <li>
-              <Link to="/nachbearbeitung/bewertungen" className={currentPath === '/nachbearbeitung/bewertungen' ? 'active' : ''}>
-                Bewertungen
-              </Link>
-            </li>
-            <li>
-              <Link to="/nachbearbeitung/controlling" className={currentPath === '/nachbearbeitung/controlling' ? 'active' : ''}>
-                Controlling
-              </Link>
-            </li>
-
+       
            
            
-
-
-          </ul>
-        </li>
-
 
         
 

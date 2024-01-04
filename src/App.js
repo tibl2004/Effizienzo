@@ -52,7 +52,7 @@ import Login from './Login/Login';
 import Admins from './Admin/Admins';
 import CreateAdmin from './Admin/CreateAdmin';
 import BuchungsbelegVerkauf from './Admin/BuchungsbelegVerkauf';
-import Symbole from './Symbole/Symbole';
+
 import Schluss from './Schluss/Schluss';
 import Versand from './Versand/Versand';
 
@@ -267,15 +267,7 @@ function App() {
               </>
             }
           />
-          <Route
-            path="/symbole"
-            element={
-              <>
-                <Navigation />
-                <Symbole />
-              </>
-            }
-          />
+       
           <Route
             path="/schluss"
             element={
