@@ -57,7 +57,7 @@ import Schluss from './Schluss/Schluss';
 import Versand from './Versand/Versand';
 
 import Users from './Admin/Users/Users';
-import Chat from './Chat/Chat';
+
 import Vorlagen from './Vorlagen/Volagen';
 import Main from 'react-router-dom/dist/main';
 import Vasen from './InserierenVorlagen/Vasen';
@@ -383,15 +383,7 @@ function App() {
               </>
             }
           />
-          <Route
-            path="/chat"
-            element={
-              <>
-                <Navigation />
-                <Chat />
-              </>
-            }
-          />
+    
 
         <Route
             path="/faq"

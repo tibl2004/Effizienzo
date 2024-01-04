@@ -4,7 +4,7 @@ import { faCopy, faTrash, faFilePdf, faCheck, faQuestionCircle, faTriangleExclam
 import jsPDF from 'jspdf';
 import '../Erfassen/Erfassen.scss';
 import Navbar from '../Navbar/Navbar';
-import Warning from '../Warning/Warning';
+
 
 function Erfassen() {
   const [data, setData] = useState({
