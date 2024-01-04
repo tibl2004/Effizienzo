@@ -8,8 +8,7 @@ import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 import Tagesplanung from './Admin/Tagesplanung';
 import Artikel from './Artikel/Artikel';
-import Spenden from './Vorlagen/Spenden/Spenden';
-import Abholung from './Vorlagen/Abholung/Abholung';
+
 
 
 import WandStandUhren from './InserierenVorlagen/WandStandUhren';
@@ -42,11 +41,8 @@ import Kerzenstaender from './InserierenVorlagen/Kerzenstaender';
 import Brautkleid from './InserierenVorlagen/Brautkleid';
 import FahrradShorts from './InserierenVorlagen/FahrradShorts';
 
-import NichtVerkauf from './nichtverkauf/NichtVerkauf';
 import Reaktivierung from './Reaktivierung/Reaktivierung';
-import Bewertungen from './Nachbearbeitung/Bewertungen/Bewertungen';
-import Nachbearbeitung from './Nachbearbeitung/Nachbearbeitung';
-import Controlling from './Nachbearbeitung/Controlling/Controlling'
+
 
 import Login from './Login/Login';
 import Admins from './Admin/Admins';
@@ -58,15 +54,14 @@ import Versand from './Versand/Versand';
 
 import Users from './Admin/Users/Users';
 
-import Vorlagen from './Vorlagen/Volagen';
 import Main from 'react-router-dom/dist/main';
 import Vasen from './InserierenVorlagen/Vasen';
 import Profil from './Profil/Profil';
 import Settings from './Settings/Settings';
-import Sendungsstatistik from './Nachbearbeitung/Controlling/Sendungsstatistik/Sendungsstatistik';
-import PostFinanceForm from './Postfinance/Postfinance';
+
+
 import BeschreibungRicardo from './Ricardo/BeschreibungRicardo';
-import Lager from './Lager/Lager';
+
 import FAQ from './Fragen/Fragen';
 
 
@@ -119,25 +114,7 @@ function App() {
             }
           />
 
-<Route
-            path="/lager"
-            element={
-              <>
-                <Navbar />
-                <Lager />
-              </>
-            }
-          />
 
-<Route
-            path="/lagerort"
-            element={
-              <>
-                <Navbar />
-                <Lager />
-              </>
-            }
-          />
 
 
           <Route
@@ -154,82 +131,10 @@ function App() {
           
 
 
-          <Route
-            path="/nachbearbeitung"
-            element={
-              <>
-                <Navigation />
-                <Nachbearbeitung />
-              </>
-            }
-          />
-          <Route
-            path="/nachbearbeitung/bewertungen"
-            element={
-              <>
-                <Navigation />
-                <Bewertungen />
-              </>
-            }
-          />
-          <Route
-            path="/nachbearbeitung/controlling"
-            element={
-              <>
-                <Navigation />
-                <Controlling />
-              </>
-            }
-          />
 
-<Route
-            path="/nachbearbeitung/sendungsstatistik"
-            element={
-              <>
-                <Navigation />
-                <Sendungsstatistik />
-              </>
-            }
-          />
+
+
           
-<Route
-            path="/vorlagen"
-            element={
-              <>
-                <Navigation />
-                <Vorlagen />
-              </>
-            }
-          />
-          <Route
-            path="/vorlagen/spenden"
-            element={
-              <>
-                <Navigation />
-                <Spenden />
-              </>
-            }
-          />
-
-<Route
-            path="/postfinancedaten"
-            element={
-              <>
-                <Navigation />
-                <PostFinanceForm />
-              </>
-            }
-          />
-
-          <Route
-            path="/vorlagen/abholung"
-            element={
-              <>
-                <Navigation />
-                <Abholung />
-              </>
-            }
-          />
           <Route
             path="/admins/users"
             element={
@@ -390,17 +295,7 @@ function App() {
 
 
 
-          <Route
-            path="/nichtverkauf"
-            element={
-              <>
-                <Navigation />
-                <NichtVerkauf />
-              </>
-            }
-          />
-
-
+   
           <Route
             path="/artikel/beschreibung"
             element={
