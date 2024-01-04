@@ -7,7 +7,7 @@ import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
 import Mainsite from './Mainsite/Mainsite';
 import Navbar from './Navbar/Navbar';
 import Tagesplanung from './Admin/Tagesplanung';
-import Artikel from './Artikel/Artikel';
+
 
 
 
@@ -145,15 +145,7 @@ function App() {
             }
           />
 
-          <Route
-            path="/artikel"
-            element={
-              <>
-                <Navigation />
-                <Artikel />
-              </>
-            }
-          />
+          
           <Route
             path="/mainsite"
             element={
@@ -183,7 +175,7 @@ function App() {
             }
           />
           <Route
-            path="/artikel/versand"
+            path="/versand"
             element={
               <>
                 <Navigation />
@@ -192,7 +184,7 @@ function App() {
             }
           />
           <Route
-            path="/artikel/reaktivierung"
+            path="/reaktivierung"
             element={
               <>
                 <Navigation />
@@ -202,7 +194,7 @@ function App() {
           />
 
           <Route
-            path="/artikel/erfassen"
+            path="/erfassen"
             element={
               <>
                 <Navigation />
@@ -212,7 +204,7 @@ function App() {
           />
 
           <Route
-            path="/artikel/kategorien"
+            path="/kategorien"
             element={
               <>
                 <Navigation />
@@ -221,7 +213,7 @@ function App() {
             }
           />
           <Route
-            path="/artikel/schluss"
+            path="/schluss"
             element={
               <>
                 <Navigation />
@@ -297,7 +289,7 @@ function App() {
 
    
           <Route
-            path="/artikel/beschreibung"
+            path="/beschreibung"
             element={
               <>
                 <Navigation />

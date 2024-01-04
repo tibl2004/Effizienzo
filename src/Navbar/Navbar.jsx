@@ -86,58 +86,53 @@ function Navbar() {
             Home
           </Link>
         </li>
+
         <li>
-          <Link to="/artikel" className={currentPath.startsWith('/artikel') ? 'active' : ''}>
-            Artikel
+          <Link to="/erfassen" className={currentPath === '/erfassen' ? 'active' : ''}>
+            Erfassen
           </Link>
-          <ul className="submenu">
-            <li>
-              <Link to="/artikel/erfassen" className={currentPath === '/artikel/erfassen' ? 'active' : ''}>
-                Erfassen
-              </Link>
-            </li>
-            <li>
-          <Link to="/artikel/beschreibung" className={currentPath === '/artikel/beschreibung' ? 'active' : ''}>
+        </li>
+        <li>
+          <Link to="/beschreibung" className={currentPath === '/beschreibung' ? 'active' : ''}>
             Ricardo
           </Link>
         </li>
-            <li>
-              <Link to="/artikel/kategorien" className={currentPath === '/artikel/kategorien' ? 'active' : ''}>
-                Inserat Vorlagen
-              </Link>
-            </li>
-            <li>
-              <Link to="/artikel/schluss" className={currentPath === '/artikel/schluss' ? 'active' : ''}>
-                Schluss
-              </Link>
-            </li>
-            <li>
-              <Link to="/artikel/reaktivierung" className={currentPath === '/artikel/reaktivierung' ? 'active' : ''}>
-                Reaktivierung
-              </Link>
-            </li>
-            <li>
-              <Link to="/artikel/versand" className={currentPath === '/artikel/versand' ? 'active' : ''}>
-                Versand
-              </Link>
-            </li>
-          </ul>
+        <li>
+          <Link to="/kategorien" className={currentPath === '/kategorien' ? 'active' : ''}>
+            Inserat Vorlagen
+          </Link>
         </li>
+        <li>
+          <Link to="/schluss" className={currentPath === '/schluss' ? 'active' : ''}>
+            Schluss
+          </Link>
+        </li>
+        <li>
+          <Link to="/artikel/reaktivierung" className={currentPath === '/reaktivierung' ? 'active' : ''}>
+            Reaktivierung
+          </Link>
+        </li>
+        <li>
+          <Link to="/versand" className={currentPath === '/versand' ? 'active' : ''}>
+            Versand
+          </Link>
+        </li>
+
 
         <li>
           <Link to="/faq" className={currentPath === '/faq' ? 'active' : ''}>
             Häufige Fragen
           </Link>
         </li>
-        
-       
-      
 
-       
-           
-           
 
-        
+
+
+
+
+
+
+
 
 
         <li>
