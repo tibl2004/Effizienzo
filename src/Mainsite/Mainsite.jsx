@@ -1,4 +1,5 @@
 // Mainsite.jsx
+
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
@@ -45,7 +46,7 @@ function Mainsite() {
 
   return (
     <div className="container">
-      <div className="welcome-container">
+      <div className="welcome-container" style={{ gridColumn: 'span 3', gridRow: 'span 1' }}>
         <h2 className="hello-message">Lieber Benutzer</h2>
         <p className="muster-text">
           Herzlich willkommen auf Effizienzo! Ich freue mich, dass du dich entschieden hast, meine Plattform zu nutzen. Hier bei Effizienzo steht Effizienz an erster Stelle, und ich bin sicher, dass du viele nützliche Funktionen entdecken wirst.
@@ -63,9 +64,7 @@ function Mainsite() {
         </p>
       </div>
 
-
-
-      <div className='feedback-container'>
+      <div className='feedback-container' style={{ gridColumn: 'span 1', gridRow: 'span 1' }}>
         <h3>Wie gefällt dir Effizienzo?</h3>
         <ReactStars
           count={5}
@@ -79,7 +78,7 @@ function Mainsite() {
         />
       </div>
 
-      <div className="team-container" style={{ height: '1000px' }}>
+      <div className="team-container" style={{ gridColumn: 'span 1', gridRow: 'span 2' }}>
         {teamMembers.map((mitglied) => (
           <div key={mitglied.id} className="team-mitglied">
             <div className="profilbild">
@@ -95,7 +94,7 @@ function Mainsite() {
         ))}
       </div>
 
-      <div className='updates-container'>
+      <div className='updates-container' style={{ gridColumn: 'span 2', gridRow: 'span 2' }}>
         <h3>Updates</h3>
         <div className='updates'>
           {updates.map((update, index) => (
