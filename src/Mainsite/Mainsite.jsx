@@ -46,7 +46,7 @@ function Mainsite() {
 
   return (
     <div className="container">
-      <div className="welcome-container" style={{ gridColumn: 'span 3', gridRow: 'span 1' }}>
+      <div className="welcome-container" style={{ gridColumn: 'span 1', gridRow: 'span 1' }}>
         <h2 className="hello-message">Lieber Benutzer</h2>
         <p className="muster-text">
           Herzlich willkommen auf Effizienzo! Ich freue mich, dass du dich entschieden hast, meine Plattform zu nutzen. Hier bei Effizienzo steht Effizienz an erster Stelle, und ich bin sicher, dass du viele nützliche Funktionen entdecken wirst.
