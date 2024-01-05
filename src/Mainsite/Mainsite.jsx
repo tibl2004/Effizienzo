@@ -13,9 +13,11 @@ function Mainsite() {
 
   useEffect(() => {
     const mockUpdates = [
-      { id: 1, version: "V.4.3", datum: "28.11.2023", title: 'Home Seite Neues Design', text: 'Die Home Seite hat ein neues Design bekommen.' },
-      // ... (weitere Updates)
+      { id: 2, version: "V.4.7", datum: "18.12.2023", title: 'Ricardo Beschreibung zusammengenerieren lassen', text: 'Man kann nun die Beschreibungen für das Inserat ganz einfach zusammen generieren. Sehr simpel und einfach. Viel Spaß' },
+      { id: 1, version: "V.4.8", datum: "21.12.2023", title: 'Wichtige Sachen hinzugefügt', text: 'Es ist wichtig, dass ihr den Artikeln so viele Details wie möglich hinzufügt. Sonstige weiterführende Informationen müssen ebenfalls hinzugefügt werden.' },
+      { id: 3, version: "V.4.9", datum: "04.01.2024", title: 'Neues Design und diverse Änderungen', text: 'Es hat ein paar Löschungen von Seiten gegeben dafür auch ein schöneres Design und es hat in der Navbar keine Subnavbar Elemente mehr.' },
     ];
+    
 
     const sortedUpdates = mockUpdates.sort((a, b) => new Date(parseDate(b.datum)) - new Date(parseDate(a.datum)));
 
