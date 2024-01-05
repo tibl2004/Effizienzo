@@ -41,22 +41,10 @@ class BeschreibungRicardo extends Component {
     // Artikeldetails als Liste formatieren
     const artikelDetailsListe = artikelDetails
       .split('\n')
-      .map((detail) => `${detail.trim()}`)
-      .join('\n');
-
-    // Text zusammenfügen
-    const zusammengefuegt = `${beschreibung} \n\n${artikelDetailsListe} \n\nProjekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:30 - 12:00 Uhr und 13:00 - 16:30 Uhr`;
-
-    // Zugriff auf das DOM-Element
-    const textarea = document.createElement('textarea');
-    textarea.value = zusammengefuegt;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
+      .map((detail, index) => <li key={index}>{detail.trim()}</li>);
 
     // Hier kannst du die zusammengefügten Daten verwenden
-    console.log(zusammengefuegt);
+    console.log(beschreibung, artikelDetailsListe);
   };
 
   render() {
@@ -68,13 +56,11 @@ class BeschreibungRicardo extends Component {
           value={this.state.beschreibung}
           onChange={(e) => this.setState({ beschreibung: e.target.value })}
         />
-        <textarea
-          ref={this.artikelDetailsRef}
-          className="artikeldetails"
-          placeholder="Artikeldetails"
-          value={this.state.artikelDetails}
-          onChange={(e) => this.setState({ artikelDetails: e.target.value })}
-        />
+        <ul ref={this.artikelDetailsRef} className="artikeldetails">
+          {this.state.artikelDetails
+            .split('\n')
+            .map((detail, index) => <li key={index}>{detail.trim()}</li>)}
+        </ul>
         <button onClick={this.handleCombinedButtonClick}>Hinweis entfernen & Leere Zeilen löschen</button>
         <div>
           <p>Projekt Restwert Schönbühl</p>
