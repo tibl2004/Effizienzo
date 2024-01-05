@@ -46,10 +46,24 @@ function Mainsite() {
   return (
     <div className="container">
       <div className="welcome-container">
-        <h2 className="hello-message">Lieber {username}</h2>
-        <p className="muster-text">Herzlich willkommen auf Effizienzo! Schön, dass du dich entschieden hast, meine Plattform zu benutzen. Viel Spaß und bei Fragen komm einfach auf mich zu!</p>
-        <p className='muster-text'>Liebe Grüße, Timo Blumer</p>
+        <h2 className="hello-message">Lieber Benutzer</h2>
+        <p className="muster-text">
+          Herzlich willkommen auf Effizienzo! Ich freue mich, dass du dich entschieden hast, meine Plattform zu nutzen. Hier bei Effizienzo steht Effizienz an erster Stelle, und ich bin sicher, dass du viele nützliche Funktionen entdecken wirst.
+        </p>
+        <p className="muster-text">
+          Wenn du Unterstützung benötigst oder Fragen hast, zögere nicht, dich an mich zu wenden. Ich stehe dir jederzeit zur Verfügung, um dir weiterzuhelfen. Mein Ziel ist es, sicherzustellen, dass deine Erfahrung auf Effizienzo so reibungslos und angenehm wie möglich ist.
+        </p>
+        <p className="muster-text">
+          Viel Spaß beim Erkunden der Plattform und bei der Nutzung meiner verschiedenen Dienstleistungen. Ich bin stolz darauf, dass du Teil meiner Community bist. Bei weiteren Fragen oder Anregungen stehe ich persönlich zur Verfügung.
+        </p>
+        <p className='muster-text'>
+          Liebe Grüße,
+          <br />
+          Timo Blumer
+        </p>
       </div>
+
+
 
       <div className='feedback-container'>
         <h3>Wie gefällt dir Effizienzo?</h3>
