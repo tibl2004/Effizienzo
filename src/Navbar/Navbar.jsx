@@ -108,7 +108,7 @@ function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/artikel/reaktivierung" className={currentPath === '/reaktivierung' ? 'active' : ''}>
+          <Link to="/reaktivierung" className={currentPath === '/reaktivierung' ? 'active' : ''}>
             Reaktivierung
           </Link>
         </li>
