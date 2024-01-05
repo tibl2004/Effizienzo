@@ -118,12 +118,15 @@ function Navbar() {
           </Link>
         </li>
 
-
-        <li>
+{ /*
+   <li>
           <Link to="/faq" className={currentPath === '/faq' ? 'active' : ''}>
             Häufige Fragen
           </Link>
         </li>
+        */
+}
+       
 
 
 
