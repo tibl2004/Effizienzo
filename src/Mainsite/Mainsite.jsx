@@ -4,14 +4,15 @@ import ReactStars from 'react-rating-stars-component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Mainsite.scss';
 import alex from './alex.jpg';
+import nadja from './nadja.jpg';
 
 function Mainsite() {
   const [updates, setUpdates] = useState([]);
   const [username, setUsername] = useState('');
   const [userRating, setUserRating] = useState(0);
   const [teamMembers, setTeamMembers] = useState([
-    { id: 1, vorname: 'Alexandra', nachname: 'Hofmann', email: 'alexandra.hofmann@gewa.ch', bildUrl: alex },
-    { id: 2, vorname: 'Maria', nachname: 'Musterfrau', email: 'maria.musterfrau@example.com', bildUrl: 'maria.jpg' },
+    { id: 1, vorname: 'Alexandra', nachname: 'Hofmann', email: 'alexandra.hofmann@gewa.ch', telefonnummer: '031 919 13 98', bildUrl: alex },
+    { id: 2, vorname: 'Nadja', nachname: 'Baraniak', email: 'nadja.baraniak@gewa.ch', telefonnummer: '031 919 13 39', bildUrl: nadja },
   ]);
 
   const sendeEmail = (email) => {
@@ -27,7 +28,7 @@ function Mainsite() {
       { id: 1, version: "V.4.8", datum: "21.12.2023", title: 'Wichtige Sachen hinzugefügt', text: 'Es ist wichtig, dass ihr den Artikeln so viele Details wie möglich hinzufügt. Sonstige weiterführende Informationen müssen ebenfalls hinzugefügt werden.' },
       { id: 3, version: "V.4.9", datum: "04.01.2024", title: 'Neues Design und diverse Änderungen', text: 'Es hat ein paar Löschungen von Seiten gegeben dafür auch ein schöneres Design und es hat in der Navbar keine Subnavbar Elemente mehr.' },
     ];
-    
+
     const sortedUpdates = mockUpdates.sort((a, b) => new Date(parseDate(b.datum)) - new Date(parseDate(a.datum)));
     setUpdates(sortedUpdates);
   }, []);
@@ -84,7 +85,8 @@ function Mainsite() {
             </div>
             <div className="mitglied-info">
               <p>{`${mitglied.vorname} ${mitglied.nachname}`}</p>
-              <button onClick={() => sendeEmail(mitglied.email)}>E-Mail</button>
+              <p>{mitglied.telefonnummer}</p>
+              <button onClick={() => sendEmail(mitglied.email)}>E-Mail</button>
             </div>
           </div>
         ))}
