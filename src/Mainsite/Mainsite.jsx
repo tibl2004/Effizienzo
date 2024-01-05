@@ -3,11 +3,21 @@ import { useLocation } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Mainsite.scss';
+import alex from './alex.jpg';
 
 function Mainsite() {
   const [updates, setUpdates] = useState([]);
   const [username, setUsername] = useState('');
   const [userRating, setUserRating] = useState(0);
+  const [teamMembers, setTeamMembers] = useState([
+    { id: 1, vorname: 'Alexandra', nachname: 'Hofmann', email: 'alexandra.hofmann@gewa.ch', bildUrl: alex },
+    { id: 2, vorname: 'Maria', nachname: 'Musterfrau', email: 'maria.musterfrau@example.com', bildUrl: 'maria.jpg' },
+  ]);
+
+  const sendeEmail = (email) => {
+    // Öffne eine Outlook-E-Mail mit der ausgewählten E-Mail-Adresse
+    window.location.href = `mailto:${email}`;
+  };
 
   const location = useLocation();
 
@@ -18,21 +28,9 @@ function Mainsite() {
       { id: 3, version: "V.4.9", datum: "04.01.2024", title: 'Neues Design und diverse Änderungen', text: 'Es hat ein paar Löschungen von Seiten gegeben dafür auch ein schöneres Design und es hat in der Navbar keine Subnavbar Elemente mehr.' },
     ];
     
-
     const sortedUpdates = mockUpdates.sort((a, b) => new Date(parseDate(b.datum)) - new Date(parseDate(a.datum)));
-
     setUpdates(sortedUpdates);
   }, []);
-
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const storedUsername = searchParams.get('username');
-    const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
-
-    if (storedUsername && storedUser) {
-      setUsername(storedUsername);
-    }
-  }, [location.search]);
 
   const parseDate = (dateString) => {
     const [day, month, year] = dateString.split('.');
@@ -76,6 +74,20 @@ function Mainsite() {
           fullIcon={<i className="fas fa-star"></i>}
           activeColor="#ffd700"
         />
+      </div>
+
+      <div className="team-container">
+        {teamMembers.map((mitglied) => (
+          <div key={mitglied.id} className="team-mitglied">
+            <div className="profilbild">
+              <img src={mitglied.bildUrl} alt={`${mitglied.vorname} ${mitglied.nachname}`} />
+            </div>
+            <div className="mitglied-info">
+              <p>{`${mitglied.vorname} ${mitglied.nachname}`}</p>
+              <button onClick={() => sendeEmail(mitglied.email)}>E-Mail</button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
