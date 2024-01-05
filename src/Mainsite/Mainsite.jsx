@@ -15,8 +15,7 @@ function Mainsite() {
     { id: 2, vorname: 'Nadja', nachname: 'Baraniak', email: 'nadja.baraniak@gewa.ch', telefonnummer: '031 919 13 39', bildUrl: nadja },
   ]);
 
-  const sendeEmail = (email) => {
-    // Öffne eine Outlook-E-Mail mit der ausgewählten E-Mail-Adresse
+  const sendEmail = (email) => {
     window.location.href = `mailto:${email}`;
   };
 
@@ -85,7 +84,8 @@ function Mainsite() {
             </div>
             <div className="mitglied-info">
               <p>{`${mitglied.vorname} ${mitglied.nachname}`}</p>
-              <p>{mitglied.telefonnummer}</p>
+              <p>Email: {mitglied.email}</p>
+              <p>Telefonnummer: {mitglied.telefonnummer}</p>
               <button onClick={() => sendEmail(mitglied.email)}>E-Mail</button>
             </div>
           </div>
