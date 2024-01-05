@@ -3,7 +3,7 @@ import './Schluss.scss'; // Stellen Sie sicher, dass der Import-Pfad zur CSS-Dat
 
 function Schluss() {
   const restwertText = "Projekt Restwert Schönbühl";
-  const oeffnungszeitenText = "Öffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr";
+  const oeffnungszeitenText = "Öffnungszeiten: Montag - Freitag 08:30 - 12:00 Uhr und 13:00 - 16:30 Uhr";
   const copiedText = `${restwertText}\n${oeffnungszeitenText}`;
 
   const handleCopyText = () => {
