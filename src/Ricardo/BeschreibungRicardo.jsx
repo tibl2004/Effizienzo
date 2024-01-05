@@ -26,15 +26,14 @@ class BeschreibungRicardo extends Component {
 
   handleLeereZeilenLoeschen = () => {
     this.setState((prevState) => {
-      // Remove all empty lines in artikelDetails
+      // Entferne alle leeren Zeilen in artikelDetails
       let artikelDetails = prevState.artikelDetails.replace(/^\s*[\r\n]/gm, '');
-  
+
       return {
         artikelDetails,
       };
     });
   };
-  
 
   handleZusammenkopieren = () => {
     const { beschreibung, artikelDetails } = this.state;
@@ -42,11 +41,11 @@ class BeschreibungRicardo extends Component {
     // Artikeldetails als Liste formatieren
     const artikelDetailsListe = artikelDetails
       .split('\n')
-      .map((detail) => `• ${detail.trim()}`)
+      .map((detail) => `${detail.trim()}`)
       .join('\n');
 
     // Text zusammenfügen
-    const zusammengefuegt = `${beschreibung} \n\n${artikelDetailsListe} \n\nProjekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr`;
+    const zusammengefuegt = `${beschreibung} \n\n${artikelDetailsListe} \n\nProjekt Restwert Schönbühl\nÖffnungszeiten: Montag - Freitag 08:30 - 12:00 Uhr und 13:00 - 16:30 Uhr`;
 
     // Zugriff auf das DOM-Element
     const textarea = document.createElement('textarea');
@@ -79,7 +78,7 @@ class BeschreibungRicardo extends Component {
         <button onClick={this.handleCombinedButtonClick}>Hinweis entfernen & Leere Zeilen löschen</button>
         <div>
           <p>Projekt Restwert Schönbühl</p>
-          <p>Öffnungszeiten: Montag - Freitag 08:00 - 12:00 Uhr und 13:00 - 16:30 Uhr</p>
+          <p>Öffnungszeiten: Montag - Freitag 08:30 - 12:00 Uhr und 13:00 - 16:30 Uhr</p>
         </div>
         <button onClick={this.handleZusammenkopieren}>Zusammenkopieren</button>
       </div>
