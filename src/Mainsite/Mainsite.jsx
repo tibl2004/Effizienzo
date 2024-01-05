@@ -1,3 +1,4 @@
+// Mainsite.jsx
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
@@ -50,18 +51,6 @@ function Mainsite() {
         <p className='muster-text'>Liebe Grüße, Timo Blumer</p>
       </div>
 
-      <div className='updates-container'>
-        <h3>Updates</h3>
-        <div className='updates'>
-          {updates.map((update, index) => (
-            <React.Fragment key={update.id}>
-              <Update datum={update.datum} title={update.title} text={update.text} />
-              {index !== updates.length - 1 && <hr />}
-            </React.Fragment>
-          ))}
-        </div>
-      </div>
-
       <div className='feedback-container'>
         <h3>Wie gefällt dir Effizienzo?</h3>
         <ReactStars
@@ -76,7 +65,7 @@ function Mainsite() {
         />
       </div>
 
-      <div className="team-container">
+      <div className="team-container" style={{ height: '1000px' }}>
         {teamMembers.map((mitglied) => (
           <div key={mitglied.id} className="team-mitglied">
             <div className="profilbild">
@@ -90,6 +79,18 @@ function Mainsite() {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className='updates-container'>
+        <h3>Updates</h3>
+        <div className='updates'>
+          {updates.map((update, index) => (
+            <React.Fragment key={update.id}>
+              <Update datum={update.datum} title={update.title} text={update.text} />
+              {index !== updates.length - 1 && <hr />}
+            </React.Fragment>
+          ))}
+        </div>
       </div>
     </div>
   );
