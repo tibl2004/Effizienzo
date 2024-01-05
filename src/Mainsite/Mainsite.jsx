@@ -74,7 +74,7 @@ function Mainsite() {
             <div className="mitglied-info">
               <p>{`${mitglied.vorname} ${mitglied.nachname}`}</p>
               <p>Email: {mitglied.email}</p>
-              <p>Telefonnummer: {mitglied.telefonnummer}</p>
+              <p>Telefonnummer: <a href={`tel:${mitglied.telefonnummer}`}>{mitglied.telefonnummer}</a></p>
               <button onClick={() => sendEmail(mitglied.email)}>E-Mail</button>
             </div>
           </div>
