@@ -54,7 +54,7 @@ function Mainsite() {
           Wenn du Unterstützung benötigst oder Fragen hast, zögere nicht, dich an mich zu wenden. Ich stehe dir jederzeit zur Verfügung, um dir weiterzuhelfen. Mein Ziel ist es, sicherzustellen, dass deine Erfahrung auf Effizienzo so reibungslos und angenehm wie möglich ist.
         </p>
         <p className="muster-text">
-          Viel Spaß beim Erkunden der Plattform und bei der Nutzung meiner verschiedenen Dienstleistungen. Ich bin stolz darauf, dass du Teil meiner Community bist. Bei weiteren Fragen oder Anregungen stehe ich persönlich zur Verfügung.
+          Viel Spaß beim Erkunden der Plattform und bei der Nutzung meiner verschiedenen Dienstleistungen. 
         </p>
         <p className='muster-text'>
           Liebe Grüße,
