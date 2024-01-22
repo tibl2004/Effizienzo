@@ -29,7 +29,6 @@ function CreateUser() {
       );
       console.log("Neuer Admin wurde erstellt.");
 
-      
       window.location = "/admins/users";
     } catch (error) {
       console.error("Fehler beim Erstellen des neuen Admins: " + error);
@@ -49,21 +48,21 @@ function CreateUser() {
         />
         <input
           type="text"
-          name="nachname"
+          name="name"
           placeholder="Name"
           value={newAdmin.name}
           onChange={handleInputChange}
         />
         <input
           type="text"
-          name="username"
+          name="benutzername"
           placeholder="Benutzername"
           value={newAdmin.benutzername}
           onChange={handleInputChange}
         />
         <input
           type="password"
-          name="password"
+          name="passwort"
           placeholder="Passwort"
           value={newAdmin.passwort}
           onChange={handleInputChange}
