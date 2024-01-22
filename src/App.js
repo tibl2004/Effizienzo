@@ -46,7 +46,6 @@ import Reaktivierung from './Reaktivierung/Reaktivierung';
 
 import Login from './Login/Login';
 import Admins from './Admin/Admins';
-import CreateAdmin from './Admin/CreateAdmin';
 import BuchungsbelegVerkauf from './Admin/BuchungsbelegVerkauf';
 
 import Schluss from './Schluss/Schluss';
@@ -63,6 +62,7 @@ import Settings from './Settings/Settings';
 import BeschreibungRicardo from './Ricardo/BeschreibungRicardo';
 
 import FAQ from './Fragen/Fragen';
+import CreateUser from './Admin/CreateUser';
 
 
 
@@ -72,24 +72,7 @@ function Navigation() {
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(null);
-
-  // Effekt, um den eingeloggten Status abzurufen
-  useEffect(() => {
-    // Hier die Anfrage an den Server senden, um den Benutzerstatus abzurufen
-    fetch('https://users-8a52.onrender.com/admins')
-      .then((response) => response.json())
-      .then((data) => {
-        // Überprüfen, ob der Benutzer eingeloggt ist
-        const loggedInUser = data.find((user) => user.loggedIn);
-        if (loggedInUser) {
-          setLoggedIn(true);
-        }
-      })
-      .catch((error) => {
-        console.error('Fehler beim Abrufen des Benutzerstatus: ', error);
-      });
-  }, []);
+  
 
   return (
     <div className="App">
@@ -244,15 +227,6 @@ function App() {
             }
           />
 
-          <Route
-            path="/admins/tagesplanung"
-            element={
-              <>
-                <Navigation />
-                <Tagesplanung />
-              </>
-            }
-          />
 
           <Route
             path="/admins/interner-verkauf"
@@ -264,11 +238,11 @@ function App() {
             }
           />
           <Route
-            path="/admins/admincreate"
+            path="/admins/usercreate"
             element={
               <>
                 <Navigation />
-                <CreateAdmin />
+                <CreateUser />
               </>
             }
           />

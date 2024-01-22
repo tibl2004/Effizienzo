@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function CreateAdmin() {
+function CreateUser() {
   const [newAdmin, setNewAdmin] = useState({
     vorname: "",
     nachname: "",
@@ -9,6 +9,7 @@ function CreateAdmin() {
     password: "",
     enddatum: "",
     isAdmin: false,
+    loggedIn: false,
   });
 
   const handleInputChange = (e) => {
@@ -18,26 +19,21 @@ function CreateAdmin() {
     setNewAdmin({ ...newAdmin, [name]: inputValue });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const isoEnddatum = newAdmin.enddatum;
-    newAdmin.enddatum = isoEnddatum;
+    try {
+      const response = await axios.post(
+        "https://nodejs-effizienzo-api.onrender.com/api/v1/users",
+        newAdmin,
+        { withCredentials: true }
+      );
+      console.log("Neuer Admin wurde erstellt.");
 
-    const apiUrl = newAdmin.isAdmin
-      ? "https://users-8a52.onrender.com/admins"
-      : "https://users-8a52.onrender.com/users";
-
-    axios
-      .post(apiUrl, newAdmin)
-      .then((response) => {
-        console.log("Neuer Admin wurde erstellt.");
-
-        const redirectUrl = newAdmin.isAdmin ? "/admins" : "/users";
-        window.location = redirectUrl;
-      })
-      .catch((error) => {
-        console.error("Fehler beim Erstellen des neuen Admins: " + error);
-      });
+      
+      window.location = "/admins/users";
+    } catch (error) {
+      console.error("Fehler beim Erstellen des neuen Admins: " + error);
+    }
   };
 
   return (
@@ -55,21 +51,21 @@ function CreateAdmin() {
           type="text"
           name="nachname"
           placeholder="Name"
-          value={newAdmin.nachname}
+          value={newAdmin.name}
           onChange={handleInputChange}
         />
         <input
           type="text"
           name="username"
           placeholder="Benutzername"
-          value={newAdmin.username}
+          value={newAdmin.benutzername}
           onChange={handleInputChange}
         />
         <input
           type="password"
           name="password"
           placeholder="Passwort"
-          value={newAdmin.password}
+          value={newAdmin.passwort}
           onChange={handleInputChange}
         />
         <input
@@ -79,11 +75,19 @@ function CreateAdmin() {
           value={newAdmin.enddatum}
           onChange={handleInputChange}
         />
-      
+        <label>
+          Admin:
+          <input
+            type="checkbox"
+            name="isAdmin"
+            checked={newAdmin.isAdmin}
+            onChange={handleInputChange}
+          />
+        </label>
         <button type="submit">Admin erstellen</button>
       </form>
     </div>
   );
 }
 
-export default CreateAdmin;
+export default CreateUser;
