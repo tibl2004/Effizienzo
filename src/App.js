@@ -78,8 +78,18 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route
+
+        <Route
             path="/"
+            element={
+              <>
+                
+                <Login />
+              </>
+            }
+          />
+          <Route
+            path="/mainsite"
             element={
               <>
                 <Navbar />
