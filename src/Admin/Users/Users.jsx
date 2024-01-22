@@ -12,7 +12,6 @@ const Users = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('https://nodejs-effizienzo-api.onrender.com/api/v1/users');
-                console.log('Response data:', response.data);
     
                 // Überprüfe, ob response.data ein Objekt mit einer data-Eigenschaft ist
                 if (response.data && Array.isArray(response.data.data)) {
@@ -27,7 +26,11 @@ const Users = () => {
     
         fetchData();
     }, []);
-    
+
+    const copyUserData = (user) => {
+        const userData = `https://effizienzo.vercel.app\nBenutzername: ${user.benutzername}\nPasswort: ${user.passwort}`;
+        navigator.clipboard.writeText(userData);
+    };
     
 
     const handleDeleteUser = async (userId) => {
@@ -118,6 +121,9 @@ const Users = () => {
                                 </button>
                                 <button className='edit' onClick={() => handleEditUser(user)}>
                                     Bearbeiten
+                                </button>
+                                <button className='copy' onClick={() => copyUserData(user)}>
+                                    Daten kopieren
                                 </button>
                             </>
                         )}
