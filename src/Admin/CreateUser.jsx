@@ -4,9 +4,9 @@ import axios from "axios";
 function CreateUser() {
   const [newAdmin, setNewAdmin] = useState({
     vorname: "",
-    nachname: "",
-    username: "",
-    password: "",
+    name: "",
+    benutzername: "",
+    passwort: "",
     enddatum: "",
     isAdmin: false,
     loggedIn: false,
