@@ -83,7 +83,7 @@ function CreateUser() {
             onChange={handleInputChange}
           />
         </label>
-        <button type="submit">Admin erstellen</button>
+        <button type="submit">Benutzer erstellen</button>
       </form>
     </div>
   );
