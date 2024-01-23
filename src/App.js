@@ -79,17 +79,9 @@ function App() {
       <Router>
         <Routes>
 
-        <Route
-            path="/"
-            element={
-              <>
-                
-                <Login />
-              </>
-            }
-          />
+        
           <Route
-            path="/mainsite"
+            path="/"
             element={
               <>
                 <Navbar />
