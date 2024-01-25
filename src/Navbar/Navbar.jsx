@@ -93,20 +93,11 @@ function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/beschreibung" className={currentPath === '/beschreibung' ? 'active' : ''}>
-            Ricardo
-          </Link>
-        </li>
-        <li>
           <Link to="/kategorien" className={currentPath === '/kategorien' ? 'active' : ''}>
             Inserat Vorlagen
           </Link>
         </li>
-        <li>
-          <Link to="/schluss" className={currentPath === '/schluss' ? 'active' : ''}>
-            Schluss
-          </Link>
-        </li>
+       
         <li>
           <Link to="/reaktivierung" className={currentPath === '/reaktivierung' ? 'active' : ''}>
             Reaktivierung

@@ -48,7 +48,7 @@ import Login from './Login/Login';
 import Admins from './Admin/Admins';
 import BuchungsbelegVerkauf from './Admin/BuchungsbelegVerkauf';
 
-import Schluss from './Schluss/Schluss';
+
 import Versand from './Versand/Versand';
 
 import Users from './Admin/Users/Users';
@@ -59,7 +59,6 @@ import Profil from './Profil/Profil';
 import Settings from './Settings/Settings';
 
 
-import BeschreibungRicardo from './Ricardo/BeschreibungRicardo';
 
 import FAQ from './Fragen/Fragen';
 import CreateUser from './Admin/CreateUser';
@@ -150,15 +149,7 @@ function App() {
             }
           />
        
-          <Route
-            path="/schluss"
-            element={
-              <>
-                <Navigation />
-                <Schluss />
-              </>
-            }
-          />
+        
           <Route
             path="/versand"
             element={
@@ -197,16 +188,7 @@ function App() {
               </>
             }
           />
-          <Route
-            path="/schluss"
-            element={
-              <>
-                <Navigation />
-                <Schluss />
-              </>
-            }
-          />
-
+       
 
 
           <Route
@@ -219,15 +201,6 @@ function App() {
             }
           />
 
-<Route
-            path="/beschreibung"
-            element={
-              <>
-                <Navigation />
-                <BeschreibungRicardo />
-              </>
-            }
-          />
 
 
           <Route
@@ -264,15 +237,6 @@ function App() {
 
 
    
-          <Route
-            path="/beschreibung"
-            element={
-              <>
-                <Navigation />
-                < BeschreibungRicardo/>
-              </>
-            }
-          />
           <Route
             path="/bastelartikel"
             element={
