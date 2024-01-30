@@ -2,76 +2,72 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function CreateUser() {
-  const [newAdmin, setNewAdmin] = useState({
+  const [newUser, setNewUser] = useState({
     vorname: "",
-    name: "",
-    benutzername: "",
-    passwort: "",
-    enddatum: "",
+    nachname: "",
+    username: "",
+    password: "",
     isAdmin: false,
     loggedIn: false,
   });
+  const [error, setError] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     const inputValue = type === "checkbox" ? checked : value;
 
-    setNewAdmin({ ...newAdmin, [name]: inputValue });
+    setNewUser({ ...newUser, [name]: inputValue });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://nodejs-effizienzo-api.onrender.com/api/v1/users",
-        newAdmin,
+        "http://localhost:4000/users",
+        newUser,
         { withCredentials: true }
       );
-      console.log("Neuer Admin wurde erstellt.");
+      console.log("Neuer Benutzer wurde erstellt.");
 
+      // Umleiten zur Benutzerliste
       window.location = "/admins/users";
     } catch (error) {
-      console.error("Fehler beim Erstellen des neuen Admins: " + error);
+      console.error("Fehler beim Erstellen des neuen Benutzers: ", error);
+      setError("Fehler beim Erstellen des neuen Benutzers.");
     }
   };
 
   return (
     <div>
-      <h2>Neuen Admin erstellen:</h2>
+      <h2>Neuen Benutzer erstellen:</h2>
+      {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="vorname"
           placeholder="Vorname"
-          value={newAdmin.vorname}
+          value={newUser.vorname}
           onChange={handleInputChange}
         />
         <input
           type="text"
-          name="name"
-          placeholder="Name"
-          value={newAdmin.name}
+          name="nachname"
+          placeholder="Nachname"
+          value={newUser.nachname}
           onChange={handleInputChange}
         />
         <input
           type="text"
-          name="benutzername"
+          name="username"
           placeholder="Benutzername"
-          value={newAdmin.benutzername}
+          value={newUser.username}
           onChange={handleInputChange}
         />
         <input
           type="password"
-          name="passwort"
+          name="password"
           placeholder="Passwort"
-          value={newAdmin.passwort}
-          onChange={handleInputChange}
-        />
-        <input
-          type="date"
-          name="enddatum"
-          placeholder="Enddatum (YYYY-MM-DD)"
-          value={newAdmin.enddatum}
+          value={newUser.password}
           onChange={handleInputChange}
         />
         <label>
@@ -79,7 +75,7 @@ function CreateUser() {
           <input
             type="checkbox"
             name="isAdmin"
-            checked={newAdmin.isAdmin}
+            checked={newUser.isAdmin}
             onChange={handleInputChange}
           />
         </label>

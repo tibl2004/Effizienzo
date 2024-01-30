@@ -1,9 +1,14 @@
-// Users.scss
+
+.addnewUser {
+  color: white;
+}
+
 .users-container {
     display: flex;
     flex-wrap: wrap;
    
   }
+
   
   .user-box {
     position: relative;
