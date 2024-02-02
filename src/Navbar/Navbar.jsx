@@ -117,7 +117,11 @@ function Navbar() {
         </li>
         */
 }
-       
+<li>
+          <Link to="/logs" className={currentPath === '/logs' ? 'active' : ''}>
+            Logs
+          </Link>
+        </li>
 
 
 

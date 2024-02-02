@@ -62,6 +62,8 @@ import Settings from './Settings/Settings';
 
 import FAQ from './Fragen/Fragen';
 import CreateUser from './Admin/CreateUser';
+import LogComponent from './Logs/LogComponent';
+import Kassabuch from './Kasse/Kassabuch';
 
 
 
@@ -83,7 +85,7 @@ function App() {
             path="/"
             element={
               <>
-                <Navbar />
+               <Navbar />
                 <Mainsite />
               </>
             }
@@ -98,8 +100,26 @@ function App() {
             }
           />
 
+<Route
+            path="/kassabuch"
+            element={
+              <>
+                <Navbar />
+                < Kassabuch/>
+              </>
+            }
+          />
 
 
+<Route
+            path="/logs"
+            element={
+              <>
+                <Navigation />
+                <LogComponent />
+              </>
+            }
+          />
 
           <Route
             path="/profil/settings"

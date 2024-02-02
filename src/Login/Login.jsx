@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './Login.scss';
 import axios from 'axios';
 
+// Konfiguriere die Basis-URL für Axios
+axios.defaults.baseURL = 'http://localhost:4000';
+
 function Login() {
   const [benutzername, setBenutzername] = useState('');
   const [password, setPassword] = useState('');
@@ -13,27 +16,21 @@ function Login() {
     setLoginAttempted(true);
 
     try {
-      const response = await axios.get('https://nodejs-effizienzo-api.onrender.com/api/v1/users');
+      // Sende die Anfrage an localhost:4000/users
+      const response = await axios.get('/users');
       const users = response.data.data;
 
       // Finde den Benutzer mit Benutzername und Passwort
-      const user = users.find(u => u.benutzername === benutzername && u.passwort === password);
+      const user = users.find(u => u.username === benutzername && u.password === password);
 
       if (user) {
-        // Lokal im Frontend den loggedIn-Status auf true setzen
-        user.loggedIn = 1;
+        // PUT-Request im Backend durchführen, um loggedIn auf true zu setzen
+        await axios.put(`/users/${user.id}`, { ...user, loggedIn: true });
+
+        // Erfolgreich eingeloggt
+        setErrorMessage('');
+        console.log("loggedIn");
         window.location = "/mainsite";
-
-        // PUT-Request im Backend durchführen
-        const putResponse = await axios.put(`https://nodejs-effizienzo-api.onrender.com/api/v1/users/${user.id}`, user);
-
-        if (putResponse.data.status === 'success') {
-          // Erfolgreich aktualisiert
-          setErrorMessage('');
-          console.log("loggedIn");
-        } else {
-          setErrorMessage('Fehler beim Aktualisieren des Benutzers.');
-        }
       } else {
         setErrorMessage('Benutzername oder Passwort falsch.');
       }
