@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
-import axios from 'axios'; 
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Mainsite.scss';
-
 
 function Mainsite() {
   const [updates, setUpdates] = useState([]);
@@ -13,8 +12,9 @@ function Mainsite() {
   const [teamMembers, setTeamMembers] = useState([]);
   const [username, setUsername] = useState('');
   const [userRating, setUserRating] = useState(0);
-
-
+  const [feedbackText, setFeedbackText] = useState('');
+  const [showFeedbackForm, setShowFeedbackForm] = useState(true);
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const sendEmail = (email) => {
     window.location.href = `mailto:${email}`;
@@ -23,7 +23,6 @@ function Mainsite() {
   const location = useLocation();
 
   useEffect(() => {
-   
     axios.get('http://localhost:4000/updates')
       .then(response => {
         setUpdates(response.data);
@@ -31,7 +30,6 @@ function Mainsite() {
       .catch(error => {
         console.error('Fehler beim Abrufen der Updates:', error);
       });
-
 
     axios.get('http://localhost:4000/dokumente')
       .then(response => {
@@ -51,16 +49,14 @@ function Mainsite() {
 
     axios.get('http://localhost:4000/begruessung')
       .then(response => {
-        setBegruessung(response.data); 
+        setBegruessung(response.data);
       })
       .catch(error => {
         console.error('Fehler beim Abrufen der Begrüßungsnachricht:', error);
       });
 
-
   }, []);
 
-  // Hier ist die Funktion zum Formatieren des Datums
   const parseDate = (dateString) => {
     const [day, month, year] = dateString.split('.');
     return `${year}-${month}-${day}`;
@@ -68,10 +64,36 @@ function Mainsite() {
 
   const handleRatingChange = (newRating) => {
     setUserRating(newRating);
-    // Hier könntest du den Bewertungswert an einen Server senden oder lokal speichern
   };
 
-  // Hier ist die Funktion, um ein Dokument zu öffnen
+  const handleFeedbackChange = (event) => {
+    setFeedbackText(event.target.value);
+  };
+
+  const sendFeedback = () => {
+    axios.post('http://localhost:4000/feedbacks', {
+      rating: userRating,
+      feedbackText: feedbackText
+    })
+      .then(response => {
+        console.log('Feedback erfolgreich gesendet:', response.data);
+        setShowFeedbackForm(false);
+        setShowThankYou(true); // Dankesnachricht anzeigen
+        setTimeout(() => {
+          setShowThankYou(false); // Dankesnachricht ausblenden
+          setTimeout(() => {
+            setShowFeedbackForm(true); // Feedback-Formular wieder anzeigen
+            setFeedbackText('');
+            setUserRating(0);
+          }, 500); // Kurze Verzögerung, um ein Flackern zu vermeiden
+        }, 3000); // Dankesnachricht für 3 Sekunden anzeigen
+      })
+      .catch(error => {
+        console.error('Fehler beim Senden des Feedbacks:', error);
+      });
+  };
+
+
   const handleDocumentClick = (url) => {
     window.open(url, '_blank');
   };
@@ -87,22 +109,38 @@ function Mainsite() {
             </div>
           ))}
         </div>
-
       </div>
 
       <div className='feedback-container' style={{ gridColumn: 'span 1', gridRow: 'span 1' }}>
-        <h3>Wie gefällt dir Effizienzo?</h3>
-        <ReactStars
-          count={5}
-          onChange={handleRatingChange}
-          size={30}
-          value={userRating}
-          isHalf={false}
-          emptyIcon={<i className="far fa-star"></i>}
-          fullIcon={<i className="fas fa-star"></i>}
-          activeColor="#ffd700"
-        />
+        {showFeedbackForm && (
+          <div className={`feedback-form ${showFeedbackForm ? 'fade-in' : 'fade-out'}`}>
+            <>
+              <h3>Wie gefällt dir Effizienzo?</h3>
+              <ReactStars
+                count={5}
+                onChange={handleRatingChange}
+                size={30}
+                value={userRating}
+                isHalf={false}
+                emptyIcon={<i className="far fa-star"></i>}
+                fullIcon={<i className="fas fa-star"></i>}
+                activeColor="#ffd700"
+              />
+              <input type="text" value={feedbackText} onChange={handleFeedbackChange} />
+              <button onClick={sendFeedback}>Senden</button>
+            </>
+          </div>
+        )}
+
+        {showThankYou && (
+          <div className={`thank-you ${showThankYou ? 'fade-in' : 'fade-out'}`}>
+            <p>Vielen Dank für dein Feedback!</p>
+          </div>
+        )}
       </div>
+
+
+
 
       <div className="team-container" style={{ gridColumn: 'span 1', gridRow: 'span 2' }}>
         {teamMembers.map((teammitglied) => (
