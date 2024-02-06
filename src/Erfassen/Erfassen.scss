@@ -5,19 +5,29 @@
   margin-top: 20px;
 
   .input-field {
-    display: flex;
-    align-items: center;
+    flex-direction: column; /* Ändern Sie die Richtung auf Spaltenlayout */
+    align-items: flex-start; /* Ausrichtung der Elemente nach links */
     margin-bottom: 15px;
 
     label {
-      text-align: right;
-      margin-right: 10px;
+      text-align: left; /* Ändern Sie die Ausrichtung des Labels auf links */
+      margin-right: 10px; /* Entfernen Sie den rechten Abstand */
+      margin-bottom: 5px; /* Fügen Sie einen Abstand zwischen Label und Input hinzu */
     }
 
+    .select {
+      width: 450px;
+      font-size: 20px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+    
     input {
-      width: 300px; /* Verringern Sie die Breite der Input-Felder */
-      height: 40px; /* Erhöhen Sie die Höhe der Input-Felder */
-      font-size: 16px; /* Verringern Sie die Schriftgröße */
+      width: 450px; /* Behalten Sie die Breite der Input-Felder bei */
+      height: 40px; /* Behalten Sie die Höhe der Input-Felder bei */
+      font-size: 16px; /* Behalten Sie die Schriftgröße der Input-Felder bei */
       padding: 8px;
       border: 1px solid #ccc;
       border-radius: 17px;
@@ -34,6 +44,7 @@
       color: white;
       cursor: pointer;
       transition: background-color 0.3s;
+      margin-top: 5px; /* Fügen Sie einen oberen Abstand zwischen Input und Button hinzu */
 
       &:hover {
         background-color: #0056b3;
