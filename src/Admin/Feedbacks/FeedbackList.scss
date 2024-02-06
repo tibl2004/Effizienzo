@@ -1,0 +1,26 @@
+/* FeedbackList.scss */
+.feedback-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .feedback-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+    list-style-type: none;
+  }
+  
+  .feedback-item p {
+    margin: 0;
+  }
+  
+  .star {
+    color: #FFD700; /* Goldfarbe für Sterne */
+    font-size: 20px;
+    margin-right: 5px;
+  }
+  

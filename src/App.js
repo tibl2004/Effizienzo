@@ -64,6 +64,7 @@ import FAQ from './Fragen/Fragen';
 import CreateUser from './Admin/CreateUser';
 import LogComponent from './Logs/LogComponent';
 import Kassabuch from './Kasse/Kassabuch';
+import FeedbackView from './Admin/Feedbacks/FeedbackView';
 
 
 
@@ -96,6 +97,16 @@ function App() {
               <>
                 <Navbar />
                 <Profil />
+              </>
+            }
+          />
+
+<Route
+            path="/feedback"
+            element={
+              <>
+                <Navbar />
+                <FeedbackView />
               </>
             }
           />

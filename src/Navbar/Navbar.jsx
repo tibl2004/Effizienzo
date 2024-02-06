@@ -109,19 +109,24 @@ function Navbar() {
           </Link>
         </li>
 
-{ /*
-   <li>
-          <Link to="/faq" className={currentPath === '/faq' ? 'active' : ''}>
-            Häufige Fragen
+        <li>
+          <Link to="/feedback" className={currentPath === '/feedback' ? 'active' : ''}>
+            Feedbacks
           </Link>
         </li>
-        */
-}
-<li>
-          <Link to="/logs" className={currentPath === '/logs' ? 'active' : ''}>
-            Logs
+
+        <li>
+          <Link to="/admins/users" className={currentPath === '/admins/users' ? 'active' : ''}>
+            Users
           </Link>
         </li>
+
+        <li>
+          <Link to="/admins" className={currentPath === '/admins' ? 'active' : ''}>
+            Admins
+          </Link>
+        </li>
+
 
 
 

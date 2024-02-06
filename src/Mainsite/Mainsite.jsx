@@ -1,8 +1,7 @@
-// Mainsite.jsx
-
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
+import axios from 'axios'; // Importiere Axios
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Mainsite.scss';
 import alex from './alex.jpg';
@@ -10,12 +9,15 @@ import nadja from './nadja.jpg';
 
 function Mainsite() {
   const [updates, setUpdates] = useState([]);
+  const [documents, setDocuments] = useState([]);
+  const [begruessung, setBegruessung] = useState([]); // State für die Begrüßungsnachricht
   const [username, setUsername] = useState('');
   const [userRating, setUserRating] = useState(0);
   const [teamMembers, setTeamMembers] = useState([
     { id: 1, vorname: 'Alexandra', nachname: 'Hofmann', email: 'alexandra.hofmann@gewa.ch', telefonnummer: '031 919 13 98', bildUrl: alex },
     { id: 2, vorname: 'Nadja', nachname: 'Baraniak', email: 'nadja.baraniak@gewa.ch', telefonnummer: '031 919 13 39', bildUrl: nadja },
   ]);
+
 
   const sendEmail = (email) => {
     window.location.href = `mailto:${email}`;
@@ -24,16 +26,35 @@ function Mainsite() {
   const location = useLocation();
 
   useEffect(() => {
-    const mockUpdates = [
-      { id: 2, version: "V.4.7", datum: "18.12.2023", title: 'Ricardo Beschreibung zusammengenerieren lassen', text: 'Man kann nun die Beschreibungen für das Inserat ganz einfach zusammen generieren. Sehr simpel und einfach. Viel Spaß' },
-      { id: 1, version: "V.4.8", datum: "21.12.2023", title: 'Wichtige Sachen hinzugefügt', text: 'Es ist wichtig, dass ihr den Artikeln so viele Details wie möglich hinzufügt. Sonstige weiterführende Informationen müssen ebenfalls hinzugefügt werden.' },
-      { id: 3, version: "V.4.9", datum: "04.01.2024", title: 'Neues Design und diverse Änderungen', text: 'Es hat ein paar Löschungen von Seiten gegeben dafür auch ein schöneres Design und es hat in der Navbar keine Subnavbar Elemente mehr.' },
-    ];
+    // Hier rufen wir die Updates von localhost:4000/updates ab
+    axios.get('http://localhost:4000/updates')
+      .then(response => {
+        setUpdates(response.data);
+      })
+      .catch(error => {
+        console.error('Fehler beim Abrufen der Updates:', error);
+      });
 
-    const sortedUpdates = mockUpdates.sort((a, b) => new Date(parseDate(b.datum)) - new Date(parseDate(a.datum)));
-    setUpdates(sortedUpdates);
+    // Hier rufen wir die Dokumente von localhost:4000/dokumente ab
+    axios.get('http://localhost:4000/dokumente')
+      .then(response => {
+        setDocuments(response.data);
+      })
+      .catch(error => {
+        console.error('Fehler beim Abrufen der Dokumente:', error);
+      });
+
+    // Hier rufen wir die Begrüßungsnachricht von localhost:4000/begruessung ab
+    axios.get('http://localhost:4000/begruessung')
+      .then(response => {
+        setBegruessung(response.data); // Aktualisiere den State mit der Begrüßungsnachricht
+      })
+      .catch(error => {
+        console.error('Fehler beim Abrufen der Begrüßungsnachricht:', error);
+      });
   }, []);
 
+  // Hier ist die Funktion zum Formatieren des Datums
   const parseDate = (dateString) => {
     const [day, month, year] = dateString.split('.');
     return `${year}-${month}-${day}`;
@@ -44,24 +65,23 @@ function Mainsite() {
     // Hier könntest du den Bewertungswert an einen Server senden oder lokal speichern
   };
 
+  // Hier ist die Funktion, um ein Dokument zu öffnen
+  const handleDocumentClick = (url) => {
+    window.open(url, '_blank');
+  };
+
   return (
     <div className="container">
       <div className="welcome-container" style={{ gridColumn: 'span 1', gridRow: 'span 1' }}>
         <h2 className="hello-message">Lieber Benutzer</h2>
-        <p className="muster-text">
-          Herzlich willkommen auf Effizienzo! Ich freue mich, dass du dich entschieden hast, meine Plattform zu nutzen. Hier bei Effizienzo steht Effizienz an erster Stelle, und ich bin sicher, dass du viele nützliche Funktionen entdecken wirst.
-        </p>
-        <p className="muster-text">
-          Wenn du Unterstützung benötigst oder Fragen hast, zögere nicht, dich an mich zu wenden. Ich stehe dir jederzeit zur Verfügung, um dir weiterzuhelfen. Mein Ziel ist es, sicherzustellen, dass deine Erfahrung auf Effizienzo so reibungslos und angenehm wie möglich ist.
-        </p>
-        <p className="muster-text">
-          Viel Spaß beim Erkunden der Plattform und bei der Nutzung meiner verschiedenen Dienstleistungen. 
-        </p>
-        <p className='muster-text'>
-          Liebe Grüße,
-          <br />
-          Timo Blumer
-        </p>
+        <div className='begruessung'>
+          {begruessung.map((begruessung) => (
+            <div key={begruessung.id} className="begruessung">
+              <p>{begruessung.text}</p>
+            </div>
+          ))}
+        </div>
+       
       </div>
 
       <div className='feedback-container' style={{ gridColumn: 'span 1', gridRow: 'span 1' }}>
@@ -94,13 +114,23 @@ function Mainsite() {
         ))}
       </div>
 
+      <div className='dokumente-container' style={{ gridColumn: 'span 2', gridRow: 'span 2' }}>
+        <h3>Dokumente</h3>
+        <div className='dokumente'>
+          {documents.map((dokument) => (
+            <div key={dokument.id} className="dokument" onClick={() => handleDocumentClick(dokument.url)}>
+              <p>{dokument.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className='updates-container' style={{ gridColumn: 'span 2', gridRow: 'span 2' }}>
         <h3>Updates</h3>
         <div className='updates'>
           {updates.map((update, index) => (
             <React.Fragment key={update.id}>
-              <Update datum={update.datum} title={update.title} text={update.text} />
-              {index !== updates.length - 1 && <hr />}
+              <Update datum={update.datum} title={update.titel} text={update.text} />
             </React.Fragment>
           ))}
         </div>

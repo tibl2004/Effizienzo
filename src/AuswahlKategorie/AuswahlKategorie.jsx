@@ -96,6 +96,7 @@ function Auswahlkategorie() {
       <div className="search-bar">
         <input
           type="text"
+          className='filter'
           placeholder="Suche nach Kategorien..."
           value={searchQuery}
           onChange={handleSearchChange}
