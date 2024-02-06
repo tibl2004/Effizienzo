@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
-import axios from 'axios'; // Importiere Axios
+import axios from 'axios'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Mainsite.scss';
-import alex from './alex.jpg';
-import nadja from './nadja.jpg';
+
 
 function Mainsite() {
   const [updates, setUpdates] = useState([]);
   const [documents, setDocuments] = useState([]);
-  const [begruessung, setBegruessung] = useState([]); // State für die Begrüßungsnachricht
+  const [begruessung, setBegruessung] = useState([]);
+  const [teamMembers, setTeamMembers] = useState([]);
   const [username, setUsername] = useState('');
   const [userRating, setUserRating] = useState(0);
-  const [teamMembers, setTeamMembers] = useState([
-    { id: 1, vorname: 'Alexandra', nachname: 'Hofmann', email: 'alexandra.hofmann@gewa.ch', telefonnummer: '031 919 13 98', bildUrl: alex },
-    { id: 2, vorname: 'Nadja', nachname: 'Baraniak', email: 'nadja.baraniak@gewa.ch', telefonnummer: '031 919 13 39', bildUrl: nadja },
-  ]);
+
 
 
   const sendEmail = (email) => {
@@ -26,7 +23,7 @@ function Mainsite() {
   const location = useLocation();
 
   useEffect(() => {
-    // Hier rufen wir die Updates von localhost:4000/updates ab
+   
     axios.get('http://localhost:4000/updates')
       .then(response => {
         setUpdates(response.data);
@@ -35,7 +32,7 @@ function Mainsite() {
         console.error('Fehler beim Abrufen der Updates:', error);
       });
 
-    // Hier rufen wir die Dokumente von localhost:4000/dokumente ab
+
     axios.get('http://localhost:4000/dokumente')
       .then(response => {
         setDocuments(response.data);
@@ -44,14 +41,23 @@ function Mainsite() {
         console.error('Fehler beim Abrufen der Dokumente:', error);
       });
 
-    // Hier rufen wir die Begrüßungsnachricht von localhost:4000/begruessung ab
+    axios.get('http://localhost:4000/teammembers')
+      .then(response => {
+        setTeamMembers(response.data);
+      })
+      .catch(error => {
+        console.error('Fehler beim Abrufen der Teammitglieder:', error);
+      });
+
     axios.get('http://localhost:4000/begruessung')
       .then(response => {
-        setBegruessung(response.data); // Aktualisiere den State mit der Begrüßungsnachricht
+        setBegruessung(response.data); 
       })
       .catch(error => {
         console.error('Fehler beim Abrufen der Begrüßungsnachricht:', error);
       });
+
+
   }, []);
 
   // Hier ist die Funktion zum Formatieren des Datums
@@ -81,7 +87,7 @@ function Mainsite() {
             </div>
           ))}
         </div>
-       
+
       </div>
 
       <div className='feedback-container' style={{ gridColumn: 'span 1', gridRow: 'span 1' }}>
@@ -99,22 +105,22 @@ function Mainsite() {
       </div>
 
       <div className="team-container" style={{ gridColumn: 'span 1', gridRow: 'span 2' }}>
-        {teamMembers.map((mitglied) => (
-          <div key={mitglied.id} className="team-mitglied">
+        {teamMembers.map((teammitglied) => (
+          <div key={teammitglied.id} className="team-mitglied">
             <div className="profilbild">
-              <img src={mitglied.bildUrl} alt={`${mitglied.vorname} ${mitglied.nachname}`} />
+              <img src={teammitglied.bildUrl} alt={`${teammitglied.vorname} ${teammitglied.nachname}`} />
             </div>
             <div className="mitglied-info">
-              <p>{`${mitglied.vorname} ${mitglied.nachname}`}</p>
-              <p>Email: {mitglied.email}</p>
-              <p>Telefonnummer: <a href={`tel:${mitglied.telefonnummer}`}>{mitglied.telefonnummer}</a></p>
-              <button onClick={() => sendEmail(mitglied.email)}>E-Mail</button>
+              <p>{`${teammitglied.vorname} ${teammitglied.nachname}`}</p>
+              <p>Email: {teammitglied.email}</p>
+              <p>Telefonnummer: <a href={`tel:${teammitglied.telefonnummer}`}>{teammitglied.telefonnummer}</a></p>
+              <button onClick={() => sendEmail(teammitglied.email)}>E-Mail</button>
             </div>
           </div>
         ))}
       </div>
 
-      <div className='dokumente-container' style={{ gridColumn: 'span 2', gridRow: 'span 2' }}>
+      <div className='dokumente-container' style={{ gridColumn: 'span 1', gridRow: 'span 1' }}>
         <h3>Dokumente</h3>
         <div className='dokumente'>
           {documents.map((dokument) => (
@@ -125,7 +131,7 @@ function Mainsite() {
         </div>
       </div>
 
-      <div className='updates-container' style={{ gridColumn: 'span 2', gridRow: 'span 2' }}>
+      <div className='updates-container' style={{ gridColumn: 'span 1', gridRow: 'span 1' }}>
         <h3>Updates</h3>
         <div className='updates'>
           {updates.map((update, index) => (
