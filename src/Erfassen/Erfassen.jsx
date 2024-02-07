@@ -1,13 +1,26 @@
-import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
+import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faTrash, faFilePdf, faCheck, faQuestionCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faTrash, faFilePdf, faCheck, faQuestionCircle, faExclamationTriangle, faPlus } from '@fortawesome/free-solid-svg-icons';
 import jsPDF from 'jspdf';
 import '../Erfassen/Erfassen.scss';
 import Navbar from '../Navbar/Navbar';
-import axios from 'axios'; // Hier wurde der Import von 'axios' korrigiert
 
 function Erfassen() {
   const [erfassen, setErfassen] = useState([]);
+  const [editedErfassen, setEditedErfassen] = useState(null);
+  const [data, setData] = useState({
+    'Bei Nichtverkauf': '',
+    'Minimumpreis': '',
+    'Startpreis': '',
+    '1. Reaktivierung': '',
+    '2. Reaktivierung': '',
+    '3. Reaktivierung': '',
+  });
+  const [selectedOption, setSelectedOption] = useState('');
+  const [copiedLabel, setCopiedLabel] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
     axios.get('http://localhost:4000/erfassen')
@@ -18,20 +31,6 @@ function Erfassen() {
         console.error('Fehler beim Abrufen der Updates:', error);
       });
   }, []);
-
-  const [data, setData] = useState({
-    'Bei Nichtverkauf': '',
-    'Minimumpreis': '',
-    'Startpreis': '',
-    '1. Reaktivierung': '',
-    '2. Reaktivierung': '',
-    '3. Reaktivierung': '',
-  });
-
-  const [selectedOption, setSelectedOption] = useState('');
-  const [copiedLabel, setCopiedLabel] = useState(null);
-
-  const pdfRef = useRef(); // Ref für das PDF-Element
 
   const handleInputChange = (label, value) => {
     if (/^[0-9.]*$/.test(value) || label !== 'Startpreis') {
@@ -144,6 +143,57 @@ function Erfassen() {
     doc.save('erfassen.pdf');
   };
 
+  const handleEditErfassen = (erfassen) => {
+    setEditedErfassen(erfassen);
+  };
+
+  const handleCancelEdit = () => {
+    setEditedErfassen(null);
+  };
+
+  const handleSaveEdit = async () => {
+    try {
+      const response = await axios.put(`http://localhost:4000/erfassen/${editedErfassen.id}`, editedErfassen);
+      console.log('Erfassen erfolgreich aktualisiert:', response.data);
+
+      setErfassen(prevErfassen => prevErfassen.map(erfassen =>
+        erfassen.id === editedErfassen.id ? { ...response.data, label: editedErfassen.label } : erfassen
+      ));
+      setEditedErfassen(null);
+    } catch (error) {
+      console.error('Fehler beim Aktualisieren des Erfassen:', error);
+    }
+  };
+
+  const handlePostNewLabel = async () => {
+    try {
+      await axios.post('http://localhost:4000/erfassen', { label: inputValue });
+      setErfassen(prevErfassen => [...prevErfassen, { id: prevErfassen.length + 1, label: inputValue }]);
+      setInputValue('');
+      setShowAlert(false);
+    } catch (error) {
+      console.error('Fehler beim Posten des neuen Labels:', error);
+    }
+  };
+
+  const handleDeleteErfassen = async (erfassenId) => {
+    const isConfirmed = window.confirm('Bist du sicher, dass du diesen Benutzer löschen möchtest?');
+
+    if (isConfirmed) {
+      try {
+        await axios.delete(`http://localhost:4000/erfassen/${erfassenId}`);
+        console.log('Benutzer erfolgreich gelöscht:', erfassenId);
+
+        setErfassen(prevErfassen => prevErfassen.filter(erfassen => erfassen.id !== erfassenId));
+      } catch (error) {
+        console.error('Fehler beim Löschen des Erfassen:', error);
+      }
+    } else {
+      console.log('Löschen abgebrochen.');
+    }
+  };
+
+
   return (
     <div className="erfassen-container">
       <div className="warning-box">
@@ -167,25 +217,71 @@ function Erfassen() {
         <button onClick={handleExportToPDF} className="export-button">
           <FontAwesomeIcon icon={faFilePdf} /> PDF Exportieren
         </button>
+
+        <div className="input-field">
+          <button onClick={() => setShowAlert(true)}>
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+        </div>
+
+        {showAlert && (
+          <div className="alert">
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Neues Label eingeben"
+            />
+            <button onClick={() => { handlePostNewLabel(); setShowAlert(false); }}>
+              OK
+            </button>
+          </div>
+        )}
+
       </div>
 
       <div className="input-container">
         {erfassen.map(erfassen => (
           <div key={erfassen.id} className="input-field">
-            <label>{erfassen.label}:</label>
-            <input
-              type="text"
-              value={data[erfassen.label]}
-              onChange={(e) => handleInputChange(erfassen.label, e.target.value)}
-            />
-            <button
-              onClick={() => handleCopy(erfassen.label)}
-              style={{
-                backgroundColor: copiedLabel === erfassen.label ? 'limegreen' : '',
-              }}
-            >
-              {copiedLabel === erfassen.label ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faCopy} />}
-            </button>
+            {editedErfassen && editedErfassen.id === erfassen.id ? (
+              <>
+                <input
+                  type="text"
+                  value={editedErfassen.label}
+                  onChange={(e) => setEditedErfassen({ ...editedErfassen, label: e.target.value })}
+                />
+                <button onClick={handleSaveEdit}>Speichern</button>
+                <button onClick={handleCancelEdit}>Abbrechen</button>
+              </>
+            ) : (
+              <>
+                <label>{erfassen.label}:</label>
+                <input
+                  type="text"
+                  value={data[erfassen.label]}
+                  onChange={(e) => handleInputChange(erfassen.label, e.target.value)}
+                />
+                <button
+                  onClick={() => handleCopy(erfassen.label)}
+                  style={{
+                    backgroundColor: copiedLabel === erfassen.label ? 'limegreen' : '',
+                  }}
+                >
+                  {copiedLabel === erfassen.label ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faCopy} />}
+                </button>
+
+
+                <button className='edit' onClick={() => handleEditErfassen(erfassen)}>
+                  Bearbeiten
+                </button>
+
+
+                <button className='delete' onClick={() => handleDeleteErfassen(erfassen.id)}>
+                  <FontAwesomeIcon icon={faTrash} /> Löschen
+                </button>
+              </>
+            )}
+
           </div>
         ))}
         {Object.entries(data).map(([label, value]) => (
