@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import Erfassen from './Erfassen/Erfassen';
 import Auswahlkategorie from './AuswahlKategorie/AuswahlKategorie';
@@ -74,7 +74,19 @@ function Navigation() {
 
 function App() {
 
-  
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Hier rufen wir die Benutzerdaten ab, um den eingeloggten Benutzer zu ermitteln
+    axios.get('http://localhost:4000/users')
+      .then(response => {
+        const loggedInUser = response.data;
+        setUser(loggedInUser);
+      })
+      .catch(error => {
+        console.error('Fehler beim Abrufen des eingeloggten Benutzers: ', error);
+      });
+  }, []);
 
   return (
     <div className="App">
@@ -86,8 +98,8 @@ function App() {
             path="/"
             element={
               <>
-               <Navbar />
-                <Mainsite />
+              
+                <Login />
               </>
             }
           />

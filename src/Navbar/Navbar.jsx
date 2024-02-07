@@ -14,63 +14,15 @@ function Navbar() {
 
   useEffect(() => {
     // Hier rufen wir die Benutzerdaten ab, um den eingeloggten Benutzer zu ermitteln
-    axios.get('https://users-8a52.onrender.com/users')
-      .then(response => {
-        const users = response.data;
-        const loggedInUser = users.find(user => user.loggedIn);
-        if (loggedInUser) {
-          setLoggedInUser(loggedInUser);
-        }
-      })
-      .catch(error => {
-        console.error('Fehler beim Abrufen des eingeloggten Benutzers: ', error);
-      });
-
-    // Hier rufen wir die Admins-Daten ab, um den eingeloggten Admin zu ermitteln
-    axios.get('https://users-8a52.onrender.com/admins')
-      .then(response => {
-        const admins = response.data;
-        const loggedInAdmin = admins.find(admin => admin.loggedIn);
-        if (loggedInAdmin) {
-          setLoggedInAdmin(loggedInAdmin);
-        }
-      })
-      .catch(error => {
-        console.error('Fehler beim Abrufen des eingeloggten Admins: ', error);
-      });
+    
   }, []);
 
   const handleLogout = () => {
     // Hier kannst du den Logout-Code einfügen, um loggedIn auf false zu setzen
     // und den Benutzer/Admin zur Login-Seite weiterzuleiten
 
-    if (loggedInUser) {
-      axios.put(`https://users-8a52.onrender.com/users/${loggedInUser.id}`, {
-        ...loggedInUser,
-        loggedIn: false,
-      })
-        .then(() => {
-          setLoggedInUser(null); // Den eingeloggten Benutzer im State entfernen
-          window.location = '/'; // Zur Login-Seite weiterleiten
-        })
-        .catch(error => {
-          console.error('Fehler beim Ausloggen des Benutzers: ', error);
-        });
-    }
-
-    if (loggedInAdmin) {
-      axios.put(`https://users-8a52.onrender.com/admins/${loggedInAdmin.id}`, {
-        ...loggedInAdmin,
-        loggedIn: false,
-      })
-        .then(() => {
-          setLoggedInAdmin(null); // Den eingeloggten Admin im State entfernen
-          window.location = '/'; // Zur Login-Seite weiterleiten
-        })
-        .catch(error => {
-          console.error('Fehler beim Ausloggen des Admins: ', error);
-        });
-    }
+   
+   
   };
 
   return (
@@ -154,82 +106,6 @@ function Navbar() {
 
 
 
-        {
-          /*
-<li>
-              <Link to="/artikel/versand" className={currentPath === '/artikel/versand' ? 'active' : ''}>
-                Versand
-              </Link>
-            </li>
- <li>
-          <Link to="/postfinancedaten" className={currentPath === '/postfinancedaten' ? 'active' : ''}>
-            Postfinance
-          </Link>
-        </li>
-<li>
-          <Link to="/admins" className={currentPath.startsWith('/admins') ? 'active' : ''}>
-            Admins
-          </Link>
-          <ul className="submenu">
-            <li>
-              <Link to="/admins/admincreate" className={currentPath === '/admins/admincreate' ? 'active' : ''}>
-                Admin erstellen
-              </Link>
-            </li>
-            <li>
-              <Link to="/admins/tagesplanung" className={currentPath === '/artikel/tagesplanung' ? 'active' : ''}>
-                Tagesplanung
-              </Link>
-            </li>
-            <li>
-              <Link to="/admins/interner-verkauf" className={currentPath === '/admins/interner-verkauf' ? 'active' : ''}>
-                Interner Verkauf
-              </Link>
-            </li>
-            <li>
-              <Link to="/admins/users" className={currentPath === '/admins/users' ? 'active' : ''}>
-                Benutzer
-              </Link>
-            </li>
-            <li>
-              <Link to="/admins/usercreate" className={currentPath === '/admins/usercreate' ? 'active' : ''}>
-                Benutzer erstellen
-              </Link>
-            </li>
-
-          </ul>
-        </li>
-          
-  
-
-             
-       
-
-        <li>
-          <Link to="/users" className={currentPath === '/users' ? 'active' : ''}>
-            Users
-          </Link>
-        </li>
-
-
-        <li>
-          <Link to="/admins" className={currentPath === '/admins' ? 'active' : ''}>
-            Admins
-          </Link>
-        </li>
-        <li>
-          <Link to="/tagesplanung" className={currentPath === '/tagesplanung' ? 'active' : ''}>
-            Tagesplanung
-          </Link>
-        </li>
-        <li>
-          <Link to="/interner-verkauf" className={currentPath === '/interner-verkauf' ? 'active' : ''}>
-            Interner Verkauf
-          </Link>
-        </li>
-          
-          */
-        }
 
 
       </ul>

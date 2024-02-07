@@ -6,37 +6,35 @@ import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:4000';
 
 function Login() {
-  const [benutzername, setBenutzername] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loginAttempted, setLoginAttempted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoginAttempted(true);
-
     try {
-      // Sende die Anfrage an localhost:4000/users
-      const response = await axios.get('/users');
-      const users = response.data.data;
-
-      // Finde den Benutzer mit Benutzername und Passwort
-      const user = users.find(u => u.username === benutzername && u.password === password);
-
+      // Senden Sie eine Anfrage, um den Benutzer abzurufen
+      const response = await axios.get(`http://localhost:4000/users`);
+      const users = response.data;
+      // Suche nach dem Benutzer anhand des Benutzernamens
+      const user = users.find(u => u.username === username);
       if (user) {
-        // PUT-Request im Backend durchführen, um loggedIn auf true zu setzen
-        await axios.put(`/users/${user.id}`, { ...user, loggedIn: true });
-
-        // Erfolgreich eingeloggt
-        setErrorMessage('');
-        console.log("loggedIn");
-        window.location = "/mainsite";
+        // Überprüfen, ob das eingegebene Passwort mit dem im Backend gespeicherten Passwort übereinstimmt
+        if (user.password === password) {
+          // Wenn das Passwort übereinstimmt, leiten Sie den Benutzer zur Hauptseite weiter
+          window.location = "/mainsite";
+        } else {
+          // Wenn das Passwort nicht übereinstimmt, setzen Sie die Fehlermeldung
+          setErrorMessage('Falsches Passwort. Bitte versuchen Sie es erneut.');
+        }
       } else {
-        setErrorMessage('Benutzername oder Passwort falsch.');
+        // Wenn der Benutzer nicht gefunden wurde, setzen Sie die Fehlermeldung
+        setErrorMessage('Benutzer nicht gefunden. Bitte überprüfen Sie Ihren Benutzernamen.');
       }
     } catch (error) {
-      setErrorMessage('Fehler beim Login.');
-      console.error('Fehler beim Abrufen der Benutzerdaten oder beim Aktualisieren des Benutzers:', error);
+      // Bei Fehlern setzen Sie die Fehlermeldung basierend auf der Fehlerantwort
+      console.error('Fehler beim Einloggen: ', error);
+      setErrorMessage('Fehler beim Einloggen. Bitte versuchen Sie es erneut.');
     }
   };
 
@@ -48,17 +46,15 @@ function Login() {
           <input
             type='text'
             placeholder='Benutzername'
-            disabled={loginAttempted}
-            onChange={(e) => setBenutzername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <input
             type='password'
             placeholder='Passwort'
-            disabled={loginAttempted}
             onChange={(e) => setPassword(e.target.value)}
           />
           <div className='error-message'>{errorMessage}</div>
-          <button type='submit' disabled={loginAttempted}>
+          <button type='submit'>
             Login
           </button>
         </form>
