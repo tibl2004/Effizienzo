@@ -15,6 +15,11 @@ function Mainsite() {
   const [feedbackText, setFeedbackText] = useState('');
   const [showFeedbackForm, setShowFeedbackForm] = useState(true);
   const [showThankYou, setShowThankYou] = useState(false);
+  const [newDocumentName, setNewDocumentName] = useState('');
+  const [newDocumentUrl, setNewDocumentUrl] = useState('');
+  const [editingDocument, setEditingDocument] = useState(null); // Track which document is being edited
+  const [editedDocumentName, setEditedDocumentName] = useState('');
+  const [editedDocumentUrl, setEditedDocumentUrl] = useState('');
 
   const sendEmail = (email) => {
     window.location.href = `mailto:${email}`;
@@ -93,10 +98,63 @@ function Mainsite() {
       });
   };
 
-
   const handleDocumentClick = (url) => {
     window.open(url, '_blank');
   };
+
+  const handleDocumentPost = () => {
+    axios.post('http://localhost:4000/dokumente', {
+      name: newDocumentName,
+      url: newDocumentUrl
+    })
+      .then(response => {
+        console.log('Dokument erfolgreich erstellt:', response.data);
+        // Aktualisieren Sie die Dokumentenliste nach dem Hinzufügen des Dokuments
+        setDocuments([...documents, response.data]);
+        // Leeren Sie die Eingabefelder
+        setNewDocumentName('');
+        setNewDocumentUrl('');
+      })
+      .catch(error => {
+        console.error('Fehler beim Erstellen des Dokuments:', error);
+      });
+  };
+
+  const handleDocumentEdit = (id) => {
+    const documentToEdit = documents.find(doc => doc.id === id);
+    if (documentToEdit) {
+      setEditingDocument(id);
+      setEditedDocumentName(documentToEdit.name);
+      setEditedDocumentUrl(documentToEdit.url);
+    }
+  };
+
+  const saveEditedDocument = () => {
+    axios.put(`http://localhost:4000/dokumente/${editingDocument}`, {
+      name: editedDocumentName,
+      url: editedDocumentUrl
+    })
+      .then(response => {
+        console.log('Dokument erfolgreich aktualisiert:', response.data);
+        window.location.reload();
+        // Aktualisieren Sie die Dokumentenliste nach dem Aktualisieren des Dokuments
+        const updatedDocuments = documents.map(doc => {
+          if (doc.id === editingDocument) {
+            return response.data;
+          }
+          return doc;
+        });
+        setDocuments(updatedDocuments);
+        // Zurücksetzen der Bearbeitungsvariablen
+        setEditingDocument(null);
+        setEditedDocumentName('');
+        setEditedDocumentUrl('');
+      })
+      .catch(error => {
+        console.error('Fehler beim Aktualisieren des Dokuments:', error);
+      });
+  };
+  
 
   return (
     <div className="container">
@@ -139,9 +197,6 @@ function Mainsite() {
         )}
       </div>
 
-
-
-
       <div className="team-container" style={{ gridColumn: 'span 1', gridRow: 'span 2' }}>
         {teamMembers.map((teammitglied) => (
           <div key={teammitglied.id} className="team-mitglied">
@@ -162,10 +217,44 @@ function Mainsite() {
         <h3>Dokumente</h3>
         <div className='dokumente'>
           {documents.map((dokument) => (
-            <div key={dokument.id} className="dokument" onClick={() => handleDocumentClick(dokument.url)}>
-              <p>{dokument.name}</p>
+            <div key={dokument.id} className="dokument">
+              {editingDocument === dokument.id ? (
+                <>
+                  <input
+                    type="text"
+                    value={editedDocumentName}
+                    onChange={(e) => setEditedDocumentName(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    value={editedDocumentUrl}
+                    onChange={(e) => setEditedDocumentUrl(e.target.value)}
+                  />
+                  <button onClick={saveEditedDocument}>Speichern</button>
+                </>
+              ) : (
+                <>
+                  <p>{dokument.name}</p>
+                  <button onClick={() => handleDocumentEdit(dokument.id)}>Bearbeiten</button>
+                </>
+              )}
             </div>
           ))}
+          <div className="new-document">
+            <input
+              type="text"
+              placeholder="Name des Dokuments"
+              value={newDocumentName}
+              onChange={(e) => setNewDocumentName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="URL des Dokuments"
+              value={newDocumentUrl}
+              onChange={(e) => setNewDocumentUrl(e.target.value)}
+            />
+            <button onClick={handleDocumentPost}>Post</button>
+          </div>
         </div>
       </div>
 
