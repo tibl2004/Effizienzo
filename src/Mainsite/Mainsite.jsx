@@ -17,6 +17,17 @@ function Mainsite() {
     { id: 2, vorname: 'Nadja', nachname: 'Baraniak', email: 'nadja.baraniak@gewa.ch', telefonnummer: '031 919 13 39', bildUrl: nadja },
   ]);
 
+  const [dokumente, setDokumente] = useState([
+    { id: 1, name: "Anleitung 1 Artikelannahme und -erfassung", url: "https://gewastiftung.sharepoint.com/:w:/r/sites/PJ-Auftrag-Restwert/Freigegebene%20Dokumente/General/04%20Anleitungen/Anleitung%201%20Artikelannahme%20und%20-erfassung.docx?d=w8d43950df0934c7e86eb1a83542b1e02&csf=1&web=1&e=KTAyzX" },
+    { id: 2, name: "Anleitung 2 Fotos", url: "https://gewastiftung.sharepoint.com/:w:/r/sites/PJ-Auftrag-Restwert/Freigegebene%20Dokumente/General/04%20Anleitungen/Anleitung%202%20Fotos.docx?d=w088cac87d1f24e56929111a57d18c58a&csf=1&web=1&e=5urIL3" },
+    { id: 3, name: "Anleitung 3 Inserat erstellen", url: "https://gewastiftung.sharepoint.com/:w:/r/sites/PJ-Auftrag-Restwert/Freigegebene%20Dokumente/General/04%20Anleitungen/Anleitung%203%20Inserat%20erstellen.docx?d=w70817be684294661b887790d5b71ff51&csf=1&web=1&e=ebNSpE" },
+    { id: 4, name: "Anleitung 4 Inserat freigeben", url: "https://gewastiftung.sharepoint.com/:w:/r/sites/PJ-Auftrag-Restwert/Freigegebene%20Dokumente/General/04%20Anleitungen/Anleitung%204%20Inserat%20freigeben.docx?d=wf9b92a333f92460fbe808c997c1898a6&csf=1&web=1&e=oWP09z" },
+    { id: 5, name: "Anleitung 5 Versand und Lager", url: "https://gewastiftung.sharepoint.com/:w:/r/sites/PJ-Auftrag-Restwert/Freigegebene%20Dokumente/General/04%20Anleitungen/Anleitung%205%20Versand%20und%20Lager.docx?d=w2eaa45d526944da19410d564806bf188&csf=1&web=1&e=lCw0O7" },
+    { id: 6, name: "Anleitung 6 E-Mails und Warenrückgabe", url: "https://gewastiftung.sharepoint.com/:w:/r/sites/PJ-Auftrag-Restwert/Freigegebene%20Dokumente/General/04%20Anleitungen/Anleitung%206%20E-Mails%20und%20Warenr%C3%BCckgabe.docx?d=w2223cad6f7b745c3b6df20d1fa237bf9&csf=1&web=1&e=KSuDDO" },
+    { id: 7, name: "Anleitung 7 Buchhaltung", url: "https://gewastiftung.sharepoint.com/:w:/r/sites/PJ-Auftrag-Restwert/Freigegebene%20Dokumente/General/04%20Anleitungen/Anleitung%207%20Buchhaltung.docx?d=w8cf47af1a3a049cdbd41fceff1937804&csf=1&web=1&e=yhs3aP" }
+  ]);
+
+
   const sendEmail = (email) => {
     window.location.href = `mailto:${email}`;
   };
@@ -55,7 +66,7 @@ function Mainsite() {
           Wenn du Unterstützung benötigst oder Fragen hast, zögere nicht, dich an mich zu wenden. Ich stehe dir jederzeit zur Verfügung, um dir weiterzuhelfen. Mein Ziel ist es, sicherzustellen, dass deine Erfahrung auf Effizienzo so reibungslos und angenehm wie möglich ist.
         </p>
         <p className="muster-text">
-          Viel Spaß beim Erkunden der Plattform und bei der Nutzung meiner verschiedenen Dienstleistungen. 
+          Viel Spaß beim Erkunden der Plattform und bei der Nutzung meiner verschiedenen Dienstleistungen.
         </p>
         <p className='muster-text'>
           Liebe Grüße,
@@ -93,6 +104,17 @@ function Mainsite() {
           </div>
         ))}
       </div>
+
+      <div className="documents-container" style={{ gridColumn: 'span 1', gridRow: 'span 2' }}>
+        {dokumente.map((dokument) => (
+          <div key={dokument.id} className="dokument">
+            <div className="dokument-info">
+              <p><a href={dokument.url} target="_blank" rel="noopener noreferrer">{dokument.name}</a></p>
+            </div>
+          </div>
+        ))}
+      </div>
+
 
       <div className='updates-container' style={{ gridColumn: 'span 2', gridRow: 'span 2' }}>
         <h3>Updates</h3>
