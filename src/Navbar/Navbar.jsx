@@ -109,21 +109,21 @@ function Navbar() {
           </Link>
         </li>
 
-{ /*
+
    <li>
           <Link to="/faq" className={currentPath === '/faq' ? 'active' : ''}>
-            Häufige Fragen
+            Häufige Fragen von Kunden
           </Link>
         </li>
         */
-}
+
        
 
 
 
 
 
-
+        { /*
 
 
 
