@@ -57,7 +57,7 @@ function Mainsite() {
 
   return (
     <div className="container">
-      <div className="welcome-container" style={{ gridColumn: 'span 1', gridRow: 'span 1' }}>
+      <div className="welcome-container">
         <h2 className="hello-message">Lieber Benutzer</h2>
         <p className="muster-text">
           Herzlich willkommen auf Effizienzo! Ich freue mich, dass du dich entschieden hast, meine Plattform zu nutzen. Hier bei Effizienzo steht Effizienz an erster Stelle, und ich bin sicher, dass du viele nützliche Funktionen entdecken wirst.
@@ -75,7 +75,7 @@ function Mainsite() {
         </p>
       </div>
 
-      <div className='feedback-container' style={{ gridColumn: 'span 1', gridRow: 'span 1' }}>
+      <div className='feedback-container'>
         <h3>Wie gefällt dir Effizienzo?</h3>
         <ReactStars
           count={5}
@@ -89,7 +89,7 @@ function Mainsite() {
         />
       </div>
 
-      <div className="team-container" style={{ gridColumn: 'span 1', gridRow: 'span 2' }}>
+      <div className="team-container">
         {teamMembers.map((mitglied) => (
           <div key={mitglied.id} className="team-mitglied">
             <div className="profilbild">
@@ -105,7 +105,7 @@ function Mainsite() {
         ))}
       </div>
 
-      <div className="documents-container" style={{ gridColumn: 'span 1', gridRow: 'span 2' }}>
+      <div className="documents-container">
         <h3>Anleitungen</h3>
         {dokumente.map((dokument) => (
           <div key={dokument.id} className="dokument">
@@ -116,8 +116,7 @@ function Mainsite() {
         ))}
       </div>
 
-
-      <div className='updates-container' style={{ gridColumn: 'span 2', gridRow: 'span 2' }}>
+      <div className='updates-container'>
         <h3>Updates</h3>
         <div className='updates'>
           {updates.map((update, index) => (
