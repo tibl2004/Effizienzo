@@ -106,6 +106,7 @@ function Mainsite() {
       </div>
 
       <div className="documents-container" style={{ gridColumn: 'span 1', gridRow: 'span 2' }}>
+        <h3>Anleitungen</h3>
         {dokumente.map((dokument) => (
           <div key={dokument.id} className="dokument">
             <div className="dokument-info">
