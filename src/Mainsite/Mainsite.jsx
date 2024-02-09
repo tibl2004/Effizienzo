@@ -20,6 +20,14 @@ function Mainsite() {
   const [editingDocument, setEditingDocument] = useState(null); // Track which document is being edited
   const [editedDocumentName, setEditedDocumentName] = useState('');
   const [editedDocumentUrl, setEditedDocumentUrl] = useState('');
+  const [editingTeamMember, setEditingTeamMember] = useState(null); // Track which team member is being edited
+  const [editedTeamMember, setEditedTeamMember] = useState({
+    vorname: '',
+    nachname: '',
+    email: '',
+    telefonnummer: '',
+    bildUrl: '',
+  });
 
   const sendEmail = (email) => {
     window.location.href = `mailto:${email}`;
@@ -154,7 +162,38 @@ function Mainsite() {
         console.error('Fehler beim Aktualisieren des Dokuments:', error);
       });
   };
-  
+
+  const handleTeamMemberEdit = (member) => {
+    setEditingTeamMember(member.id);
+    setEditedTeamMember({ ...member });
+  };
+
+  const handleTeamMemberSave = () => {
+    axios.put(`http://localhost:4000/teammembers/${editingTeamMember}`, editedTeamMember)
+      .then(response => {
+        console.log('Teammitglied erfolgreich aktualisiert:', response.data);
+        window.location.reload();
+        const updatedMembers = teamMembers.map(member => {
+          if (member.id === editingTeamMember) {
+            return response.data;
+          }
+          return member;
+        });
+        setTeamMembers(updatedMembers);
+        setEditingTeamMember(null);
+      })
+      .catch(error => {
+        console.error('Fehler beim Aktualisieren des Teammitglieds:', error);
+      });
+  };
+
+  const handleTeamMemberChange = (e) => {
+    const { name, value } = e.target;
+    setEditedTeamMember(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
 
   return (
     <div className="container">
@@ -204,10 +243,49 @@ function Mainsite() {
               <img src={teammitglied.bildUrl} alt={`${teammitglied.vorname} ${teammitglied.nachname}`} />
             </div>
             <div className="mitglied-info">
-              <p>{`${teammitglied.vorname} ${teammitglied.nachname}`}</p>
-              <p>Email: {teammitglied.email}</p>
-              <p>Telefonnummer: <a href={`tel:${teammitglied.telefonnummer}`}>{teammitglied.telefonnummer}</a></p>
-              <button onClick={() => sendEmail(teammitglied.email)}>E-Mail</button>
+              {editingTeamMember === teammitglied.id ? (
+                <>
+                  <input
+                    type="text"
+                    name="vorname"
+                    value={editedTeamMember.vorname}
+                    onChange={handleTeamMemberChange}
+                  />
+                  <input
+                    type="text"
+                    name="nachname"
+                    value={editedTeamMember.nachname}
+                    onChange={handleTeamMemberChange}
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    value={editedTeamMember.email}
+                    onChange={handleTeamMemberChange}
+                  />
+                  <input
+                    type="text"
+                    name="telefonnummer"
+                    value={editedTeamMember.telefonnummer}
+                    onChange={handleTeamMemberChange}
+                  />
+                  <input
+                    type="text"
+                    name="bildUrl"
+                    value={editedTeamMember.bildUrl}
+                    onChange={handleTeamMemberChange}
+                  />
+                  <button onClick={handleTeamMemberSave}>Speichern</button>
+                </>
+              ) : (
+                <>
+                  <p>{`${teammitglied.vorname} ${teammitglied.nachname}`}</p>
+                  <p>Email: {teammitglied.email}</p>
+                  <p>Telefonnummer: <a href={`tel:${teammitglied.telefonnummer}`}>{teammitglied.telefonnummer}</a></p>
+                  <button onClick={() => sendEmail(teammitglied.email)}>E-Mail</button>
+                  <button onClick={() => handleTeamMemberEdit(teammitglied)}>Bearbeiten</button>
+                </>
+              )}
             </div>
           </div>
         ))}

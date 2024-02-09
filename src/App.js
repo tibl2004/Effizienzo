@@ -11,6 +11,8 @@ import Tagesplanung from './Admin/Tagesplanung';
 
 
 
+import InseratDetails from './InserierenVorlagen/InseratDetails';
+
 import WandStandUhren from './InserierenVorlagen/WandStandUhren';
 import Werkzeug from './InserierenVorlagen/Werkzeug';
 import Portemonnaie from './InserierenVorlagen/Portemonnaie';
@@ -25,7 +27,6 @@ import Games from './InserierenVorlagen/Games';
 import Drucker from './InserierenVorlagen/Drucker';
 import Kleidung from './InserierenVorlagen/Kleidung';
 import Schuhe from './InserierenVorlagen/Schuhe';
-import Bastelartikel from './InserierenVorlagen/Bastelartikel';
 import Briefmarken from './InserierenVorlagen/Briefmarken';
 import DVDBluRayPlayer from './InserierenVorlagen/DVDBlueRayPlayer';
 import Buecher from './InserierenVorlagen/Buecher';
@@ -93,12 +94,12 @@ function App() {
       <Router>
         <Routes>
 
-        
+
           <Route
             path="/"
             element={
               <>
-              
+
                 <Login />
               </>
             }
@@ -113,7 +114,7 @@ function App() {
             }
           />
 
-<Route
+          <Route
             path="/feedback"
             element={
               <>
@@ -123,18 +124,18 @@ function App() {
             }
           />
 
-<Route
+          <Route
             path="/kassabuch"
             element={
               <>
                 <Navbar />
-                < Kassabuch/>
+                < Kassabuch />
               </>
             }
           />
 
 
-<Route
+          <Route
             path="/logs"
             element={
               <>
@@ -155,13 +156,13 @@ function App() {
           />
 
 
-          
 
 
 
 
 
-          
+
+
           <Route
             path="/admins/users"
             element={
@@ -172,7 +173,7 @@ function App() {
             }
           />
 
-          
+
           <Route
             path="/mainsite"
             element={
@@ -191,8 +192,8 @@ function App() {
               </>
             }
           />
-       
-        
+
+
           <Route
             path="/versand"
             element={
@@ -223,6 +224,16 @@ function App() {
           />
 
           <Route
+            path="/details/:id" // Hier definierst du einen Pfad mit einem Parameter ":title"
+            element={
+              <>
+                <Navigation />
+                <InseratDetails />
+              </>
+            }
+          />
+
+          <Route
             path="/kategorien"
             element={
               <>
@@ -231,7 +242,7 @@ function App() {
               </>
             }
           />
-       
+
 
 
           <Route
@@ -264,9 +275,9 @@ function App() {
               </>
             }
           />
-    
 
-        <Route
+
+          <Route
             path="/faq"
             element={
               <>
@@ -279,16 +290,7 @@ function App() {
 
 
 
-   
-          <Route
-            path="/bastelartikel"
-            element={
-              <>
-                <Navigation />
-                <Bastelartikel />
-              </>
-            }
-          />
+
 
           <Route
             path="/bilder"
