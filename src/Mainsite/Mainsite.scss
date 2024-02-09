@@ -5,6 +5,7 @@
   grid-template-rows: repeat(5, auto); /* Alle Zeilenhöhen werden automatisch an den Inhalt angepasst */
   grid-column-gap: 20px;
   grid-row-gap: 20px;
+  padding: 20px;
 }
 
 .welcome-container, .feedback-container, .team-container, .updates-container, .documents-container {
