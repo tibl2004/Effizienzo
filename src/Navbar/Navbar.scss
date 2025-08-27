@@ -1,112 +1,157 @@
-.navbar {
-  height: 100px;
-  background-color: #007bff;
+/* Navbar.scss */
 
+.navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
   .logo-container {
     display: flex;
     align-items: center;
-    background-color: #0c66b4;
-    margin-top: 0;
+    gap: 15px;
 
     img {
-      max-height: 100px;
-      /* Höhe auf 100px begrenzen */
+      height: 50px;
+      width: auto;
+      border-radius: 8px;
     }
 
     .version-label {
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: white;
-      font-size: 18px;
-      padding: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
     }
   }
 
   .links {
-    list-style-type: none;
-    padding: 0;
     display: flex;
     align-items: center;
+    gap: 25px;
+    list-style: none;
 
     li {
-      padding: 0 20px;
       position: relative;
-      transition: background-color 0.3s;
 
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
 
-    .disabled-link {
-      pointer-events: none; // Das macht es nicht klickbar
-      opacity: 0.6; // Dies lässt es deaktiviert aussehen
-    }
-
-    .submenu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #007bff;
-      padding: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      list-style-type: none;
-      transition: max-height 0.3s ease-in-out;
-      max-height: 270px;
-      overflow: hidden;
-    
-      li {
-        padding: 0;
-        width: 100%;
-        height: 50px;
-        &:not(:last-child) {
-          border-bottom: 1px solid white;
+        &:hover {
+          background: rgba(255, 255, 255, 0.15);
+          transform: translateY(-2px);
         }
-        a {
-          display: block;
-          padding: 10px;
-          text-decoration: none;
-          color: white;
-          &:hover {
-            color: #fff;
+
+        &.active {
+          background-color: rgba(255, 255, 255, 0.3);
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+      }
+
+      .submenu {
+        display: none;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        background-color: #fff;
+        color: #333;
+        min-width: 200px;
+        border-radius: 8px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        flex-direction: column;
+        padding: 10px 0;
+        z-index: 1000;
+
+        li {
+          width: 100%;
+
+          a {
+            color: #333;
+            padding: 10px 20px;
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+
+            &:hover {
+              background-color: #f0f0f0;
+              color: #4f46e5;
+            }
+
+            &.active {
+              background-color: #e0e0ff;
+              color: #4f46e5;
+            }
           }
         }
-        &:hover {
-          background-color: #0056b3;
+      }
+
+      &:hover .submenu {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  /* Clock Styling */
+  .clock {
+    font-weight: 600;
+    font-size: 16px;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius: 6px;
+    color: #fff;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  /* Logout Icon */
+  .logout {
+    margin-left: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 18px;
+
+    &:hover {
+      color: #ff4d4f;
+      transform: scale(1.1);
+    }
+  }
+
+  /* Responsive Navbar */
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+
+    .links {
+      flex-direction: column;
+      gap: 10px;
+
+      li {
+        width: 100%;
+
+        .submenu {
+          position: relative;
+          top: 0;
+          left: 0;
+          box-shadow: none;
         }
       }
     }
-    
-
-    li:hover .submenu {
-      display: flex;
-      flex-direction: column;
-    }
-
-    li a {
-      text-decoration: none;
-      color: white;
-      min-width: 100px;
-      /* Mindestbreite auf 100px setzen */
-      min-height: 100px;
-      /* Mindesthöhe auf 100px setzen */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      /* Horizontal und vertikal zentriert */
-    }
-
-    .active {
-      background-color: #0056b3;
-      /* Aktiver Tab-Stil */
-    }
   }
-  
 }
